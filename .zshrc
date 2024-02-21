@@ -175,7 +175,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-conda activate py3_11-shell
+# If it doesn't exist init:
+# conda create -n py3_12-shell python=3.12
+conda activate py3_12-shell
 
 # alias for printing csv from shell using python
 dump_csv() { python -c "import pandas as pd ; print(pd.read_csv('${1}'))"}
