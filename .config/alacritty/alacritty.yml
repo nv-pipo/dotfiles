@@ -330,10 +330,10 @@ live_config_reload: true
 #     - --login
 
 shell:
-  program: /bin/bash
+  program: /Users/pichurri/homebrew/bin/zsh
   args:
     - -c
-    - cd ~/Documents/code && exec bash
+    - tmux
 
 # Key bindings
 #
