@@ -25,6 +25,3 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # nvchad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 ln -s $dotfiles_path/nvchad/custom ~/.config/nvim/lua
-
-# fzf
-$(brew --prefix)/opt/fzf/install
