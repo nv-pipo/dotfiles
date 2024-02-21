@@ -2,7 +2,7 @@
 
 ## Install
 ```
-git clone --recursive https://github.com/89iuv/dotfiles.git .dotfiles
+git clone --recursive git@github.com:nv-pipo/dotfiles.git
 ```
 
 ## Update
