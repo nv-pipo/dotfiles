@@ -10,6 +10,7 @@ dotfiles_path=`pwd`
 # oh-my-zsh
 ln -s $dotfiles_path/zsh/oh-my-zsh ~/.oh-my-zsh
 ln -s $dotfiles_path/zsh/.zshrc ~/.zshrc
+git clone https://github.com/esc/conda-zsh-completion ~/.oh-my-zsh/custom/plugins/conda-zsh-completion
 
 # zsh-autosuggestions
 ln -s $dotfiles_path/zsh/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins
