@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dependencies
-brew install neofetch onefetch htop wget nvim ripgrep tmux lua zoxide fzf stow
+brew install neofetch onefetch htop wget ripgrep tmux zoxide fzf stow
 
 # vars
 dotfiles_path=`pwd`
