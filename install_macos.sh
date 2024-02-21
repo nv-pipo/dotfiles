@@ -21,7 +21,3 @@ ln -s $dotfiles_path/zsh/.p10k.zsh ~/.p10k.zsh
 # tmux
 ln -s $dotfiles_path/tmux/.tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# nvchad
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-ln -s $dotfiles_path/nvchad/custom ~/.config/nvim/lua
