@@ -68,6 +68,7 @@ style = "Italic"
 [font.normal]
 family = "MesloLGS NF"
 
+# New tab (tmux)
 [[keyboard.bindings]]
 key = "T"
 mods = "Command"
