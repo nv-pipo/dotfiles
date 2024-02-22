@@ -70,13 +70,13 @@ family = "MesloLGS NF"
 
 [keyboard]
 bindings = [
-# New tab (tmux)
+    # New tab (tmux)
     { key = "T", mods = "Command", chars = "\u0000c" },
-# Next tab (tmux)
+    # Next tab (tmux)
     { key = "Right", mods = "Command|Option", chars = "\u0000n" },
-# Previous tab (tmux)
+    # Previous tab (tmux)
     { key = "Left", mods = "Command|Option", chars = "\u0000p" },
-# Clear buffer (tmux)
+    # Clear buffer (tmux)
     { key = "k", mods = "Command", chars = "\u0000u" },
     # next word
     { key = "Right", mods = "Option", chars = "\u001BF" },
