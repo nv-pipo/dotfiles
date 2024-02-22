@@ -82,6 +82,10 @@ bindings = [
     { key = "Right", mods = "Option", chars = "\u001BF" },
     # previous word
     { key = "Left", mods = "Option", chars = "\u001BB" },
+    # beginning of line
+    { key = "Left", mods = "Command", chars = "\u0001" },
+    # end of line
+    { key = "Right", mods = "Command", chars = "\u0005" },
 ]
 
 [mouse]
