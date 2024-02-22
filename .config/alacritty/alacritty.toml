@@ -74,6 +74,18 @@ key = "T"
 mods = "Command"
 chars = "\u0000c"
 
+# Next tab (tmux)
+[[keyboard.bindings]]
+chars = """\u0000n"""
+key = "Right"
+mods = "Command|Option"
+
+# Previous tab (tmux)
+[[keyboard.bindings]]
+chars = """\u0000p"""
+key = "Left"
+mods = "Command|Option"
+
 # Clear buffer (tmux)
 [[keyboard.bindings]]
 chars = """\u0000u"""
