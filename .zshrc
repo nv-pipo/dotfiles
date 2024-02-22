@@ -138,11 +138,6 @@ setopt no_share_history
 add-zsh-hook -d chpwd _togglePipenvShell
 ############### MY oh my zsh SETTINGS ###############
 
-############### MANUAL ACTIVATIONS ###############
-source /Users/pichurri/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /Users/pichurri/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-############### MANUAL ACTIVATIONS ###############
-
 ############### PYENV ###############
 # export PATH="/Users/pichurri/homebrew/opt/llvm@11/bin:$PATH"
 # export PATH="${HOME}/homebrew/opt/openssl@1.1/bin:$PATH"
@@ -159,6 +154,10 @@ source /Users/pichurri/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlig
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+############### MANUAL ACTIVATIONS ###############
+source /Users/pichurri/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+############### MANUAL ACTIVATIONS ###############
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
