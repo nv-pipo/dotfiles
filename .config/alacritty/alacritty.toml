@@ -71,7 +71,7 @@ family = "MesloLGS NF"
 [[keyboard.bindings]]
 key = "T"
 mods = "Command"
-chars = "\\u0063"
+chars = "\u0000c"
 
 [mouse]
 hide_when_typing = false
