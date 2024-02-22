@@ -68,29 +68,21 @@ style = "Italic"
 [font.normal]
 family = "MesloLGS NF"
 
+[keyboard]
+bindings = [
 # New tab (tmux)
-[[keyboard.bindings]]
-key = "T"
-mods = "Command"
-chars = "\u0000c"
-
+    { key = "T", mods = "Command", chars = "\u0000c" },
 # Next tab (tmux)
-[[keyboard.bindings]]
-chars = """\u0000n"""
-key = "Right"
-mods = "Command|Option"
-
+    { key = "Right", mods = "Command|Option", chars = "\u0000n" },
 # Previous tab (tmux)
-[[keyboard.bindings]]
-chars = """\u0000p"""
-key = "Left"
-mods = "Command|Option"
-
+    { key = "Left", mods = "Command|Option", chars = "\u0000p" },
 # Clear buffer (tmux)
-[[keyboard.bindings]]
-chars = """\u0000u"""
-key = "k"
-mods = "Command"
+    { key = "k", mods = "Command", chars = "\u0000u" },
+    # next word
+    { key = "Right", mods = "Option", chars = "\u001BF" },
+    # previous word
+    { key = "Left", mods = "Option", chars = "\u001BB" },
+]
 
 [mouse]
 hide_when_typing = false
