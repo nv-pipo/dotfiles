@@ -73,6 +73,12 @@ key = "T"
 mods = "Command"
 chars = "\u0000c"
 
+# Clear buffer (tmux)
+[[keyboard.bindings]]
+chars = """\u0000u"""
+key = "k"
+mods = "Command"
+
 [mouse]
 hide_when_typing = false
 
