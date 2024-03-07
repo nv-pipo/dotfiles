@@ -183,3 +183,6 @@ dump_csv() { python -c "import pandas as pd ; print(pd.read_csv('${1}'))"}
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# default text editor to NANO
+export EDITOR=nano
