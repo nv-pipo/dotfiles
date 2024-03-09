@@ -120,3 +120,6 @@ lines = 0
 [window.padding]
 x = 2
 y = 2
+
+[bell]
+command = { program = "osascript", args = ["-e", "beep"] }
