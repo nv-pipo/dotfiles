@@ -126,6 +126,7 @@ alias sshv="ssh -l velasquez"
 alias ssha="ssh -l administrator"
 alias sd="say done"
 alias ltr="ls -lhtr"
+alias beep="print \"\a\""
 
 ############### MY oh my zsh SETTINGS ###############
 # ctrl+u to delete from cursor, not whole line
