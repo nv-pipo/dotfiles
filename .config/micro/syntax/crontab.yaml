@@ -1,7 +1,7 @@
 filetype: crontab
 
 detect:
-  filename: "(crontab$|/tmp/crontab.)"
+  filename: "(crontab$|[/]tmp[/]crontab[.])"
   header: "^#.*?/etc/crontab"
 
 rules:
