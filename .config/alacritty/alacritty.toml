@@ -72,6 +72,8 @@ family = "MesloLGS NF"
 bindings = [
     # New tab (tmux)
     { key = "T", mods = "Command", chars = "\u0000c" },
+    # Close pane (tmux)
+    { key = "W", mods = "Command", chars = "\u0000x" },
     # Next tab (tmux)
     { key = "Right", mods = "Command|Option", chars = "\u0000n" },
     # Previous tab (tmux)
