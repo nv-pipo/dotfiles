@@ -95,21 +95,23 @@ alias sd="say done"
 alias ltr="ls -lhtr"
 alias beep="print \"\a\""
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/pichurri/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/pichurri/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/pichurri/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/pichurri/miniforge3/bin:$PATH"
-    fi
+if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$('/Users/pichurri/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/Users/pichurri/miniforge3/etc/profile.d/conda.sh" ]; then
+          . "/Users/pichurri/miniforge3/etc/profile.d/conda.sh"
+      else
+          export PATH="/Users/pichurri/miniforge3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <<<
+  conda activate py3_12-shell
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-conda activate py3_12-shell
 
 
 # default text editor to MICRO
