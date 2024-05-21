@@ -99,6 +99,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Example aliases 
+alias cat='bat'
 alias ls='ls --color'
 alias sshv="ssh -l velasquez"
 alias ssha="ssh -l administrator"
