@@ -2,7 +2,7 @@
 
 # dependencies
 brew tap homebrew/cask-fonts
-brew install neofetch onefetch htop wget ripgrep tmux zoxide fzf stow font-meslo-for-powerlevel10k micro git-delta bat ripgrep
+brew install neofetch onefetch htop wget ripgrep tmux zoxide fzf stow font-meslo-for-powerlevel10k micro git-delta bat ripgrep tlrc
 
 # vars
 dotfiles_path=`pwd`
