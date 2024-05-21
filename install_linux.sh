@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dependencies
-sudo apt install htop wget ripgrep tmux zoxide fzf stow micro zsh
+sudo apt install htop wget ripgrep tmux zoxide stow micro zsh
 
 # vars
 dotfiles_path=`pwd`
@@ -14,6 +14,10 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 ## tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+## fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 # link files to parent
 stow . -v
