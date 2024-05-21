@@ -15,6 +15,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [[ -d "/home/pichurri/.fzf/bin" && ! "$PATH" == */home/pichurri/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/pichurri/.fzf/bin"
+fi
+
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
