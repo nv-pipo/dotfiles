@@ -17,5 +17,8 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 mkdir -p ~/.config/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+## micro
+mkdir -p ~/.config/micro
+
 # link files to parent
 stow . -v
