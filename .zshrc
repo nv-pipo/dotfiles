@@ -15,8 +15,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -d "/home/pichurri/.fzf/bin" && ! "$PATH" == */home/pichurri/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/home/pichurri/.fzf/bin"
+# Load fzf from ~/.fzf if available
+if [[ -d "${HOME}/.fzf/bin" && ! "$PATH" == *${HOME}/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}${HOME}/.fzf/bin"
 fi
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then
