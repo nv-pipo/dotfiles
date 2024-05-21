@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dependencies
-sudo apt install htop wget ripgrep tmux zoxide fzf stow micro
+sudo apt install htop wget ripgrep tmux zoxide fzf stow micro zsh
 
 # vars
 dotfiles_path=`pwd`
