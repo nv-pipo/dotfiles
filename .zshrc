@@ -2,8 +2,10 @@
 #
 #
 
-# If you come from bash you might have to change your $PATH.
+# Which characters on top of alphanumeric are considered to be part of one word 
+WORDCHARS="?_"
 
+# paths
 export PATH=${HOME}/bin:$PATH
 export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
