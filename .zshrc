@@ -1,3 +1,7 @@
+# reference: https://www.youtube.com/watch?v=ud7YxC33Z3w
+#
+#
+
 # If you come from bash you might have to change your $PATH.
 
 export PATH=${HOME}/bin:$PATH
