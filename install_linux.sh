@@ -17,3 +17,5 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # link files to parent
 stow . -v
+
+chsh -s $(which zsh)
