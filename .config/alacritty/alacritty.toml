@@ -95,6 +95,12 @@ bindings = [
     { key = "Back", mods = "command", chars = "\u0015" },
 ]
 
+[[hints.enabled]]
+command = "open"
+hyperlinks = true
+mouse.enabled = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
 [mouse]
 hide_when_typing = false
 
