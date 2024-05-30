@@ -114,11 +114,12 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Example aliases
 alias cat='bat'
-alias ls='ls --color'
+alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 alias sshv="ssh -l velasquez"
 alias ssha="ssh -l administrator"
 alias sd="say done"
-alias ltr="ls -lhtr"
+alias l="eza --color=always --long --git --icons=always --time-style=long-iso"
+alias lt="eza --color=always --long --git --icons=always --time-style=long-iso --sort=time"
 alias beep="print \"\a\""
 
 if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
