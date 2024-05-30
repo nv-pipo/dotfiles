@@ -101,6 +101,8 @@ setopt hist_find_no_dups
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
+# Use fzf-tab "popup" feature
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # add slash to '..' when 'tab' is pressed
 zstyle ':completion:*' special-dirs true 
 
