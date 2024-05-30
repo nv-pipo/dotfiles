@@ -72,7 +72,7 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 # ctrl+u to delete from cursor, not whole line
-bindkey \^U backward-kill-line
+bindkey '^u' backward-kill-line
 
 # History
 HISTSIZE=10000
