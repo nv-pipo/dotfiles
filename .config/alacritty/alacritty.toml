@@ -92,7 +92,7 @@ bindings = [
     # end of line
     { key = "Right", mods = "Command", chars = "\u0005" },
     # delete left of cursor (with Back key)
-    { key = "Back", mods = "command", chars = "\u0015" },
+    { key = "Back", mods = "Command", chars = "\u0015" },
 ]
 
 [[hints.enabled]]
