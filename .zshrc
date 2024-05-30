@@ -106,13 +106,13 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # Change fzf-tab's select key binding to 'tab'
 zstyle ':fzf-tab:complete:*' fzf-bindings 'tab:toggle'
 # add slash to '..' when 'tab' is pressed
-zstyle ':completion:*' special-dirs true 
+zstyle ':completion:*' special-dirs true
 
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-# Example aliases 
+# Example aliases
 alias cat='bat'
 alias ls='ls --color'
 alias sshv="ssh -l velasquez"
