@@ -59,6 +59,11 @@ zinit snippet OMZP::azure
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::python
 
+if which docker &> /dev/null ; then
+  zinit ice as"completion"
+  zinit snippet OMZP::docker/completions/_docker
+fi
+
 # Load completions
 autoload -Uz compinit && compinit
 
