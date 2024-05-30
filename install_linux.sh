@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # dependencies
-sudo apt install htop wget ripgrep tmux zoxide stow micro zsh git-delta bat ripgrep
+# sudo apt update
+# sudo apt upgrade -y
+# sudo apt install htop wget ripgrep tmux zoxide stow micro zsh git-delta bat ripgrep
+
+doas apk update
+doas apk add --upgrade apk-tools
+doas apk upgrade --available
+doas apk add htop wget ripgrep tmux zoxide stow micro zsh delta bat ripgrep btop fzf
 
 # vars
 dotfiles_path=`pwd`
