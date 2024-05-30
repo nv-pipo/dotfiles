@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+
+set -x
+set -e
 
 # dependencies
 # sudo apt update
