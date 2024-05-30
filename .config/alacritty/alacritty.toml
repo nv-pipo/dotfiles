@@ -93,6 +93,8 @@ bindings = [
     { key = "Right", mods = "Command", chars = "\u0005" },
     # delete left of cursor (with Back key)
     { key = "Back", mods = "Command", chars = "\u0015" },
+    # forward delete character
+    { key = "Delete", chars = "\u0004" },
 ]
 
 [[hints.enabled]]
