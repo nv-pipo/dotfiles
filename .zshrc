@@ -101,9 +101,8 @@ setopt hist_find_no_dups
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
-zstyle ':completion:*' special-dirs true # add slash to '..' when 'tab' is pressed
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+# add slash to '..' when 'tab' is pressed
+zstyle ':completion:*' special-dirs true 
 
 # Shell integrations
 eval "$(fzf --zsh)"
