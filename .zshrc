@@ -103,8 +103,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 # Use fzf-tab "popup" feature
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-# Change fzf-tab's select key binding to 'tab'
-zstyle ':fzf-tab:complete:*' fzf-bindings 'tab:toggle'
 # add slash to '..' when 'tab' is pressed
 zstyle ':completion:*' special-dirs true
 
