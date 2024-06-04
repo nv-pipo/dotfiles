@@ -95,6 +95,8 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
+# case insensitive matching
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
