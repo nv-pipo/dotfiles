@@ -14,7 +14,7 @@ mkdir -p "$(dirname $ZINIT_HOME)"
 git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 ## alacritty
-mkdir -p ~/.config/tmux
+mkdir -p ~/.config/alacritty
 
 ## tmux
 mkdir -p ~/.config/tmux
