@@ -5,7 +5,7 @@ fish_add_path $HOME/bin
 fish_add_path $HOME/homebrew/bin
 fish_add_path $HOME/homebrew/sbin
 # VSCODE
-fish_add_path $HOME/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+fish_add_path $HOME"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # ~/conda
 fish_add_path $HOME/miniforge3/bin/
 
