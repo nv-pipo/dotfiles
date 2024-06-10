@@ -13,8 +13,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# fzf
 fzf --fish | source
 
+# Aliasses
 alias cat='bat'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 alias sshv="ssh -l velasquez"
