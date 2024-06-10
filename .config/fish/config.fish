@@ -23,6 +23,10 @@ alias sd="say done"
 alias l="eza --color=always --long --git --icons=always --time-style=long-iso"
 alias lt="eza --color=always --long --git --icons=always --time-style=long-iso --sort=time"
 alias beep="print \"\a\""
+# command not found for brew
+if test -e ~/homebrew
+    alias cnf="brew which-formula --explain "
+end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
