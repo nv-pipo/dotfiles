@@ -17,6 +17,7 @@ end
 fzf --fish | source
 
 # Aliasses
+alias exa='eza'
 alias cat='bat'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 alias sshv="ssh -l velasquez"
