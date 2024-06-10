@@ -41,9 +41,9 @@ bindings = [
     # Clear buffer (tmux)
     { key = "k", mods = "Command", chars = "\u0000u" },
     # next word
-    { key = "Right", mods = "Option", chars = "\u001BF" },
+    { key = "Right", mods = "Option", chars = "\u001Bf" },
     # previous word
-    { key = "Left", mods = "Option", chars = "\u001BB" },
+    { key = "Left", mods = "Option", chars = "\u001Bb" },
     # beginning of line
     { key = "Left", mods = "Command", chars = "\u0001" },
     # end of line
