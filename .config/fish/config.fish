@@ -1,3 +1,14 @@
+# Paths
+# ~/bin
+fish_add_path $HOME/bin
+# Homebrew
+fish_add_path $HOME/homebrew/bin
+fish_add_path $HOME/homebrew/sbin
+# VSCODE
+fish_add_path $HOME/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+# ~/conda
+fish_add_path $HOME/miniforge3/bin/
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
