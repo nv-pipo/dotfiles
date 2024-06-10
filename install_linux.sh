@@ -36,4 +36,4 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # link files to parent
 stow . -v
 
-chsh -s $(which zsh)
+chsh -s $(which fish)
