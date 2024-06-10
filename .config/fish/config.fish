@@ -12,7 +12,7 @@ fish_add_path $HOME/miniforge3/bin/
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-starship init fish | source
+
 fzf --fish | source
 
 alias cat='bat'
@@ -29,5 +29,4 @@ if test -e ~/homebrew
     alias cnf="brew which-formula --explain "
 end
 
-
-
+starship init fish | source
