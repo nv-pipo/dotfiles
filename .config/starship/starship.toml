@@ -44,7 +44,6 @@ disabled = false
 Macos = " "
 Alpine = "🏔️ "
 
-
 [git_branch]
 symbol = "  "
 format = '[$symbol$branch(:$remote_branch)]($style) '
