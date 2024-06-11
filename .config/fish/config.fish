@@ -1,3 +1,8 @@
+function starship_transient_prompt_func
+  starship module line_break
+  starship module character
+end
+
 # Paths
 # ~/bin
 fish_add_path $HOME/bin
@@ -40,3 +45,4 @@ bind \e\[1\;3A upd
 zoxide init --cmd cd fish | source
 starship init fish | source
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
+enable_transience
