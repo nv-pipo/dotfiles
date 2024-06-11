@@ -19,11 +19,11 @@ mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/micro
 
-### conda disable prompt
+## conda disable prompt
 conda config --set changeps1 False
 
+## tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 
 # link files to parent
 stow . -v
