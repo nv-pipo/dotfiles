@@ -39,3 +39,4 @@ bind \e\[1\;3A upd
 
 zoxide init --cmd cd fish | source
 starship init fish | source
+set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
