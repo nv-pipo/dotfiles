@@ -1,5 +1,6 @@
 function starship_transient_prompt_func
   starship module line_break
+  starship module directory
   starship module character
 end
 
