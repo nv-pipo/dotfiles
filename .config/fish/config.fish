@@ -34,5 +34,8 @@ if test -e ~/homebrew
     alias cnf="brew which-formula --explain "
 end
 
+# up directory Alt+Up
+bind \e\[1\;3A upd
+
 zoxide init --cmd cd fish | source
 starship init fish | source
