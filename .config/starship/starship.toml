@@ -39,8 +39,11 @@ disabled = true
 
 [os]
 disabled = false
+
 [os.symbols]
 Macos = " "
+Alpine = "🏔️ "
+
 
 [git_branch]
 symbol = "  "
