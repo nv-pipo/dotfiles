@@ -16,6 +16,9 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 ## starship
 mkdir -p ~/.config/starship
 
+### conda disable prompt
+conda config --set changeps1 False
+
 ## alacritty
 mkdir -p ~/.config/alacritty
 
