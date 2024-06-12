@@ -44,6 +44,12 @@ disabled = false
 Alpine = " "
 Macos = " "
 
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
 [git_branch]
 symbol = "  "
 format = '[$symbol$branch(:$remote_branch)]($style) '
