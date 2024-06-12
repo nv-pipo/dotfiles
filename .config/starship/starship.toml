@@ -31,7 +31,6 @@ format = " [$time]() "
 time_format = '%T'
 
 [conda]
-symbol = " "
 format = '[$symbol$environment]($style) '
 
 [python]
