@@ -35,7 +35,7 @@ symbol = " "
 format = '[$symbol$environment]($style) '
 
 [python]
-disabled = true
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [os]
 disabled = false
