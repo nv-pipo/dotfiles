@@ -52,6 +52,8 @@ bindings = [
     { key = "Back", mods = "Command", chars = "\u0015" },
     # forward delete character
     { key = "Delete", chars = "\u0004" },
+    # quit for zellij
+    { key = "Q", mods = "Control|Shift", chars = "\uf0c5" },
 ]
 
 [[hints.enabled]]
