@@ -1,0 +1,9 @@
+default_shell "fish"
+pane_frames false
+keybinds {
+  shared_except "locked" {
+    bind "Ctrl q" { Detach; }
+    bind "" { Quit; }
+  }
+}
+
