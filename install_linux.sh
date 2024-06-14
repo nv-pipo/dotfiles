@@ -27,6 +27,7 @@ mkdir -p ~/.config/starship
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/micro
+mkdir -p ~/.config/zellij
 
 ## tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

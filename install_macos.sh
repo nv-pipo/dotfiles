@@ -18,6 +18,7 @@ mkdir -p ~/.config/starship
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/micro
+mkdir -p ~/.config/zellij
 
 ## conda disable prompt
 conda config --set changeps1 False
