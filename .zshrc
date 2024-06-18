@@ -155,6 +155,10 @@ if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
       fi
   fi
   unset __conda_setup
+
+  if [ -f "/Users/pichurri/miniforge3/etc/profile.d/mamba.sh" ]; then
+      . "/Users/pichurri/miniforge3/etc/profile.d/mamba.sh"
+  fi
   # <<< conda initialize <<<
   conda activate py3_12-shell
 fi
