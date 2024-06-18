@@ -59,9 +59,9 @@ if which docker &> /dev/null ; then
   zinit snippet OMZP::docker/completions/_docker
 fi
 
-# if '/opt/homebrew/share/zsh/site-functions' exists add each file for completion
-if [[ -d "/opt/homebrew/share/zsh/site-functions" ]]; then
-  for f in /opt/homebrew/share/zsh/site-functions/*; do
+# if '${HOME}/homebrew/share/zsh/site-functions' exists add each file for completion
+if [[ -d "${HOME}/homebrew/share/zsh/site-functions" ]]; then
+  for f in ${HOME}/homebrew/share/zsh/site-functions/*; do
     zinit ice as"completion"
     zinit snippet $f
   done
