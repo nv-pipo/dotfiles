@@ -53,8 +53,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZP::git
-zinit snippet OMZP::python
+# zinit snippet OMZP::git
+# zinit snippet OMZP::python
 
 if which docker &> /dev/null ; then
   zinit ice as"completion"
