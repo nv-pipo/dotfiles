@@ -139,6 +139,13 @@ alias l="eza --color=always --long --git --icons=always --time-style=long-iso"
 alias lt="eza --color=always --long --git --icons=always --time-style=long-iso --sort=time"
 alias beep="print \"\a\""
 
+# Add custom functions
+if [[ -d "${HOME}/.config/zsh/functions/" ]]; then
+  for f in ${HOME}/.config/zsh/functions/*; do
+    source $f
+  done
+fi
+
 if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
   # >>> conda initialize >>>
   # !! Contents within this block are managed by 'conda init' !!
