@@ -15,4 +15,6 @@ gm() {
     git push
     # Go back to the original branch
     git checkout $current_branch
+    # pop the stash
+    git stash pop
 }
