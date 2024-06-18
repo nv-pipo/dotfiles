@@ -6,6 +6,8 @@ function gm  --description "Do git merge from branches source -> dest"
     echo "Doing git merge from $argv[1] -> $argv[2]"
     # Save current branch
     set current_branch (git branch --show-current)
+    # stash everything
+    git stash --include-untracked
     # Do the merge
     git checkout $argv[2]
     git merge $argv[1]
@@ -13,4 +15,6 @@ function gm  --description "Do git merge from branches source -> dest"
     git push
     # Go back to the original branch
     git checkout $current_branch
+    # pop the stash
+    git stash pop
 end
