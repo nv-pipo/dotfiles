@@ -1,6 +1,3 @@
-// Set shell to fish (needed in macos)
-default_shell "fish"
-
 // Toggle between having pane frames around the panes
 pane_frames false
 
