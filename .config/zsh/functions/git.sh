@@ -1,6 +1,6 @@
 gm() {
     if [[ $# -ne 2 ]]; then
-        echo "Usage: gm source dest"
+        echo "Do a git merge from one branch to another. Usage: gm <from> <to>"
         return 1
     fi
     echo "Doing git merge from $1 -> $2"
