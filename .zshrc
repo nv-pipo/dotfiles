@@ -159,6 +159,3 @@ if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
   conda activate py3_12-shell
 fi
 
-
-# default text editor to MICRO
-export EDITOR=micro
