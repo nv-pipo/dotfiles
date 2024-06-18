@@ -2,7 +2,27 @@
 
 # dependencies
 brew tap homebrew/cask-fonts
-brew install htop wget zellij tmux zoxide fish fd fzf starship stow font-meslo-for-powerlevel10k micro git-delta bat ripgrep tlrc rsync btop dust eza
+brew install \
+    bat \
+    btop \
+    dust \
+    eza \
+    fd \
+    fish \
+    font-meslo-for-powerlevel10k \
+    fzf \
+    git-delta \
+    htop \
+    micro \
+    ripgrep \
+    rsync \
+    starship \
+    stow \
+    tlrc \
+    tmux \
+    wget \
+    zellij \
+    zoxide
 
 # vars
 dotfiles_path=`pwd`
