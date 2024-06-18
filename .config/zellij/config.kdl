@@ -19,3 +19,6 @@ keybinds {
 
 // Whether sessions should be serialized to the cache folder (including their tabs/panes, cwds and running commands) so that they can later be resurrected
 session_serialization false
+
+// Set the theme
+theme "catppuccin-mocha"
