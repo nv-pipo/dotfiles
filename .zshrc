@@ -165,6 +165,6 @@ if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
       . "/Users/pichurri/miniforge3/etc/profile.d/mamba.sh"
   fi
   # <<< conda initialize <<<
-  conda activate shell
+  mamba activate shell
 fi
 
