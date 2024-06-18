@@ -101,9 +101,6 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# fzf-git
-source ~/tools/fzf-git.sh/fzf-git.sh
-
 # History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
