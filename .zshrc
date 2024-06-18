@@ -129,7 +129,7 @@ zstyle ':completion:*' special-dirs true
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-# Example aliases
+# Add aliases
 alias cat='bat'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 alias sshv="ssh -l velasquez"
