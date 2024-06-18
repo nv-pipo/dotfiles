@@ -5,6 +5,7 @@ brew tap homebrew/cask-fonts
 brew install \
     bat \
     btop \
+    conda-zsh-completion \
     dust \
     eza \
     fd \
@@ -22,7 +23,8 @@ brew install \
     tmux \
     wget \
     zellij \
-    zoxide
+    zoxide \
+    zsh-completions
 
 # vars
 dotfiles_path=`pwd`
