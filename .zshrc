@@ -124,6 +124,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Add aliases
+alias vim='nvim'
 alias cat='bat'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 alias sshv="ssh -l velasquez"
@@ -164,3 +165,6 @@ fi
 
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# set the default editor
+export EDITOR=nvim
