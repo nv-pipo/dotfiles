@@ -14,11 +14,11 @@ mkdir -p "$(dirname $ZINIT_HOME)"
 git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 ## create folders (for stow to link files and not folders)
-mkdir -p ~/.config/starship
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/zellij
+mkdir -p ~/.config/starship
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/micro
-mkdir -p ~/.config/zellij
 
 ## conda disable prompt
 conda config --set changeps1 False
