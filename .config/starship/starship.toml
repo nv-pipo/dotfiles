@@ -46,8 +46,6 @@ Macos = " "
 [username]
 disabled = true
 
-[hostname]
-disabled = true
 
 [git_branch]
 symbol = "  "
