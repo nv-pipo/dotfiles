@@ -15,6 +15,7 @@ brew install \
     git-delta \
     htop \
     micro \
+    nvim \
     ripgrep \
     rsync \
     starship \
