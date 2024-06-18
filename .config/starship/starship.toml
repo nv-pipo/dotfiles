@@ -11,6 +11,7 @@ $git_state\
 $git_metrics\
 $git_status\
 $fill\
+$hostname\
 $cmd_duration\
 $all\
 $time\
