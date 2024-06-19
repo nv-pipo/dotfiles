@@ -84,5 +84,5 @@ x = 2
 y = 2
 
 [bell]
-duration = 25
+duration = 40
 command = { program = "osascript", args = ["-e", "beep"] }
