@@ -99,6 +99,7 @@ HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
+setopt histignorespace
 setopt no_share_history
 unsetopt share_history
 setopt hist_ignore_space
