@@ -27,7 +27,6 @@ doas apk add \
     stow \
     tmux \
     wget \
-    zellij \
     zoxide \
     zsh-completions
 
