@@ -22,12 +22,14 @@ doas apk add \
     fzf \
     htop \
     micro \
+    nvim \
     ripgrep \
     stow \
     tmux \
     wget \
     zellij \
-    zoxide
+    zoxide \
+    zsh-completions
 
 # vars
 dotfiles_path=`pwd`
