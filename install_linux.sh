@@ -22,7 +22,7 @@ doas apk add \
     fzf \
     htop \
     micro \
-    nvim \
+    neovim \
     ripgrep \
     stow \
     tmux \
