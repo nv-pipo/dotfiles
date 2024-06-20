@@ -25,6 +25,7 @@ doas apk add \
     neovim \
     ripgrep \
     stow \
+    starship \
     tmux \
     wget \
     zoxide \
