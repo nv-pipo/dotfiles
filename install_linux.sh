@@ -31,7 +31,7 @@ doas apk add \
     zoxide \
     zsh-completions
 
-# starship \ # manually install
+# zellij installed manually
 
 # vars
 dotfiles_path=`pwd`
