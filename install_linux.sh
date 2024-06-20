@@ -11,7 +11,23 @@ set -e
 doas apk update
 doas apk add --upgrade apk-tools
 doas apk upgrade --available
-doas apk add htop wget zellij tmux zoxide fish fd fzf stow micro delta bat ripgrep btop dust eza
+doas apk add \
+    htop \
+    wget \
+    zellij \
+    tmux \
+    zoxide \
+    fish \
+    fd \
+    fzf \
+    stow \
+    micro \
+    delta \
+    bat \
+    ripgrep \
+    btop \
+    dust \
+    eza
 
 # vars
 dotfiles_path=`pwd`
