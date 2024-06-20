@@ -31,6 +31,8 @@ doas apk add \
     zoxide \
     zsh-completions
 
+# starship \ # manually install
+
 # vars
 dotfiles_path=`pwd`
 
