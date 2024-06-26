@@ -3,7 +3,7 @@
 #
 
 # Which characters on top of alphanumeric are considered to be part of one word 
-WORDCHARS="?_"
+WORDCHARS="_"
 
 # paths
 export PATH=${HOME}/bin:$PATH
