@@ -21,6 +21,10 @@ size = 15.0
 family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
 [font.italic]
 family = "JetBrainsMono Nerd Font"
 style = "Italic"
