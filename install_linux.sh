@@ -4,34 +4,27 @@ set -x
 set -e
 
 # dependencies
-# sudo apt update
-# sudo apt upgrade -y
-# sudo apt install htop wget ripgrep tmux zoxide stow micro zsh git-delta bat ripgrep
-
-doas apk update
-doas apk add --upgrade apk-tools
-doas apk upgrade --available
-doas apk add \
-    bat \
+sudo apt update
+sudo apt upgrade -y
+sudo apt install \
     btop \
-    delta \
-    dust \
-    eza \
-    fd \
     fish \
-    fzf \
     htop \
-    micro \
-    neovim \
-    ripgrep \
     stow \
-    starship \
     tmux \
     wget \
-    zoxide \
-    zsh-completions
-
-# zellij installed manually
+    zsh
+    # bat \
+    # delta \
+    # dust \
+    # eza \
+    # fd \
+    # fzf \
+    # neovim \
+    # ripgrep \
+    # starship \
+    # zoxide
+    # zsh-completions
 
 # vars
 dotfiles_path=`pwd`
@@ -54,10 +47,10 @@ mkdir -p ~/.config/micro
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/share/fzf
+~/.local/share/fzf/install
 
 # link files to parent
 stow . -v
 
-chsh -s $(which fish)
+chsh -s $(which zsh)
