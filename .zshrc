@@ -7,6 +7,7 @@ WORDCHARS="_"
 
 # paths
 export PATH=${HOME}/bin:$PATH
+export PATH=${HOME}/.local/bin:$PATH
 export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
 export PATH="${PATH}:${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
