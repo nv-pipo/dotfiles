@@ -15,7 +15,7 @@ TERM = "xterm-256color"
 osc52 = "CopyPaste"
 
 [font]
-size = 16.0
+size = 15.0
 
 [font.bold]
 family = "MesloLGS NF"
