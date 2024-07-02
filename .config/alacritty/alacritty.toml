@@ -18,15 +18,15 @@ osc52 = "CopyPaste"
 size = 15.0
 
 [font.bold]
-family = "MesloLGS NF"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "MesloLGS NF"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "MesloLGS NF"
+family = "JetBrainsMono Nerd Font"
 
 [keyboard]
 bindings = [
