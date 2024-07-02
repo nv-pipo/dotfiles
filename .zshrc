@@ -13,9 +13,9 @@ export PATH="${PATH}:${HOME}/Applications/Visual Studio Code.app/Contents/Resour
 
 # ZINIT
 
-# Load fzf from ~/.local/share/.fzf if available
-if [[ -d "${HOME}/.local/share/.fzf/bin" && ! "$PATH" == *${HOME}/.local/share/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}${HOME}/.local/share/.fzf/bin"
+# Load fzf from ~/.local/share/fzf if available
+if [[ -d "${HOME}/.local/share/fzf/bin" && ! "$PATH" == *${HOME}/.local/share/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}${HOME}/.local/share/fzf/bin"
 fi
 
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
