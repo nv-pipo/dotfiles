@@ -10,7 +10,7 @@ brew install \
     eza \
     fd \
     fish \
-    font-meslo-for-powerlevel10k \
+    font-jetbrains-mono-nerd-font \
     fzf \
     git-delta \
     htop \
