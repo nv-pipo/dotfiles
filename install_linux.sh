@@ -51,9 +51,8 @@ mkdir -p ~/.config/micro
 ## tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-## fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/share/fzf
-~/.local/share/fzf/install
+## fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
 # link files to parent
 stow . -v
