@@ -13,12 +13,6 @@ export PATH=${HOME}/homebrew/sbin:${PATH}
 export PATH="${PATH}:${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # ZINIT
-
-# Load fzf from ~/.local/share/fzf if available
-if [[ -d "${HOME}/.local/share/fzf/bin" && ! "$PATH" == *${HOME}/.local/share/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}${HOME}/.local/share/fzf/bin"
-fi
-
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(${HOME}/homebrew/bin/brew shellenv)"
