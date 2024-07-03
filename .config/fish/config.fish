@@ -16,6 +16,7 @@ end
 
 # fzf
 # fzf --fish | source # DISABLE fzf's fish integration in favour of #PatrickF1/fzf.fish
+fzf_configure_bindings --directory=\es
 set -x FZF_DEFAULT_OPTS "--height 40% --ansi --border --prompt ' ' --layout reverse"
 set -x FZF_DEFAULT_COMMAND "fd --type f --hidden --follow"
 
