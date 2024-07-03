@@ -53,6 +53,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## fisher
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+### fzf integration for fish
+fisher install PatrickF1/fzf.fish
 
 # link files to parent
 stow . -v
