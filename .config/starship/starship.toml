@@ -43,6 +43,7 @@ disabled = false
 [os.symbols]
 Alpine = " "
 Macos = " "
+NixOS = "❄️ "
 
 [username]
 disabled = true
