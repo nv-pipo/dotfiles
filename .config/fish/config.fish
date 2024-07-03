@@ -21,7 +21,7 @@ set -x FZF_DEFAULT_COMMAND "fd --type f --hidden --follow"
 
 # Aliasses
 alias exa='eza'
-alias cat='bat'
+# alias cat='bat'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 alias sshv="ssh -l velasquez"
 alias ssha="ssh -l administrator"
