@@ -14,17 +14,21 @@ sudo apt install \
     tmux \
     wget \
     zsh
-    # bat \
-    # delta \
-    # dust \
-    # eza \
-    # fd \
-    # fzf \
-    # neovim \
-    # ripgrep \
-    # starship \
-    # zoxide
-    # zsh-completions
+
+# install nix-env
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+nix-env -iA \
+    nixpkgs.bat \
+    nixpkgs.delta \
+    nixpkgs.dust \
+    nixpkgs.eza \
+    nixpkgs.fd \
+    nixpkgs.fzf \
+    nixpkgs.neovim \
+    nixpkgs.ripgrep \
+    nixpkgs.starship \
+    nixpkgs.zoxide
 
 # vars
 dotfiles_path=`pwd`
