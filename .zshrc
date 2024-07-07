@@ -12,6 +12,9 @@ export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
 export PATH="${PATH}:${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# nixos packages
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi
+
 # ZINIT
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
