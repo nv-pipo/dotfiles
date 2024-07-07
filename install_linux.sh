@@ -9,6 +9,7 @@ sudo apt upgrade -y
 sudo apt install \
     btop \
     fish \
+    gcc \
     htop \
     stow \
     tmux \
