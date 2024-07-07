@@ -13,7 +13,8 @@ export PATH=${HOME}/homebrew/sbin:${PATH}
 export PATH="${PATH}:${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # nixos packages
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then source "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi
+if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then . ${HOME}/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 
 # ZINIT
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
