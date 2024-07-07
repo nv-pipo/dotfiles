@@ -22,6 +22,8 @@ sudo chown pichurri /nix
 # install nix-env
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
+. ${HOME}/.nix-profile/etc/profile.d/nix.sh
+
 nix-env -iA \
     nixpkgs.bat \
     nixpkgs.delta \
