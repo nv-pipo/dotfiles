@@ -16,6 +16,9 @@ sudo apt install \
     wget \
     zsh
 
+sudo mkdir /nix
+sudo chown pichurri /nix
+
 # install nix-env
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
