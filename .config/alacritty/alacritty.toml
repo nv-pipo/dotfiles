@@ -45,7 +45,7 @@ bindings = [
     # Clear buffer (tmux)
     { key = "k", mods = "Command", chars = "\u0000u" },
     # Copy buffer (tmux): Command+c -> tmux prefix+v
-    { key = "c", mods = "Command", chars = "\u0000v" },
+    { key = "c", mods = "Command|Option", chars = "\u0000v" },
     # Clear buffer (zellij)
     # { key = "k", mods = "Command", chars = "\ueabf" },
     # Quit (zellij)
