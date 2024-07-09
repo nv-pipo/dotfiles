@@ -6,7 +6,7 @@ set -e
 # dependencies
 sudo apt update
 sudo apt upgrade -y
-sudo apt install \
+sudo apt install -y \
     btop \
     fish \
     gcc \
