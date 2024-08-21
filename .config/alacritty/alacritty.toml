@@ -66,6 +66,8 @@ bindings = [
     { key = "Back", mods = "Command", chars = "\u0015" },
     # forward delete character
     { key = "Delete", chars = "\u0004" },
+    # Command + A, for nvim 'Select all'
+    { key = "a", mods = "Command", chars = "\u001ba" },
 ]
 
 [[hints.enabled]]
