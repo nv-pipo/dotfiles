@@ -1,5 +1,5 @@
 [user]
-	name = Nicolas Velasquez
+    name = Nicolas Velasquez
 
 [core]
     pager = delta
@@ -15,15 +15,15 @@
     # light = true
 
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
     # Even create extra merge commit when fast forward merge would be possible
-	ff = false
+    ff = false
 
 [diff]
     colorMoved = default
 
 [pull]
     # Disallows non ff merges on pull. Overrides merge.ff when pulling
-	ff = only
+    ff = only
     # Set up pull to rebase instead of merge
-	rebase = true
+    rebase = true
