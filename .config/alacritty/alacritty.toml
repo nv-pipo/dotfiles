@@ -66,6 +66,8 @@ bindings = [
     { key = "Back", mods = "Command", chars = "\u0015" },
     # forward delete character
     { key = "Delete", chars = "\u0004" },
+    # Properly send Shift + Enter
+    { key = "Return", mods = "Shift", chars = "\u001b[13;2u" },
     # Command + A, for nvim 'Select all'
     { key = "a", mods = "Command", chars = "\u001ba" },
 ]
