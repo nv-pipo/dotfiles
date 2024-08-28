@@ -32,6 +32,10 @@ config.keys = {
     { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action { ActivateTabRelative = 1 } },
     { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action { ActivateTabRelative = -1 } },
 
+    -- Map CMD + Left/Right to Ctrl + a/e. For navigating to the start/end of the line
+    { key = 'LeftArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'a', mods = 'CTRL' } } },
+    { key = 'RightArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'e', mods = 'CTRL' } } },
+
     -- Make Option-Backspace equivalent to Alt-Backspace which many line editors interpret as backward-kill-word
     { key = 'Delete', mods = 'OPT', action = wezterm.action { SendKey = { key = 'Delete', mods = 'ALT' } } },
 
