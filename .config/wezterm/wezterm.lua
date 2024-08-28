@@ -31,7 +31,6 @@ config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 -- Keybindings
 config.keys = {
-    { key = '/', mods = 'SHIFT | CMD', action = wezterm.action.ActivateCommandPalette },
 
     -- Make Option-Backspace equivalent to Alt-Backspace which many line editors interpret as backward-kill-word
     { key = 'Delete', mods = 'OPT', action = wezterm.action { SendKey = { key = 'Delete', mods = 'ALT' } } },
