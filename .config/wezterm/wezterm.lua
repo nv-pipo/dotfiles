@@ -20,7 +20,7 @@ config.window_decorations = 'RESIZE'
 local mux = wezterm.mux
 wezterm.on('gui-startup', function()
     local _, _, window = mux.spawn_window {}
-    window:gui_window():maximize()
+    window:gui_window():toggle_fullscreen()
 end)
 
 -- Set keybindings
