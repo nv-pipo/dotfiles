@@ -7,6 +7,15 @@ local config = wezterm.config_builder()
 config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 
+-- Visual bell
+config.visual_bell = {
+    fade_in_function = 'EaseIn',
+    fade_in_duration_ms = 150,
+}
+config.colors = {
+    visual_bell = '#FFFFFF',
+}
+
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night'
 
