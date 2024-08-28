@@ -36,8 +36,8 @@ config.keys = {
     { key = 'LeftArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'a', mods = 'CTRL' } } },
     { key = 'RightArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'e', mods = 'CTRL' } } },
 
-    -- Make Option-Backspace equivalent to Alt-Backspace which many line editors interpret as backward-kill-word
-    { key = 'Delete', mods = 'OPT', action = wezterm.action { SendKey = { key = 'Delete', mods = 'ALT' } } },
+    -- Make Option-Backspace equivalent to Ctrl + w; delete word
+    { key = 'Backspace', mods = 'OPT', action = wezterm.action { SendKey = { key = 'w', mods = 'CTRL' } } },
 
     -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
     { key = 'LeftArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'b', mods = 'ALT' } } },
