@@ -31,16 +31,14 @@ end)
 
 -- Set keybindings
 config.keys = {
-    {
-        key = '?',
-        mods = 'SHIFT | CMD',
-        action = wezterm.action.ActivateCommandPalette,
-    },
+    { key = '/', mods = 'SHIFT | CMD', action = wezterm.action.ActivateCommandPalette },
+
     -- Make Option-Backspace equivalent to Alt-Backspace which many line editors interpret as backward-kill-word
-    { key = 'Backspace', mods = 'OPT', action = wezterm.action { SendString = '\x17' } },
     { key = 'Delete', mods = 'OPT', action = wezterm.action { SendKey = { key = 'Delete', mods = 'ALT' } } },
+
     -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
     { key = 'LeftArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'b', mods = 'ALT' } } },
+
     -- Make Option-Right equivalent to Alt-f; forward-word
     { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'ALT' } } },
 }
