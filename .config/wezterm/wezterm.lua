@@ -4,6 +4,13 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- Start terminal maximized
+local mux = wezterm.mux
+wezterm.on('gui-startup', function()
+    local _, _, window = mux.spawn_window {}
+    window:gui_window():toggle_fullscreen()
+end)
+
 -- Visual bell
 config.visual_bell = {
     fade_in_function = 'EaseIn',
@@ -15,13 +22,6 @@ config.colors = {
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night'
-
--- Start terminal maximized
-local mux = wezterm.mux
-wezterm.on('gui-startup', function()
-    local _, _, window = mux.spawn_window {}
-    window:gui_window():toggle_fullscreen()
-end)
 
 -- Keyboard
 config.enable_kitty_keyboard = true
