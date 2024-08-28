@@ -45,7 +45,7 @@ config.keys = {
     { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'ALT' } } },
 }
 
-config.debug_key_events = true
+-- config.debug_key_events = true
 
 -- and finally, return the configuration to wezterm
 return config
