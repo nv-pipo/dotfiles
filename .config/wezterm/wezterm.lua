@@ -16,9 +16,6 @@ config.colors = {
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night'
 
--- Disable tabs
-config.enable_tab_bar = false
-
 -- Start terminal maximized
 local mux = wezterm.mux
 wezterm.on('gui-startup', function()
@@ -31,6 +28,9 @@ config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 -- Keybindings
 config.keys = {
+    -- CMD + META + Left/Right to switch tabs
+    { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action { ActivateTabRelative = 1 } },
+    { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action { ActivateTabRelative = -1 } },
 
     -- Make Option-Backspace equivalent to Alt-Backspace which many line editors interpret as backward-kill-word
     { key = 'Delete', mods = 'OPT', action = wezterm.action { SendKey = { key = 'Delete', mods = 'ALT' } } },
