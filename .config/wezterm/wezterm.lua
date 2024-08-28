@@ -22,9 +22,6 @@ config.color_scheme = 'Tokyo Night'
 -- Disable tabs
 config.enable_tab_bar = false
 
--- Remove the window decorations
-config.window_decorations = 'RESIZE'
-
 -- Start terminal maximized
 local mux = wezterm.mux
 wezterm.on('gui-startup', function()
