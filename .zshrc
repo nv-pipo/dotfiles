@@ -71,7 +71,7 @@ zinit cdreplay -q
 # Keybindings
 # Tell zsh to use VI keybindings
 bindkey -v
-# ctrl+u to delete from cursor, not whole line
+# Ctrl+u to delete from cursor, not whole line
 bindkey '^u' backward-kill-line
 # Ctrl + k to delete from cursor to end of line
 bindkey '^k' kill-line
