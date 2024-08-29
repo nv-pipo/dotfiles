@@ -16,14 +16,7 @@
 
 [merge]
     conflictstyle = diff3
-    # Even create extra merge commit when fast forward merge would be possible
-    ff = false
 
 [diff]
     colorMoved = default
 
-[pull]
-    # Disallows non ff merges on pull. Overrides merge.ff when pulling
-    ff = only
-    # Set up pull to rebase instead of merge
-    rebase = true
