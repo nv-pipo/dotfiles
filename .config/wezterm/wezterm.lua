@@ -53,6 +53,12 @@ config.keys = {
 
     -- Make Option-Right equivalent to Alt-f; forward-word
     { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'ALT' } } },
+
+    -- multiple-cursors mappings
+    -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
+    { key = 'k', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x001' } },
+    { key = 'j', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x002' } },
+    { key = 'd', mods = 'CMD', action = wezterm.action { SendString = '\x00\x003' } },
 }
 
 -- config.debug_key_events = true
