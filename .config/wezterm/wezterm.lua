@@ -55,6 +55,13 @@ config.keys = {
     { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'ALT' } } },
 
     -- TMUX hacks
+    -- Use tmux find in buffer
+    { key = 'f', mods = 'CMD', action = wezterm.action { SendString = '\x00f' } },
+    -- Clear buffer in tmux
+    { key = 'k', mods = 'CMD', action = wezterm.action { SendString = '\x00u' } },
+    -- Copy buffer in tmux
+    { key = 'c', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00v' } },
+    -- Set delete key to CTRL + d
     { key = 'Delete', action = wezterm.action { SendKey = { key = 'd', mods = 'CTRL' } } },
     -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
     { key = 'k', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x001' } },
