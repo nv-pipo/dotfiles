@@ -54,11 +54,13 @@ config.keys = {
     -- Make Option-Right equivalent to Alt-f; forward-word
     { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'ALT' } } },
 
-    -- multiple-cursors mappings
+    -- Enable CMD to be used inside tmux by sending \x00\x00 + numbers
     -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
     { key = 'k', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x001' } },
     { key = 'j', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x002' } },
     { key = 'd', mods = 'CMD', action = wezterm.action { SendString = '\x00\x003' } },
+    -- CMD + a to select all in nvim
+    { key = 'a', mods = 'CMD', action = wezterm.action { SendString = '\x00\x004' } },
 }
 
 -- config.debug_key_events = true
