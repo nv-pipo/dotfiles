@@ -48,12 +48,6 @@ bindings = [
     { key = "c", mods = "Command|Option", chars = "\u0000v" },
     # Find in buffer
     { key = "f", mods = "Command", chars = "\u0000f" },
-    # Clear buffer (zellij)
-    # { key = "k", mods = "Command", chars = "\ueabf" },
-    # Quit (zellij)
-    # { key = "Q", mods = "Control|Shift", chars = "\u00ca" },
-    # ALT+UP
-    { key = "ArrowUp", mods = "Option", chars = "\uf062" },
     # next word
     { key = "Right", mods = "Option", chars = "\u001Bf" },
     # previous word
