@@ -20,6 +20,9 @@ config.colors = {
     visual_bell = '#FFFFFF',
 }
 
+-- Disable the tab bar
+config.enable_tab_bar = false
+
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night'
 
@@ -28,9 +31,15 @@ config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 -- Keybindings
 config.keys = {
-    -- CMD + META + Left/Right to switch tabs
-    { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action { ActivateTabRelative = 1 } },
-    { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action { ActivateTabRelative = -1 } },
+    -- tmux tab navigation:
+    -- New tab with CMD + t (prefix + c | \x00c | \u0000c)
+    { key = 't', mods = 'CMD', action = wezterm.action.SendString '\x00c' },
+    -- Close tab with CMD + w (prefix + x | \x00x | \u0000x)
+    { key = 'w', mods = 'CMD', action = wezterm.action.SendString '\x00x' },
+    -- Next tab with CMD + OPT + Right (prefix + n | \x00n | \u0000n)
+    { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x00n' },
+    -- Previous tab with CMD + OPT + Left (prefix + p | \x00p | \u0000p)
+    { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x00p' },
 
     -- Map CMD + Left/Right to Ctrl + a/e. For navigating to the start/end of the line
     { key = 'LeftArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'a', mods = 'CTRL' } } },
