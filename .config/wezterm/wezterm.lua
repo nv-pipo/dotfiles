@@ -69,6 +69,8 @@ config.keys = {
     { key = 'd', mods = 'CMD', action = wezterm.action { SendString = '\x00\x003' } },
     -- CMD + a to select all in nvim
     { key = 'a', mods = 'CMD', action = wezterm.action { SendString = '\x00\x004' } },
+    -- CMD + / in vim to comment line or blocks
+    { key = '/', mods = 'CMD', action = wezterm.action { SendString = '\x00\x005' } },
 }
 
 -- config.debug_key_events = true
