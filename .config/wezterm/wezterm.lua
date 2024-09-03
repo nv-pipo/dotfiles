@@ -71,6 +71,8 @@ config.keys = {
     { key = 'a', mods = 'CMD', action = wezterm.action { SendString = '\x00\x004' } },
     -- CMD + / in vim to comment line or blocks
     { key = '/', mods = 'CMD', action = wezterm.action { SendString = '\x00\x005' } },
+    -- SHIFT + ENTER to trigger SHIFT+ENTER
+    { key = 'raw:36', mods = 'SHIFT', action = wezterm.action { SendString = '\x1b[13;2u' } },
 }
 
 -- config.debug_key_events = true
