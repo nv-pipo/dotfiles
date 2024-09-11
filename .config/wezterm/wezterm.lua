@@ -20,6 +20,13 @@ config.colors = {
     visual_bell = '#FFFFFF',
 }
 
+config.window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+}
+
 -- Disable the tab bar
 config.enable_tab_bar = false
 
