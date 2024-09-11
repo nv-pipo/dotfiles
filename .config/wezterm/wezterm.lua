@@ -31,7 +31,7 @@ config.window_padding = {
 config.enable_tab_bar = false
 
 -- Set the default font size
-config.font_size = 15
+config.font_size = 13.6
 
 -- Disable the scrollbar
 config.enable_scroll_bar = false
