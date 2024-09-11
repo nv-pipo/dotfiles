@@ -45,14 +45,14 @@ config.enable_csi_u_key_encoding = false
 -- Keybindings
 config.keys = {
     -- tmux tab navigation:
-    -- New tab with CMD + t (prefix + c | \x00c | \u0000c)
-    { key = 't', mods = 'CMD', action = wezterm.action.SendString '\x00c' },
-    -- Close tab with CMD + w (prefix + x | \x00x | \u0000x)
-    { key = 'w', mods = 'CMD', action = wezterm.action.SendString '\x00x' },
-    -- Next tab with CMD + OPT + Right (prefix + n | \x00n | \u0000n)
-    { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x00n' },
-    -- Previous tab with CMD + OPT + Left (prefix + p | \x00p | \u0000p)
-    { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x00p' },
+    -- New tab with CMD + t (Ctrl + b + c | \x00c | \u0000c)
+    { key = 't', mods = 'CMD', action = wezterm.action.SendString '\x02c' },
+    -- Close tab with CMD + w (Ctrl + b + x | \x00x | \u0000x)
+    { key = 'w', mods = 'CMD', action = wezterm.action.SendString '\x02x' },
+    -- Next tab with CMD + OPT + Right (Ctrl + b + n | \x00n | \u0000n)
+    { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x02n' },
+    -- Previous tab with CMD + OPT + Left (Ctrl + b + p | \x00p | \u0000p)
+    { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x02p' },
 
     -- Map CMD + Left/Right to Ctrl + a/e. For navigating to the start/end of the line
     { key = 'LeftArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'a', mods = 'CTRL' } } },
@@ -69,11 +69,11 @@ config.keys = {
 
     -- TMUX hacks
     -- Use tmux find in buffer
-    { key = 'f', mods = 'CMD', action = wezterm.action { SendString = '\x00f' } },
+    { key = 'f', mods = 'CMD', action = wezterm.action { SendString = '\x02f' } },
     -- Clear buffer in tmux
-    { key = 'k', mods = 'CMD', action = wezterm.action { SendString = '\x00u' } },
+    { key = 'k', mods = 'CMD', action = wezterm.action { SendString = '\x02u' } },
     -- Copy buffer in tmux
-    { key = 'c', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00v' } },
+    { key = 'c', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x02v' } },
     -- Set delete key to CTRL + d
     { key = 'Delete', action = wezterm.action { SendKey = { key = 'd', mods = 'CTRL' } } },
     -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
