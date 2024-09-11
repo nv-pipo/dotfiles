@@ -30,6 +30,12 @@ config.window_padding = {
 -- Disable the tab bar
 config.enable_tab_bar = false
 
+-- Set the default font size
+config.font_size = 15
+
+-- Disable the scrollbar
+config.enable_scroll_bar = false
+
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night'
 
