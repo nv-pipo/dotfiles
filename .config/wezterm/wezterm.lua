@@ -61,11 +61,11 @@ config.keys = {
     -- Make Option-Backspace equivalent to Ctrl + w; delete word
     { key = 'Backspace', mods = 'OPT', action = wezterm.action { SendKey = { key = 'w', mods = 'CTRL' } } },
 
-    -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
-    { key = 'LeftArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'b', mods = 'ALT' } } },
+    -- Make Option-Left equivalent to OPT-b which many line editors interpret as backward-word
+    { key = 'LeftArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'b', mods = 'OPT' } } },
 
-    -- Make Option-Right equivalent to Alt-f; forward-word
-    { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'ALT' } } },
+    -- Make Option-Right equivalent to OPT-f; forward-word
+    { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'OPT' } } },
 
     -- TMUX hacks
     -- Use tmux find in buffer
