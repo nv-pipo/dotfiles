@@ -81,9 +81,9 @@ config.keys = {
     { key = 'j', mods = 'CMD | OPT', action = wezterm.action { SendKey = { key = 'ĵ', mods = 'OPT' } } },
     { key = 'd', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ď', mods = 'OPT' } } },
     -- CMD + a to select all in nvim
-    { key = 'a', mods = 'CMD', action = wezterm.action { SendString = '\x00\x004' } },
+    { key = 'a', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ä', mods = 'OPT' } } },
     -- CMD + / in vim to comment line or blocks
-    { key = '/', mods = 'CMD', action = wezterm.action { SendString = '\x00\x005' } },
+    { key = '/', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ş', mods = 'OPT' } } },
     -- SHIFT + ENTER to trigger SHIFT+ENTER
     { key = 'raw:36', mods = 'SHIFT', action = wezterm.action { SendString = '\x1b[13;2u' } },
 }
