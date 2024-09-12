@@ -77,9 +77,9 @@ config.keys = {
     -- Set delete key to CTRL + d
     { key = 'Delete', action = wezterm.action { SendKey = { key = 'd', mods = 'CTRL' } } },
     -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
-    { key = 'k', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x001' } },
-    { key = 'j', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x00\x002' } },
-    { key = 'd', mods = 'CMD', action = wezterm.action { SendString = '\x00\x003' } },
+    { key = 'k', mods = 'CMD | OPT', action = wezterm.action { SendKey = { key = 'ķ', mods = 'OPT' } } },
+    { key = 'j', mods = 'CMD | OPT', action = wezterm.action { SendKey = { key = 'ĵ', mods = 'OPT' } } },
+    { key = 'd', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ď', mods = 'OPT' } } },
     -- CMD + a to select all in nvim
     { key = 'a', mods = 'CMD', action = wezterm.action { SendString = '\x00\x004' } },
     -- CMD + / in vim to comment line or blocks
