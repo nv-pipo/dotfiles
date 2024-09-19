@@ -4,6 +4,8 @@ local wezterm = require 'wezterm'
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+config.term = 'wezterm'
+
 -- Start terminal maximized
 local mux = wezterm.mux
 wezterm.on('gui-startup', function()
