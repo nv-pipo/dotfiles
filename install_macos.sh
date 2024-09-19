@@ -16,7 +16,9 @@ brew install \
     fzf \
     git-delta \
     htop \
+    jq \
     lazygit \
+    markdownlint-cli \
     micro \
     nvim \
     ripgrep \
