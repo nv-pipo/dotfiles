@@ -3,6 +3,7 @@
 # dependencies
 brew tap homebrew/cask-fonts
 brew install \
+    bash \
     bat \
     btop \
     conda-zsh-completion \
@@ -11,9 +12,11 @@ brew install \
     fd \
     fish \
     font-jetbrains-mono-nerd-font \
+    font-noto-sans \
     fzf \
     git-delta \
     htop \
+    lazygit \
     micro \
     nvim \
     ripgrep \
