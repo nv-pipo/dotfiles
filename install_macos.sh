@@ -41,16 +41,19 @@ git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 ## create folders (for stow to link files and not folders)
 mkdir -p ~/.config/alacritty
-mkdir -p ~/.config/zellij
-mkdir -p ~/.config/nvim
-mkdir -p ~/.config/fish/functions
-mkdir -p ~/.config/fish/conf.d
-mkdir -p ~/.config/fish/conf.d
 mkdir -p ~/.config/fish/completions
-mkdir -p ~/.config/zsh/functions
+mkdir -p ~/.config/fish/conf.d
+mkdir -p ~/.config/fish/functions
+mkdir -p ~/.config/helix
+mkdir -p ~/.config/iterm2
+mkdir -p ~/.config/micro
+mkdir -p ~/.config/nvim
 mkdir -p ~/.config/starship
 mkdir -p ~/.config/tmux
-mkdir -p ~/.config/micro
+mkdir -p ~/.config/wezterm/
+mkdir -p ~/.config/zellij
+mkdir -p ~/.config/zsh/functions
+mkdir -p ~/Library/Application\ Support/lazygit/
 
 ## conda disable prompt
 conda config --set changeps1 False
