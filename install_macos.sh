@@ -17,6 +17,7 @@ brew install \
     git-delta \
     htop \
     jq \
+    jsonlint \
     lazygit \
     markdownlint-cli \
     micro \
