@@ -170,4 +170,4 @@ fi
 # export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # set the default editor
-export EDITOR=nvim
+export EDITOR=vi
