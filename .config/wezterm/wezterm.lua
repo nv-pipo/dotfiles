@@ -86,8 +86,14 @@ config.keys = {
     { key = 'a', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ä', mods = 'OPT' } } },
     -- CMD + / in vim to comment line or blocks
     { key = '/', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ş', mods = 'OPT' } } },
-    -- SHIFT + ENTER to trigger SHIFT+ENTER
+    -- SHIFT + ENTER to trigger SHIFT+ENTER as string
     { key = 'raw:36', mods = 'SHIFT', action = wezterm.action { SendString = '\x1b[13;2u' } },
+    -- CMD + l as OPT + ł for copilot accept word
+    { key = 'l', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ł', mods = 'OPT' } } },
+    -- CMD + j as OPT + ĵ for copilot accept line
+    { key = 'j', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ĵ', mods = 'OPT' } } },
+    -- CMD + Enter as OPT + ė for copilot accept suggestion
+    { key = 'Return', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ė', mods = 'OPT' } } },
 }
 
 -- config.debug_key_events = true
