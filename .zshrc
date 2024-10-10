@@ -163,7 +163,6 @@ if [[ -f "/Users/pichurri/miniforge3/bin/conda" ]] then
       . "/Users/pichurri/miniforge3/etc/profile.d/mamba.sh"
   fi
   # <<< conda initialize <<<
-  mamba activate shell
 fi
 
 # eval "$(starship init zsh)"
