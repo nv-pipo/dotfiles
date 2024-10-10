@@ -10,7 +10,7 @@ export PATH=${HOME}/bin:$PATH
 export PATH=${HOME}/.local/bin:$PATH
 export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
-export PATH="${PATH}:${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="${PATH}:${HOME}/Applications/Cursor.app/Contents/Resources/app/bin/"
 
 # nixos packages
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then . ${HOME}/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
