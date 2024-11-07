@@ -8,6 +8,7 @@ WORDCHARS="_"
 # paths
 export PATH=${HOME}/bin:$PATH
 export PATH=${HOME}/.local/bin:$PATH
+export PATH=${HOME}/.docker/bin:$PATH
 export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
 
