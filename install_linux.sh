@@ -30,10 +30,15 @@ nix-env -iA \
     nixpkgs.eza \
     nixpkgs.fd \
     nixpkgs.fzf \
+    nixpkgs.jq \
+    nixpkgs.nodePackages.jsonlint \
+    nixpkgs.markdownlint-cli \
     nixpkgs.neovim \
     nixpkgs.ripgrep \
-    nixpkgs.starship \
-    nixpkgs.zoxide
+    nixpkgs.stow \
+    nixpkgs.tmux \
+    nixpkgs.zoxide \
+    nixpkgs.zsh-completions
 
 # vars
 dotfiles_path=`pwd`
