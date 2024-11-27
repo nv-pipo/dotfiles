@@ -50,17 +50,10 @@ mkdir -p "$(dirname $ZINIT_HOME)"
 git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 ## create folders (for stow to link files and not folders)
-mkdir -p ~/.config/alacritty
-mkdir -p ~/.config/zellij
 mkdir -p ~/.config/nvim
-mkdir -p ~/.config/fish/functions
-mkdir -p ~/.config/fish/conf.d
-mkdir -p ~/.config/fish/conf.d
-mkdir -p ~/.config/fish/completions
-mkdir -p ~/.config/zsh/functions
 mkdir -p ~/.config/starship
 mkdir -p ~/.config/tmux
-mkdir -p ~/.config/micro
+mkdir -p ~/.config/zsh/functions
 
 ## tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
