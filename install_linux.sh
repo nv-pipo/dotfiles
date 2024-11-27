@@ -16,8 +16,7 @@ sudo apt install -y \
     wget \
     zsh
 
-sudo mkdir /nix
-sudo chown pichurri /nix
+sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
 
 # install nix-env
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
