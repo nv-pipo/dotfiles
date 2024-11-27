@@ -45,55 +45,57 @@ config.color_scheme = 'Tokyo Night'
 config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 -- Keybindings
+local act = wezterm.action
+
 config.keys = {
     -- tmux tab navigation:
     -- New tab with CMD + t (Ctrl + b + c | \x00c | \u0000c)
-    { key = 't', mods = 'CMD', action = wezterm.action.SendString '\x02c' },
+    { key = 't', mods = 'CMD', action = act.SendString '\x02c' },
     -- Close tab with CMD + w (Ctrl + b + x | \x00x | \u0000x)
-    { key = 'w', mods = 'CMD', action = wezterm.action.SendString '\x02x' },
+    { key = 'w', mods = 'CMD', action = act.SendString '\x02x' },
     -- Next tab with CMD + OPT + Right (Ctrl + b + n | \x00n | \u0000n)
-    { key = 'RightArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x02n' },
+    { key = 'RightArrow', mods = 'CMD | OPT', action = act.SendString '\x02n' },
     -- Previous tab with CMD + OPT + Left (Ctrl + b + p | \x00p | \u0000p)
-    { key = 'LeftArrow', mods = 'CMD | OPT', action = wezterm.action.SendString '\x02p' },
+    { key = 'LeftArrow', mods = 'CMD | OPT', action = act.SendString '\x02p' },
 
     -- Map CMD + Left/Right to Ctrl + a/e. For navigating to the start/end of the line
-    { key = 'LeftArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'a', mods = 'CTRL' } } },
-    { key = 'RightArrow', mods = 'CMD', action = wezterm.action { SendKey = { key = 'e', mods = 'CTRL' } } },
+    { key = 'LeftArrow', mods = 'CMD', action = act { SendKey = { key = 'a', mods = 'CTRL' } } },
+    { key = 'RightArrow', mods = 'CMD', action = act { SendKey = { key = 'e', mods = 'CTRL' } } },
 
     -- Make Option-Backspace equivalent to Ctrl + w; delete word
-    { key = 'Backspace', mods = 'OPT', action = wezterm.action { SendKey = { key = 'w', mods = 'CTRL' } } },
+    { key = 'Backspace', mods = 'OPT', action = act { SendKey = { key = 'w', mods = 'CTRL' } } },
 
     -- Make Option-Left equivalent to OPT-b which many line editors interpret as backward-word
-    { key = 'LeftArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'b', mods = 'OPT' } } },
+    { key = 'LeftArrow', mods = 'OPT', action = act { SendKey = { key = 'b', mods = 'OPT' } } },
 
     -- Make Option-Right equivalent to OPT-f; forward-word
-    { key = 'RightArrow', mods = 'OPT', action = wezterm.action { SendKey = { key = 'f', mods = 'OPT' } } },
+    { key = 'RightArrow', mods = 'OPT', action = act { SendKey = { key = 'f', mods = 'OPT' } } },
 
     -- TMUX hacks
     -- Use tmux find in buffer
-    { key = 'f', mods = 'CMD', action = wezterm.action { SendString = '\x02f' } },
+    { key = 'f', mods = 'CMD', action = act { SendString = '\x02f' } },
     -- Clear buffer in tmux
-    { key = 'k', mods = 'CMD', action = wezterm.action { SendString = '\x02u' } },
+    { key = 'k', mods = 'CMD', action = act { SendString = '\x02u' } },
     -- Copy buffer in tmux
-    { key = 'c', mods = 'CMD | OPT', action = wezterm.action { SendString = '\x02v' } },
+    { key = 'c', mods = 'CMD | OPT', action = act { SendString = '\x02v' } },
     -- Set delete key to CTRL + d
-    { key = 'Delete', action = wezterm.action { SendKey = { key = 'd', mods = 'CTRL' } } },
+    { key = 'Delete', action = act { SendKey = { key = 'd', mods = 'CTRL' } } },
     -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
-    { key = 'k', mods = 'CMD | OPT', action = wezterm.action { SendKey = { key = 'ķ', mods = 'OPT' } } },
-    { key = 'j', mods = 'CMD | OPT', action = wezterm.action { SendKey = { key = 'ĵ', mods = 'OPT' } } },
-    { key = 'd', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ď', mods = 'OPT' } } },
+    { key = 'k', mods = 'CMD | OPT', action = act { SendKey = { key = 'ķ', mods = 'OPT' } } },
+    { key = 'j', mods = 'CMD | OPT', action = act { SendKey = { key = 'ĵ', mods = 'OPT' } } },
+    { key = 'd', mods = 'CMD', action = act { SendKey = { key = 'ď', mods = 'OPT' } } },
     -- CMD + a to select all in nvim
-    { key = 'a', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ä', mods = 'OPT' } } },
+    { key = 'a', mods = 'CMD', action = act { SendKey = { key = 'ä', mods = 'OPT' } } },
     -- CMD + / in vim to comment line or blocks
-    { key = '/', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ş', mods = 'OPT' } } },
+    { key = '/', mods = 'CMD', action = act { SendKey = { key = 'ş', mods = 'OPT' } } },
     -- SHIFT + ENTER to trigger SHIFT+ENTER as string
-    { key = 'raw:36', mods = 'SHIFT', action = wezterm.action { SendString = '\x1b[13;2u' } },
+    { key = 'raw:36', mods = 'SHIFT', action = act { SendString = '\x1b[13;2u' } },
     -- CMD + l as OPT + ł for copilot accept word
-    { key = 'l', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ł', mods = 'OPT' } } },
+    { key = 'l', mods = 'CMD', action = act { SendKey = { key = 'ł', mods = 'OPT' } } },
     -- CMD + j as OPT + ĵ for copilot accept line
-    { key = 'j', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ĵ', mods = 'OPT' } } },
+    { key = 'j', mods = 'CMD', action = act { SendKey = { key = 'ĵ', mods = 'OPT' } } },
     -- CMD + Enter as OPT + ė for copilot accept suggestion
-    { key = 'Return', mods = 'CMD', action = wezterm.action { SendKey = { key = 'ė', mods = 'OPT' } } },
+    { key = 'Return', mods = 'CMD', action = act { SendKey = { key = 'ė', mods = 'OPT' } } },
 }
 
 -- config.debug_key_events = true
