@@ -163,8 +163,10 @@ if [[ -f "${HOME}/miniforge3/bin/conda" ]] then
       . "${HOME}/miniforge3/etc/profile.d/mamba.sh"
   fi
   # <<< conda initialize <<<
-  conda deactivate
-  conda activate shell
+  if [[ -d "${HOME}/miniforge3/envs/shell/" ]]; then
+    mamba deactivate
+    mamba activate shell
+  fi
 fi
 
 # eval "$(starship init zsh)"
