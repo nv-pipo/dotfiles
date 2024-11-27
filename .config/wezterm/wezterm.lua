@@ -85,7 +85,7 @@ config.keys = {
     { key = 'j', mods = 'CMD | OPT', action = act { SendKey = { key = 'ĵ', mods = 'OPT' } } },
     { key = 'd', mods = 'CMD', action = act { SendKey = { key = 'ď', mods = 'OPT' } } },
     -- CMD + a to select all in nvim
-    { key = 'a', mods = 'CMD', action = act { SendKey = { key = 'ä', mods = 'OPT' } } },
+    { key = 'a', mods = 'CMD', action = act.Multiple { act.SendKey { key = 'b', mods = 'CTRL'}, act.SendKey { key = 'a' } } },
     -- CMD + / in vim to comment line or blocks
     { key = '/', mods = 'CMD', action = act { SendKey = { key = 'ş', mods = 'OPT' } } },
     -- SHIFT + ENTER to trigger SHIFT+ENTER as string
