@@ -39,7 +39,7 @@ config.font_size = 13.6
 config.enable_scroll_bar = false
 
 -- For example, changing the color scheme:
-config.color_scheme = 'Tokyo Night'
+config.color_scheme = 'GitHub Dark'
 
 -- Keyboard
 config.enable_kitty_keyboard = true
