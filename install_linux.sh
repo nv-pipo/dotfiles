@@ -36,6 +36,7 @@ nix-env -iA \
     nixpkgs.neovim \
     nixpkgs.nodePackages.jsonlint \
     nixpkgs.nodejs_23 \
+    nixpkgs.python3Full \
     nixpkgs.ripgrep \
     nixpkgs.stow \
     nixpkgs.tmux \
