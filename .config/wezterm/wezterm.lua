@@ -6,12 +6,6 @@ local config = wezterm.config_builder()
 
 config.term = 'wezterm'
 
--- Start terminal maximized
-local mux = wezterm.mux
-wezterm.on('gui-startup', function()
-    local _, _, window = mux.spawn_window {}
-    window:gui_window():toggle_fullscreen()
-end)
 
 -- Visual bell
 config.visual_bell = {
@@ -22,12 +16,14 @@ config.colors = {
     visual_bell = '#FFFFFF',
 }
 
+-- Window
 config.window_padding = {
     left = 0,
     right = 0,
     top = 0,
     bottom = 0,
 }
+config.window_decorations = "RESIZE"
 
 -- Disable the tab bar
 config.enable_tab_bar = false
