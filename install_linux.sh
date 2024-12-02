@@ -31,6 +31,7 @@ nix-env -iA \
     nixpkgs.fd \
     nixpkgs.fzf \
     nixpkgs.jq \
+    nixpkgs.lazygit \
     nixpkgs.markdownlint-cli \
     nixpkgs.neovim \
     nixpkgs.nodePackages.jsonlint \
