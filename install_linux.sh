@@ -31,9 +31,9 @@ nix-env -iA \
     nixpkgs.fd \
     nixpkgs.fzf \
     nixpkgs.jq \
-    nixpkgs.nodePackages.jsonlint \
     nixpkgs.markdownlint-cli \
     nixpkgs.neovim \
+    nixpkgs.nodePackages.jsonlint \
     nixpkgs.ripgrep \
     nixpkgs.stow \
     nixpkgs.tmux \
