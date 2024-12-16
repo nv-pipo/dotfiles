@@ -15,13 +15,13 @@ export PATH=${HOME}/homebrew/sbin:${PATH}
 # nixos packages
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then . ${HOME}/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-
-# ZINIT
+# homebrew
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(${HOME}/homebrew/bin/brew shellenv)"
 fi
 
+# ZINIT
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
