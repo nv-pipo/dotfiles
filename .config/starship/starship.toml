@@ -1,7 +1,9 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-palette = "catppuccin_mocha"
+# palette = "catppuccin_mocha"
+
+add_newline = false
 
 format = """$os\
 $directory\
@@ -16,8 +18,7 @@ $cmd_duration\
 $all\
 $time\
 $line_break\
-$character
-"""
+$character"""
 
 [directory]
 truncate_to_repo = false
@@ -45,9 +46,13 @@ Alpine = " "
 Macos = " "
 NixOS = "❄️ "
 
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+disabled = false
+
 [username]
 disabled = true
-
 
 [git_branch]
 symbol = "  "
