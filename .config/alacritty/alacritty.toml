@@ -1,6 +1,7 @@
+[general]
 live_config_reload = true
 
-import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
+import = ["~/.config/alacritty/themes/themes/github_dark_default.toml"]
 
 [cursor]
 unfocused_hollow = true
