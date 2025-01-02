@@ -32,21 +32,27 @@ family = "JetBrainsMono Nerd Font"
 
 [keyboard]
 bindings = [
-    # New tab (tmux)
+    # TMUX
+    # New tab (CMD + T)
     { key = "T", mods = "Command", chars = "\u0002c" },
-    # Close pane (tmux)
+    # Close pane (CMD + W)
     { key = "W", mods = "Command", chars = "\u0002x" },
-    # Next tab (tmux)
+    # Next tab (OPT + CMD + Right)
     { key = "Right", mods = "Command|Option", chars = "\u0002n" },
-    # Previous tab (tmux)
+    # Previous tab (OPT + CMD + Left)
     { key = "Left", mods = "Command|Option", chars = "\u0002p" },
-    # Clear buffer (tmux)
+    # Select all buffer (SHIFT + CMD + A)
+    { key = "a", mods = "Command|Shift", chars = "\u0002a" },
+    # Find in buffer (CMD + F)
+    { key = "f", mods = "Command", chars = "\u0002f" },
+    # Clear buffer (CMD + K)
     { key = "k", mods = "Command", chars = "\u0002u" },
 
-    # Copy buffer (tmux): Command+c -> tmux prefix+v
-    { key = "c", mods = "Command|Option", chars = "\u0002v" },
-    # Find in buffer
-    { key = "f", mods = "Command", chars = "\u0002f" },
+    # NVIM
+    # Send CTRL + a (CMD + A) nvim select all
+    { key = "a", mods = "Command", chars = "\u001ba" },
+
+    # GENERIC
     # next word
     { key = "Right", mods = "Option", chars = "\u001Bf" },
     # previous word
@@ -61,8 +67,6 @@ bindings = [
     { key = "Delete", chars = "\u0004" },
     # Properly send Shift + Enter
     { key = "Return", mods = "Shift", chars = "\u001b[13;2u" },
-    # Command + A, for nvim 'Select all'
-    { key = "a", mods = "Command", chars = "\u001ba" },
 ]
 
 [[hints.enabled]]
