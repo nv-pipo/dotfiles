@@ -19,9 +19,11 @@ brew install \
     jq \
     jsonlint \
     lazygit \
+    lynx \
     markdownlint-cli \
     micro \
     nvim \
+    prettierd \
     ripgrep \
     rsync \
     starship \
@@ -29,6 +31,7 @@ brew install \
     tlrc \
     tmux \
     wget \
+    yq \
     zellij \
     zoxide \
     zsh-completions
