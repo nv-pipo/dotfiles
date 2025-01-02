@@ -124,7 +124,7 @@ eval "$(zoxide init --cmd cd zsh)"
 # Add aliases
 alias vim='nvim'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
-alias ssh='env TERM=tmux-256color ssh'
+alias ssh='env TERM=alacritty ssh'
 alias sshv="ssh -l velasquez"
 alias ssha="ssh -l administrator"
 alias sd="say done"
