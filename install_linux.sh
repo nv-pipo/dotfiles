@@ -24,6 +24,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ${HOME}/.nix-profile/etc/profile.d/nix.sh
 
 nix-env -iA \
+    nixpkgs.starship \
     nixpkgs.bat \
     nixpkgs.delta \
     nixpkgs.dust \
@@ -36,10 +37,12 @@ nix-env -iA \
     nixpkgs.neovim \
     nixpkgs.nodePackages.jsonlint \
     nixpkgs.nodejs_23 \
+    nixpkgs.prettierd \
     nixpkgs.python3Full \
     nixpkgs.ripgrep \
     nixpkgs.stow \
     nixpkgs.tmux \
+    nixpkgs.yq \
     nixpkgs.zoxide \
     nixpkgs.zsh-completions
 
