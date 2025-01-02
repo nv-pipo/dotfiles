@@ -26,3 +26,5 @@ install_macos.sh
 install_linux.sh
 
 \.DS_Store
+
+.vscode
