@@ -35,19 +35,20 @@ family = "JetBrainsMono Nerd Font"
 [keyboard]
 bindings = [
     # New tab (tmux)
-    { key = "T", mods = "Command", chars = "\u0000c" },
+    { key = "T", mods = "Command", chars = "\u0002c" },
     # Close pane (tmux)
-    { key = "W", mods = "Command", chars = "\u0000x" },
+    { key = "W", mods = "Command", chars = "\u0002x" },
     # Next tab (tmux)
-    { key = "Right", mods = "Command|Option", chars = "\u0000n" },
+    { key = "Right", mods = "Command|Option", chars = "\u0002n" },
     # Previous tab (tmux)
-    { key = "Left", mods = "Command|Option", chars = "\u0000p" },
+    { key = "Left", mods = "Command|Option", chars = "\u0002p" },
     # Clear buffer (tmux)
-    { key = "k", mods = "Command", chars = "\u0000u" },
+    { key = "k", mods = "Command", chars = "\u0002u" },
+
     # Copy buffer (tmux): Command+c -> tmux prefix+v
-    { key = "c", mods = "Command|Option", chars = "\u0000v" },
+    { key = "c", mods = "Command|Option", chars = "\u0002v" },
     # Find in buffer
-    { key = "f", mods = "Command", chars = "\u0000f" },
+    { key = "f", mods = "Command", chars = "\u0002f" },
     # next word
     { key = "Right", mods = "Option", chars = "\u001Bf" },
     # previous word
