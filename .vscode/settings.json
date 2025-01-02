@@ -13,6 +13,7 @@
         "compinit",
         "dups",
         "filesize",
+        "ghostty",
         "HISTDUP",
         "histignorespace",
         "iterm",
