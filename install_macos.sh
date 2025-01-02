@@ -50,6 +50,7 @@ mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/fish/completions
 mkdir -p ~/.config/fish/conf.d
 mkdir -p ~/.config/fish/functions
+mkdir -p ~/.config/ghostty
 mkdir -p ~/.config/helix
 mkdir -p ~/.config/iterm2
 mkdir -p ~/.config/micro
