@@ -51,6 +51,18 @@ bindings = [
     # NVIM
     # Send CTRL + a (CMD + A) nvim select all
     { key = "a", mods = "Command", chars = "\u001ba" },
+    # -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
+    { key = "k", mods = "Command|Option", chars = "\u001bķ" },
+    { key = "j", mods = "Command|Option", chars = "\u001bĵ" },
+    { key = "d", mods = "Command", chars = "\u001bď" },
+    # -- CMD + / in vim to comment line or blocks
+    { key = "/", mods = "Command", chars = "\u001bş" },
+    # -- CMD + l as OPT + ł for copilot accept word
+    { key = "l", mods = "Command", chars = "\u001bł" },
+    # -- CMD + j as OPT + ĵ for copilot accept line
+    { key = "j", mods = "Command", chars = "\u001bĵ" },
+    # -- CMD + Enter as OPT + ė for copilot accept suggestion
+    { key = "Return", mods = "Command", chars = "\u001bė" },
 
     # GENERIC
     # next word
