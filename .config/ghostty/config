@@ -1,0 +1,29 @@
+theme = "GitHub Dark"
+# theme = "GitHub-Dark-High-Contrast"
+
+shell-integration-features = no-cursor,sudo,title
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+macos-non-native-fullscreen = true
+macos-titlebar-style = tabs
+window-save-state = always
+window-padding-balance = true
+window-colorspace = "display-p3"
+
+copy-on-select = clipboard
+
+# keybindings
+keybind = cmd+s>r=reload_config
+
+# tab navigation
+keybind = alt+cmd+right=next_tab
+keybind = alt+cmd+left=previous_tab
+keybind = alt+cmd+shift+left=move_tab:-1
+keybind = alt+cmd+shift+right=move_tab:1
+
+keybind = alt+cmd+l=next_tab
+keybind = alt+cmd+h=previous_tab
+keybind = alt+cmd+shift+h=move_tab:-1
+keybind = alt+cmd+shift+l=move_tab:1
