@@ -1,21 +1,5 @@
 // Toggle between having pane frames around the panes
 pane_frames false
 
-// keybindings
-keybinds {
-    shared_except "locked" {
-        unbind "Ctrl q" // unbind default 'Quit'
-        bind "Ê" { Quit; }
-        bind "" { Clear; }
-    }
-    shared_except "tmux" "locked" {
-        unbind "Ctrl b" // unbind default 'SwitchToMode "Tmux"'
-        bind "Ctrl Space" { SwitchToMode "Tmux"; }
-    }
-}
-
-// Whether sessions should be serialized to the cache folder (including their tabs/panes, cwds and running commands) so that they can later be resurrected
-session_serialization false
-
 // Set the theme
 theme "catppuccin-mocha"
