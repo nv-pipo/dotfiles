@@ -126,6 +126,7 @@ alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-
 # alias ssh='env TERM=alacritty ssh'
 alias sshv="ssh -l velasquez"
 alias ssha="ssh -l administrator"
+alias sudo="env TERM=$TERM sudo"
 alias sd="say done"
 alias l="eza --color=always --long --git --icons=always --time-style=long-iso"
 alias lt="eza --color=always --long --git --icons=always --time-style=long-iso --sort=time"
