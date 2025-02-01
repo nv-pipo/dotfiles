@@ -13,7 +13,10 @@ export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
 
 # nixos packages
-if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then . ${HOME}/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
+  . ${HOME}/.nix-profile/etc/profile.d/nix.sh;
+  export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
+fi
 
 # homebrew
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
