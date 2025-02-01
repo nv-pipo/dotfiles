@@ -43,6 +43,7 @@ nix-env -iA \
     nixpkgs.stow \
     nixpkgs.tmux \
     nixpkgs.yq \
+    nixpkgs.zellij \
     nixpkgs.zoxide \
     nixpkgs.zsh-completions
 
