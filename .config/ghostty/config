@@ -17,6 +17,9 @@ copy-on-select = clipboard
 # keybindings
 keybind = cmd+s>r=reload_config
 
+keybind = cmd+d=unbind # add cursor on next occurrence in nvim
+keybind = cmd+a=unbind # select all in nvim
+
 # tab navigation
 keybind = alt+cmd+right=next_tab
 keybind = alt+cmd+left=previous_tab
