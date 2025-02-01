@@ -30,6 +30,7 @@ nix-env -iA \
     nixpkgs.eza \
     nixpkgs.fd \
     nixpkgs.fzf \
+    nixpkgs.glibcLocales \
     nixpkgs.jq \
     nixpkgs.lazygit \
     nixpkgs.markdownlint-cli \
