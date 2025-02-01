@@ -1,7 +1,7 @@
 theme = "GitHub Dark"
 # theme = "GitHub-Dark-High-Contrast"
 
-shell-integration-features = no-cursor,sudo,title
+shell-integration-features = no-cursor,no-sudo,title
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
