@@ -3,3 +3,5 @@ pane_frames false
 
 // Set the theme
 theme "catppuccin-mocha"
+
+session_serialization false
