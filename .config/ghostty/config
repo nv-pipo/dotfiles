@@ -32,3 +32,6 @@ keybind = alt+cmd+l=next_tab
 keybind = alt+cmd+h=previous_tab
 keybind = alt+cmd+shift+h=move_tab:-1
 keybind = alt+cmd+shift+l=move_tab:1
+
+# split creation
+keybind = cmd+shift+r=new_split:right
