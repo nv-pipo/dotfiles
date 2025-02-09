@@ -5,3 +5,5 @@ pane_frames false
 theme "catppuccin-mocha"
 
 session_serialization false
+
+mouse_mode false
