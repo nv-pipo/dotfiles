@@ -38,3 +38,6 @@ keybind = cmd+shift+r=new_split:right
 
 # Reset screen instead of clear screen
 keybind = super+k=reset
+
+# delete forward to ctrl+d
+keybind = delete=text:\x04
