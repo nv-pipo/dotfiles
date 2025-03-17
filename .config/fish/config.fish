@@ -14,7 +14,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# Aliasses
+# Aliases
 alias exa='eza'
 # alias cat='bat'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
