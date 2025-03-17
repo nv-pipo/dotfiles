@@ -24,6 +24,7 @@ alias sd="say done"
 alias l="eza --color=always --long --git --icons=always --time-style=long-iso"
 alias lt="eza --color=always --long --git --icons=always --time-style=long-iso --sort=time"
 alias beep="echo -ne '\a'"
+alias start_reverse_shell_server="az container start --resource-group rg-connectivity --name aci-connectivity"
 if test -e ~/homebrew
     alias cnf="brew which-formula --explain "
 end
