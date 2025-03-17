@@ -30,6 +30,7 @@ end
 
 # up directory Alt+Up
 bind \e\[1\;3A upd
+bind tab complete-and-search
 
 zoxide init --cmd cd fish | source
 starship init fish | source
