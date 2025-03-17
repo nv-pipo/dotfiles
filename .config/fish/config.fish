@@ -38,3 +38,21 @@ set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 
 # Change editor to nvim
 set -x EDITOR nvim
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /Users/pichurri/miniforge3/bin/conda
+    eval /Users/pichurri/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/Users/pichurri/miniforge3/etc/fish/conf.d/conda.fish"
+        . "/Users/pichurri/miniforge3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/Users/pichurri/miniforge3/bin" $PATH
+    end
+end
+
+if test -f "/Users/pichurri/miniforge3/etc/fish/conf.d/mamba.fish"
+    source "/Users/pichurri/miniforge3/etc/fish/conf.d/mamba.fish"
+end
+# <<< conda initialize <<<
+
