@@ -40,26 +40,33 @@ set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 # Change editor to nvim
 set -x EDITOR nvim
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f $HOME/miniforge3/bin/conda
-    eval $HOME/miniforge3/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
-        . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
+# CONDA/MAMBA
+if test -d "$HOME/miniforge3"
+    # !! Contents within this block are managed by 'conda init' !!
+    if test -f $HOME/miniforge3/bin/conda
+        eval $HOME/miniforge3/bin/conda "shell.fish" "hook" $argv | source
     else
-        set -x PATH "$HOME/miniforge3/bin" $PATH
+        if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
+            . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
+        else
+            set -x PATH "$HOME/miniforge3/bin" $PATH
+        end
+    end
+
+    # !! Contents within this block are managed by 'conda init' !!
+    if test -f $HOME/miniforge3/bin/conda
+        eval $HOME/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+    else
+        if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
+            . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
+        else
+            set -x PATH "$HOME/miniforge3/bin" $PATH
+        end
+    end
+
+    if test -f "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
+        source "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
     end
 end
 
-if test -f "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
-    source "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
-end
-# <<< conda initialize <<<
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-set -gx MAMBA_EXE "$HOME/miniforge3/bin/mamba"
-set -gx MAMBA_ROOT_PREFIX "$HOME/miniforge3"
-$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<
