@@ -33,13 +33,6 @@ end
 bind \e\[1\;3A upd
 bind tab complete-and-search
 
-zoxide init --cmd cd fish | source
-starship init fish | source
-set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
-
-# Change editor to nvim
-set -x EDITOR nvim
-
 # CONDA/MAMBA
 if test -d "$HOME/miniforge3"
     # !! Contents within this block are managed by 'conda init' !!
@@ -69,4 +62,9 @@ if test -d "$HOME/miniforge3"
     end
 end
 
+zoxide init --cmd cd fish | source
+starship init fish | source
+set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 
+# Change editor to nvim
+set -x EDITOR nvim
