@@ -32,6 +32,7 @@ nix-env -iA \
     nixpkgs.fzf \
     nixpkgs.glibcLocales \
     nixpkgs.jq \
+    nixpkgs.jqp \
     nixpkgs.lazygit \
     nixpkgs.markdownlint-cli \
     nixpkgs.neovim \
@@ -43,6 +44,7 @@ nix-env -iA \
     nixpkgs.starship \
     nixpkgs.stow \
     nixpkgs.tmux \
+    nixpkgs.xh \
     nixpkgs.yq \
     nixpkgs.zellij \
     nixpkgs.zoxide \

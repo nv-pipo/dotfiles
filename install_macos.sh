@@ -31,10 +31,13 @@ brew install \
     tlrc \
     tmux \
     wget \
+    xh \
     yq \
     zellij \
     zoxide \
     zsh-completions
+
+brew install noahgorstein/tap/jqp
 
 # vars
 dotfiles_path=`pwd`
