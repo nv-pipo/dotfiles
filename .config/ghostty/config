@@ -39,5 +39,6 @@ keybind = cmd+shift+r=new_split:right
 # Reset screen instead of clear screen
 keybind = super+k=reset
 
-# delete forward to ctrl+d
+# delete forward fix keybindings
+keybind = alt+delete=text:\x1bd
 keybind = delete=text:\x04
