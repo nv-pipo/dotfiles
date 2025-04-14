@@ -15,3 +15,10 @@ git clone https://github.com/nv-pipo/dotfiles.git
 # macos
 ./install_macos.sh
 ```
+
+## Detecting key press on MacOS
+
+```shell
+cat -vte
+xev
+```
