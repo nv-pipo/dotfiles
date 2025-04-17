@@ -27,6 +27,10 @@ keybind = alt+cmd+left=previous_tab
 keybind = alt+cmd+right=next_tab
 keybind = alt+cmd+shift+left=move_tab:-1
 keybind = alt+cmd+shift+right=move_tab:1
+keybind = alt+h=previous_tab
+keybind = alt+l=next_tab
+keybind = alt+shift+h=move_tab:-1
+keybind = alt+shift+l=move_tab:1
 
 keybind = alt+cmd+l=next_tab
 keybind = alt+cmd+h=previous_tab
