@@ -23,8 +23,8 @@ keybind = cmd+d=unbind
 keybind = cmd+a=unbind
 
 # tab navigation
-keybind = alt+cmd+right=next_tab
 keybind = alt+cmd+left=previous_tab
+keybind = alt+cmd+right=next_tab
 keybind = alt+cmd+shift+left=move_tab:-1
 keybind = alt+cmd+shift+right=move_tab:1
 
