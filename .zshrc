@@ -70,12 +70,12 @@ zinit cdreplay -q
 bindkey -e
 bindkey '^[f' forward-word # alt + f
 bindkey '^E'  end-of-line  # ctrl + e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^p'  history-search-backward
+bindkey '^n'  history-search-forward
 # ctrl+u to delete from cursor, not whole line
-bindkey '^u' backward-kill-line
+bindkey '^u'  backward-kill-line
 # ALT+UP_KEY to go up a directory (upd)
-bindkey '' upd
+bindkey ''  upd
 
 # -- Use fd instead of fzf --
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
