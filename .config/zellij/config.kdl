@@ -11,4 +11,8 @@ keybinds {
         unbind "Ctrl h"
         bind "Ctrl m" { SwitchToMode "Move"; }
     }
+    shared_among "normal" "locked" {
+        unbind "Alt f"
+        bind "Alt F" { ToggleFloatingPanes; }
+    }
 }
