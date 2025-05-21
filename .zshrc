@@ -68,6 +68,8 @@ zinit cdreplay -q
 
 # Keybindings
 bindkey -e
+bindkey '^[f' forward-word        # alt + f
+bindkey '^E'  autosuggest-accept  # ctrl + e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 # ctrl+u to delete from cursor, not whole line
