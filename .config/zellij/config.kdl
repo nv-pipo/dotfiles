@@ -15,4 +15,10 @@ keybinds {
         unbind "Alt f"
         bind "Alt F" { ToggleFloatingPanes; }
     }
+    shared_except "locked" {
+        unbind "Alt h"
+        unbind "Alt l"
+        unbind "Alt j"
+        unbind "Alt k"
+    }
 }
