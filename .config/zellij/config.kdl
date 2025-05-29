@@ -21,4 +21,8 @@ keybinds {
         unbind "Alt j"
         unbind "Alt k"
     }
+    shared_except "locked" {
+        unbind "Ctrl q"
+        bind "Ctrl ∑" { Quit; }
+    }
 }
