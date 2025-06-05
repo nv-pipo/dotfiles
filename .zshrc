@@ -126,6 +126,7 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Add aliases
+alias lg='lazygit'
 alias vim='nvim'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 # alias ssh='env TERM=alacritty ssh'
