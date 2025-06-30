@@ -8,7 +8,6 @@ mouse-scroll-multiplier = 2
 
 macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
-fullscreen = true
 window-decoration = false
 window-padding-balance = true
 window-colorspace = "display-p3"
@@ -37,8 +36,8 @@ keybind = cmd+7=unbind
 keybind = cmd+8=unbind
 keybind = cmd+9=unbind
 
-# split creation
-keybind = cmd+shift+r=new_split:right
+# toggle fullscreen/zoom mode
+keybind = cmd+alt+f=toggle_fullscreen
 
 # Reset screen instead of clear screen
 keybind = super+k=reset
