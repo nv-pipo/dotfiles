@@ -34,10 +34,13 @@ keybinds {
         bind "Alt F" { ToggleFloatingPanes; }
     }
     shared_except "locked" {
-        unbind "Alt h"
-        unbind "Alt l"
-        unbind "Alt j"
-        unbind "Alt k"
+        bind "Super t" { NewTab; }
+        bind "Shift Alt h" { MoveTab "Left"; }
+        bind "Shift Alt l" { MoveTab "Right"; }
+        bind "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
     }
     shared_except "locked" {
         unbind "Ctrl q"
