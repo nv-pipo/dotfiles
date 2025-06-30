@@ -37,8 +37,8 @@ keybinds {
         bind "Super t" { NewTab; }
         bind "Shift Alt h" { MoveTab "Left"; }
         bind "Shift Alt l" { MoveTab "Right"; }
-        bind "Alt h" { MoveFocusOrTab "Left"; }
-        bind "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt h" { GoToPreviousTab; }
+        bind "Alt l" { GoToNextTab; }
         bind "Alt j" { MoveFocus "Down"; }
         bind "Alt k" { MoveFocus "Up"; }
         bind "Super 1" { GoToTab 1; }
