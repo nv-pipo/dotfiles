@@ -4,10 +4,10 @@ pane_frames false
 themes {
     my_github_dark {
         fg "#F2F2F2"
-        bg "#3B5070"
+        bg "#101216"
         // Black should match the terminal background color
         // This ensures the top and bottom bars are transparent
-        black "#131518"
+        black "#101216"
         red "#f7768e"
         green "#cea5fb"
         yellow "#e0af68"
