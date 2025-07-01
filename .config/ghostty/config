@@ -23,6 +23,7 @@ keybind = cmd+d=unbind
 # select all in nvim
 keybind = cmd+a=unbind
 # tabs
+keybind = cmd+w=unbind
 keybind = alt+h=unbind
 keybind = alt+l=unbind
 keybind = cmd+t=unbind

@@ -38,6 +38,7 @@ keybinds {
     shared_except "locked" {
         bind "Super k" { Clear; }
         bind "Super t" { NewTab; }
+        bind "Super w" { CloseTab; }
         bind "Shift Alt h" { MoveTab "Left"; }
         bind "Shift Alt l" { MoveTab "Right"; }
         bind "Alt h" { GoToPreviousTab; }
