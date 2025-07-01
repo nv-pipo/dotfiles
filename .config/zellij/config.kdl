@@ -1,6 +1,8 @@
 // Toggle between having pane frames around the panes
 pane_frames false
 
+scroll_buffer_size 1000000
+
 themes {
     my_github_dark {
         fg "#F2F2F2"
