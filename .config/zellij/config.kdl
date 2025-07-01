@@ -34,6 +34,7 @@ keybinds {
         bind "Alt F" { ToggleFloatingPanes; }
     }
     shared_except "locked" {
+        bind "Super k" { Clear; }
         bind "Super t" { NewTab; }
         bind "Shift Alt h" { MoveTab "Left"; }
         bind "Shift Alt l" { MoveTab "Right"; }
