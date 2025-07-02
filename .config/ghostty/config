@@ -39,6 +39,8 @@ keybind = cmd+9=unbind
 
 # toggle fullscreen/zoom mode
 keybind = cmd+alt+f=toggle_fullscreen
+# Reset screen instead of clear screen
+keybind = super+k=reset
 
 # delete forward fix keybindings
 keybind = alt+delete=text:\x1bd
