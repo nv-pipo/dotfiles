@@ -38,7 +38,7 @@ nix-env -iA \
     nixpkgs.markdownlint-cli \
     nixpkgs.neovim \
     nixpkgs.nodePackages.jsonlint \
-    nixpkgs.nodejs_23 \
+    nixpkgs.nodejs_24 \
     nixpkgs.prettierd \
     nixpkgs.python3Full \
     nixpkgs.ripgrep \
