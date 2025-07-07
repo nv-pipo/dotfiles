@@ -8,6 +8,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install -y \
     btop \
+    curl \
     fish \
     gcc \
     htop \
