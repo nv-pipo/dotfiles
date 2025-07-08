@@ -11,6 +11,7 @@ sudo apt install -y \
     gcc \
     git \
     wget \
+    xz \
     zsh
 
 sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
