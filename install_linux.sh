@@ -48,7 +48,6 @@ nix-env -iA \
     nixpkgs.yq \
     nixpkgs.zellij \
     nixpkgs.zoxide \
-    nixpkgs.zsh \
     nixpkgs.zsh-completions
 
 # vars
