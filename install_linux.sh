@@ -51,9 +51,6 @@ nix-env -iA \
     nixpkgs.zoxide \
     nixpkgs.zsh-completions
 
-# vars
-dotfiles_path=`pwd`
-
 # dependencies
 ## zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
