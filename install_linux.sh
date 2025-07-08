@@ -7,29 +7,28 @@ set -e
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y \
-    btop \
     curl \
     gcc \
-    htop \
-    stow \
-    wget \
-    zsh
+    git \
+    wget
 
 sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
 
 # install nix-env
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
-. ${HOME}/.nix-profile/etc/profile.d/nix.sh
+. ${HOM}/.nix-profile/etc/profile.d/nix.sh
 
 nix-env -iA \
     nixpkgs.bat \
+    nixpkgs.btop \
     nixpkgs.delta \
     nixpkgs.dust \
     nixpkgs.eza \
     nixpkgs.fd \
     nixpkgs.fzf \
     nixpkgs.glibcLocales \
+    nixpkgs.htop \
     nixpkgs.jq \
     nixpkgs.jqp \
     nixpkgs.lazygit \
@@ -42,11 +41,13 @@ nix-env -iA \
     nixpkgs.ripgrep \
     nixpkgs.starship \
     nixpkgs.stow \
+    nixpkgs.stow \
     nixpkgs.tmux \
     nixpkgs.xh \
     nixpkgs.yq \
     nixpkgs.zellij \
     nixpkgs.zoxide \
+    nixpkgs.zsh \
     nixpkgs.zsh-completions
 
 # vars
