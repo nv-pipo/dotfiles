@@ -43,7 +43,6 @@ nix-env -iA \
     nixpkgs.ripgrep \
     nixpkgs.starship \
     nixpkgs.stow \
-    nixpkgs.stow \
     nixpkgs.tmux \
     nixpkgs.xh \
     nixpkgs.yq \
