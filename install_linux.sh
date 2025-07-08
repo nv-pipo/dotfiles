@@ -18,7 +18,7 @@ sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
 # install nix-env
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
-. ${HOM}/.nix-profile/etc/profile.d/nix.sh
+. ${HOME}/.nix-profile/etc/profile.d/nix.sh
 
 nix-env -iA \
     nixpkgs.bat \
