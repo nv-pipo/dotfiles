@@ -3,6 +3,8 @@ theme = "GitHub Dark"
 
 shell-integration-features = no-cursor,sudo,title
 
+initial-command = /Users/pichurri/homebrew/bin/zellij -s yakumovil
+
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
