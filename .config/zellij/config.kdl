@@ -139,6 +139,7 @@ keybinds {
         bind "Alt F" { ToggleFloatingPanes; }
     }
     shared_except "locked" {
+        bind "Super k" { Clear; }
         bind "Super t" { NewTab; }
         bind "Super w" { CloseTab; }
         bind "Shift Alt h" { MoveTab "Left"; }
@@ -158,8 +159,7 @@ keybinds {
         bind "Super 7" { GoToTab 7; }
         bind "Super 8" { GoToTab 8; }
         bind "Super 9" { GoToTab 9; }
-    }
-    shared_except "locked" {
+        // unbinds
         unbind "Ctrl q"
         bind "Ctrl ∑" { Quit; }
     }
