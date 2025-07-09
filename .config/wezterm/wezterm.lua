@@ -6,7 +6,6 @@ local config = wezterm.config_builder()
 
 config.term = 'wezterm'
 
-
 -- Visual bell
 config.visual_bell = {
     fade_in_function = 'EaseIn',
