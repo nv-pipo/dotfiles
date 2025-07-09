@@ -44,22 +44,9 @@ config.enable_csi_u_key_encoding = false
 local act = wezterm.action
 
 config.keys = {
-    -- tmux tab navigation:
-    -- New tab with CMD + t (Ctrl + b + c | \x00c | \u0000c)
-    { key = 't', mods = 'CMD', action = act.SendString '\x02c' },
-    -- Close tab with CMD + w (Ctrl + b + x | \x00x | \u0000x)
-    { key = 'w', mods = 'CMD', action = act.SendString '\x02x' },
-    -- Next tab with CMD + OPT + Right (Ctrl + b + n | \x00n | \u0000n)
-    { key = 'RightArrow', mods = 'CMD | OPT', action = act.SendString '\x02n' },
-    -- Previous tab with CMD + OPT + Left (Ctrl + b + p | \x00p | \u0000p)
-    { key = 'LeftArrow', mods = 'CMD | OPT', action = act.SendString '\x02p' },
-
     -- Map CMD + Left/Right to Ctrl + a/e. For navigating to the start/end of the line
     { key = 'LeftArrow', mods = 'CMD', action = act { SendKey = { key = 'a', mods = 'CTRL' } } },
     { key = 'RightArrow', mods = 'CMD', action = act { SendKey = { key = 'e', mods = 'CTRL' } } },
-
-    -- Make Option-Backspace equivalent to Ctrl + w; delete word
-    { key = 'Backspace', mods = 'OPT', action = act { SendKey = { key = 'w', mods = 'CTRL' } } },
 
     -- Make Option-Left equivalent to OPT-b which many line editors interpret as backward-word
     { key = 'LeftArrow', mods = 'OPT', action = act { SendKey = { key = 'b', mods = 'OPT' } } },
@@ -67,31 +54,30 @@ config.keys = {
     -- Make Option-Right equivalent to OPT-f; forward-word
     { key = 'RightArrow', mods = 'OPT', action = act { SendKey = { key = 'f', mods = 'OPT' } } },
 
-    -- TMUX hacks
-    -- Use tmux find in buffer
-    { key = 'f', mods = 'CMD', action = act { SendString = '\x02f' } },
-    -- Clear buffer in tmux
-    { key = 'k', mods = 'CMD', action = act { SendString = '\x02u' } },
-    -- Copy buffer in tmux
-    { key = 'c', mods = 'CMD | OPT', action = act { SendString = '\x02v' } },
-    -- Set delete key to CTRL + d
+    -- Translate forward delete (delete key, in macOS) to CTRL + d (for compatibility with shell)
     { key = 'Delete', action = act { SendKey = { key = 'd', mods = 'CTRL' } } },
-    -- CMD + OPT + k/j to add a new cursor above/below and CMD + d to place a cursor on the next occurrence
-    { key = 'k', mods = 'CMD | OPT', action = act { SendKey = { key = 'ķ', mods = 'OPT' } } },
-    { key = 'j', mods = 'CMD | OPT', action = act { SendKey = { key = 'ĵ', mods = 'OPT' } } },
-    { key = 'd', mods = 'CMD', action = act { SendKey = { key = 'ď', mods = 'OPT' } } },
-    -- CMD + a to select all in nvim
-    { key = 'a', mods = 'CMD', action = act.Multiple { act.SendKey { key = 'b', mods = 'CTRL'}, act.SendKey { key = 'a' } } },
-    -- CMD + / in vim to comment line or blocks
-    { key = '/', mods = 'CMD', action = act { SendKey = { key = 'ş', mods = 'OPT' } } },
-    -- SHIFT + ENTER to trigger SHIFT+ENTER as string
-    { key = 'raw:36', mods = 'SHIFT', action = act { SendString = '\x1b[13;2u' } },
-    -- CMD + l as OPT + ł for copilot accept word
-    { key = 'l', mods = 'CMD', action = act { SendKey = { key = 'ł', mods = 'OPT' } } },
-    -- CMD + j as OPT + ĵ for copilot accept line
-    { key = 'j', mods = 'CMD', action = act { SendKey = { key = 'ĵ', mods = 'OPT' } } },
-    -- CMD + Enter as OPT + ė for copilot accept suggestion
-    { key = 'Return', mods = 'CMD', action = act { SendKey = { key = 'ė', mods = 'OPT' } } },
+    -- Translate forward delete word (alt+delete) to OPT + d (for compatibility with shell)
+    { key = 'Delete', mods = 'OPT', action = act { SendKey = { key = 'd', mods = 'OPT' } } },
+
+    -- Make Option-Backspace equivalent to Ctrl + w; delete word
+    { key = 'Backspace', mods = 'OPT', action = act { SendKey = { key = 'w', mods = 'CTRL' } } },
+    -- Clear buffer
+
+    { key = '∂', action = act { SendKey = { key = 'd', mods = 'OPT' } } },
+
+    -- Keybinding disables
+    { key = 'k', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = 't', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = 'w', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '1', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '2', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '3', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '4', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '5', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '6', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '7', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '8', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
+    { key = '9', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
 }
 
 -- config.debug_key_events = true
