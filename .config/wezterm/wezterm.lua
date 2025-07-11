@@ -60,9 +60,7 @@ config.keys = {
 
     -- Make Option-Backspace equivalent to Ctrl + w; delete word
     { key = 'Backspace', mods = 'OPT', action = act { SendKey = { key = 'w', mods = 'CTRL' } } },
-    -- Clear buffer
 
-    { key = '∂', action = act { SendKey = { key = 'd', mods = 'OPT' } } },
 
     -- Keybinding disables
     { key = 'k', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
