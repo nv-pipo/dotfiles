@@ -43,24 +43,21 @@ config.enable_csi_u_key_encoding = false
 local act = wezterm.action
 
 config.keys = {
-    -- Map CMD + Left/Right to Ctrl + a/e. For navigating to the start/end of the line
+    -- Natural text keybindings
+    -- navigation
     { key = 'LeftArrow', mods = 'CMD', action = act { SendKey = { key = 'a', mods = 'CTRL' } } },
     { key = 'RightArrow', mods = 'CMD', action = act { SendKey = { key = 'e', mods = 'CTRL' } } },
-
-    -- Make Option-Left equivalent to OPT-b which many line editors interpret as backward-word
     { key = 'LeftArrow', mods = 'OPT', action = act { SendKey = { key = 'b', mods = 'OPT' } } },
-
-    -- Make Option-Right equivalent to OPT-f; forward-word
     { key = 'RightArrow', mods = 'OPT', action = act { SendKey = { key = 'f', mods = 'OPT' } } },
 
-    -- Translate forward delete (delete key, in macOS) to CTRL + d (for compatibility with shell)
-    { key = 'Delete', action = act { SendKey = { key = 'd', mods = 'CTRL' } } },
-    -- Translate forward delete word (alt+delete) to OPT + d (for compatibility with shell)
-    { key = 'Delete', mods = 'OPT', action = act { SendKey = { key = 'd', mods = 'OPT' } } },
-
-    -- Make Option-Backspace equivalent to Ctrl + w; delete word
+    -- delete
     { key = 'Backspace', mods = 'OPT', action = act { SendKey = { key = 'w', mods = 'CTRL' } } },
+    { key = 'Backspace', mods = 'CMD', action = act { SendKey = { key = 'u', mods = 'CTRL' } } },
+    { key = 'Delete', mods = 'OPT', action = act { SendKey = { key = 'd', mods = 'OPT' } } },
+    { key = 'Delete', mods = 'CMD', action = act { SendKey = { key = 'k', mods = 'CTRL' } } },
 
+    -- Fix delete next character (delete key, in macOS): use CTRL + d
+    { key = 'Delete', action = act { SendKey = { key = 'd', mods = 'CTRL' } } },
 
     -- Keybinding disables
     { key = 'k', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
