@@ -12,6 +12,8 @@ window-decoration = false
 window-padding-balance = true
 window-colorspace = "display-p3"
 
+scrollback-limit = 0
+
 copy-on-select = clipboard
 
 # keybindings
