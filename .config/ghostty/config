@@ -20,11 +20,8 @@ copy-on-select = clipboard
 keybind = cmd+s>r=reload_config
 
 # unbinds
-# add cursor on next occurrence in nvim
-keybind = cmd+d=unbind
-# select all in nvim
-keybind = cmd+a=unbind
-# tabs
+# used by zellij
+keybind = cmd+k=unbind
 keybind = cmd+w=unbind
 keybind = alt+h=unbind
 keybind = alt+l=unbind
@@ -38,6 +35,9 @@ keybind = cmd+6=unbind
 keybind = cmd+7=unbind
 keybind = cmd+8=unbind
 keybind = cmd+9=unbind
+# used by nvim
+keybind = cmd+d=unbind
+keybind = cmd+a=unbind
 
 # toggle fullscreen/zoom mode
 keybind = cmd+alt+f=toggle_fullscreen
