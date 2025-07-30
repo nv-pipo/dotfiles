@@ -59,9 +59,8 @@ config.keys = {
     -- Fix delete next character (delete key, in macOS): use CTRL + d
     { key = 'Delete', action = act { SendKey = { key = 'd', mods = 'CTRL' } } },
 
-    -- clear screen 
-    { key = 'k', mods = 'CMD', action = wezterm.action.ResetTerminal },
-    -- { key = 'k', mods = 'CMD', action = wezterm.action.ClearScrollback 'ScrollbackAndViewport', },
+    -- reset screen 
+    { key = 'r', mods = 'CMD', action = wezterm.action.ResetTerminal },
 
     -- Keybinding disables
     { key = 't', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
