@@ -59,7 +59,7 @@ config.keys = {
     -- Fix delete next character (delete key, in macOS): use CTRL + d
     { key = 'Delete', action = act { SendKey = { key = 'd', mods = 'CTRL' } } },
 
-    -- reset screen 
+    -- reset screen
     { key = 'r', mods = 'CMD', action = wezterm.action.ResetTerminal },
 
     -- Keybinding disables
