@@ -146,10 +146,6 @@ keybinds {
         bind "Shift Alt l" { MoveTab "Right"; }
         bind "Alt h" { GoToPreviousTab; }
         bind "Alt l" { GoToNextTab; }
-        bind "Super Alt h" { MoveFocus "Left"; }
-        bind "Super Alt j" { MoveFocus "Down"; }
-        bind "Super Alt k" { MoveFocus "Up"; }
-        bind "Super Alt l" { MoveFocus "Right"; }
         bind "Super 1" { GoToTab 1; }
         bind "Super 2" { GoToTab 2; }
         bind "Super 3" { GoToTab 3; }
@@ -160,6 +156,8 @@ keybinds {
         bind "Super 8" { GoToTab 8; }
         bind "Super 9" { GoToTab 9; }
         // unbinds
+        unbind "Alt j"
+        unbind "Alt k"
         unbind "Ctrl q"
         bind "Ctrl ∑" { Quit; }
     }
