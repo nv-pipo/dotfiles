@@ -63,6 +63,7 @@ config.keys = {
     { key = 'r', mods = 'CMD', action = wezterm.action.ResetTerminal },
 
     -- Keybinding disables
+    { key = 'k', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
     { key = 't', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
     { key = 'w', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
     { key = '1', mods = 'CMD', action = wezterm.action.DisableDefaultAssignment, },
