@@ -46,4 +46,5 @@ keybind = super+r=reset
 
 # delete forward fix keybindings
 keybind = alt+delete=text:\x1bd
+keybind = cmd+delete=text:\x0b
 keybind = delete=text:\x04
