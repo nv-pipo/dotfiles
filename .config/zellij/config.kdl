@@ -142,10 +142,10 @@ keybinds {
         bind "Super t" { NewTab; }
         bind "Super w" { CloseTab; }
         bind "Super k" { Clear; }
-        bind "Shift Alt h" { MoveTab "Left"; }
-        bind "Shift Alt l" { MoveTab "Right"; }
-        bind "Alt h" { GoToPreviousTab; }
-        bind "Alt l" { GoToNextTab; }
+        bind "Shift Alt m" { MoveTab "Left"; }
+        bind "Shift Alt i" { MoveTab "Right"; }
+        bind "Alt m" { GoToPreviousTab; }
+        bind "Alt i" { GoToNextTab; }
         bind "Super 1" { GoToTab 1; }
         bind "Super 2" { GoToTab 2; }
         bind "Super 3" { GoToTab 3; }
