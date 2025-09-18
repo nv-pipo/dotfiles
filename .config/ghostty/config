@@ -48,3 +48,6 @@ keybind = super+r=reset
 keybind = alt+delete=text:\x1bd
 keybind = cmd+delete=text:\x0b
 keybind = delete=text:\x04
+
+# delete previous word
+keybind = alt+backspace=text:\x17
