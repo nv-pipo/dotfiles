@@ -22,6 +22,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ${HOME}/.nix-profile/etc/profile.d/nix.sh
 
 nix-env -iA \
+    nixpkgs.azure-cli \
     nixpkgs.bat \
     nixpkgs.btop \
     nixpkgs.delta \
