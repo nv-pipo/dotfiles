@@ -20,6 +20,8 @@ sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 . ${HOME}/.nix-profile/etc/profile.d/nix.sh
+# upgrading:
+# nix-channel --update && nix-env -u '*'
 
 nix-env -iA \
     nixpkgs.azure-cli \
