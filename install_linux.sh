@@ -3,55 +3,42 @@
 set -x
 set -e
 
+# update apk repositories and upgrade existing packages
+sudo apk update
+sudo apk upgrade
+
 # dependencies
-sudo apt update
-sudo apt upgrade -y
-sudo apt install -y \
+sudo apk add \
+    bat \
+    btop \
     curl \
+    dust \
+    eza \
+    fd \
+    fzf \
     gcc \
     git \
+    delta \
+    htop \
+    jq \
+    lazygit \
+    neovim@edge \
+    nodejs \
+    npm \
+    py3-pip \
+    python3 \
+    ripgrep \
+    starship \
+    stow \
+    tmux \
     wget \
+    xh \
     xz \
-    zsh
-
-sudo install -d -m755 -o $(id -u) -g $(id -g) /nix
-
-# install nix-env
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-
-. ${HOME}/.nix-profile/etc/profile.d/nix.sh
-# upgrading:
-# nix-channel --update && nix-env -u '*'
-
-nix-env -iA \
-    nixpkgs.azure-cli \
-    nixpkgs.bat \
-    nixpkgs.btop \
-    nixpkgs.delta \
-    nixpkgs.dust \
-    nixpkgs.eza \
-    nixpkgs.fd \
-    nixpkgs.fzf \
-    nixpkgs.glibcLocales \
-    nixpkgs.htop \
-    nixpkgs.jq \
-    nixpkgs.jqp \
-    nixpkgs.lazygit \
-    nixpkgs.markdownlint-cli \
-    nixpkgs.neovim \
-    nixpkgs.nodePackages.jsonlint \
-    nixpkgs.nodejs_24 \
-    nixpkgs.prettierd \
-    nixpkgs.python3Full \
-    nixpkgs.ripgrep \
-    nixpkgs.starship \
-    nixpkgs.stow \
-    nixpkgs.tmux \
-    nixpkgs.xh \
-    nixpkgs.yq \
-    nixpkgs.zellij \
-    nixpkgs.zoxide \
-    nixpkgs.zsh-completions
+    yq \
+    zellij@edge \
+    zoxide \
+    zsh \
+    zsh-completions
 
 # dependencies
 ## zinit
