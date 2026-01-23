@@ -11,6 +11,7 @@ export PATH=${HOME}/.local/bin:$PATH
 export PATH=${HOME}/.docker/bin:$PATH
 export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
+export PATH=${HOME}/homebrew/opt/ruby/bin:${PATH}
 
 # nixos packages
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
