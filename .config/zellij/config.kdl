@@ -130,6 +130,16 @@ theme "my_theme"
 session_serialization false
 
 keybinds {
+    unbind "Ctrl o"
+        normal {
+        // Bind Ctrl + Shift + s to enter Session mode
+        bind "Ctrl S" { SwitchToMode "Session"; }
+    }
+
+    session {
+        // Bind Ctrl + Shift + s to exit back to Normal mode
+        bind "Ctrl S" { SwitchToMode "Normal"; }
+    }
     shared_except "move" "locked" {
         unbind "Ctrl h"
         bind "Ctrl m" { SwitchToMode "Move"; }
