@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # dependencies
-brew tap homebrew/cask-fonts
 brew install \
     bash \
     bat \
