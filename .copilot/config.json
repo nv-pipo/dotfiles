@@ -1,0 +1,19 @@
+{
+  "firstLaunchAt": "2026-03-27T21:03:18.560Z",
+  "banner": "never",
+  "last_logged_in_user": {
+    "host": "https://github.com",
+    "login": "nv-pipo"
+  },
+  "logged_in_users": [
+    {
+      "host": "https://github.com",
+      "login": "nv-pipo"
+    }
+  ],
+  "model": "gpt-5.4",
+  "effortLevel": "low",
+  "allowed_urls": [
+    "https://docs.github.com"
+  ]
+}
