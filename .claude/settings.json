@@ -1,0 +1,19 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:1234/",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "ANTHROPIC_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
+    "ANTHROPIC_SMALL_FAST_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated"
+  },
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch"
+    ]
+  },
+  "effortLevel": "low"
+}
