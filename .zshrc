@@ -12,6 +12,9 @@ export PATH=${HOME}/.docker/bin:$PATH
 export PATH=${HOME}/homebrew/bin:${PATH}
 export PATH=${HOME}/homebrew/sbin:${PATH}
 export PATH=${HOME}/homebrew/opt/ruby/bin:${PATH}
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/pichurri/.lmstudio/bin"
+# End of LM Studio CLI section
 
 # nixos packages
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
@@ -180,3 +183,5 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # set the default editor
 export EDITOR=nvim
+
+
