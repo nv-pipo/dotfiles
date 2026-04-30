@@ -3,11 +3,11 @@
     "ANTHROPIC_BASE_URL": "http://localhost:1234/",
     "API_TIMEOUT_MS": "3000000",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-    "ANTHROPIC_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
-    "ANTHROPIC_SMALL_FAST_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "huihui-qwen3.5-35b-a3b-claude-4.6-opus-abliterated"
+    "ANTHROPIC_MODEL": "google/gemma-4-26b-a4b",
+    "ANTHROPIC_SMALL_FAST_MODEL": "google/gemma-4-26b-a4b",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "google/gemma-4-26b-a4b",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "google/gemma-4-26b-a4b",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "google/gemma-4-26b-a4b"
   },
   "permissions": {
     "allow": [
