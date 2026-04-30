@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "chat": {
+      "prompt": "You are a helpful assistant. Do not use tools or modify files. Just chat.",
+      "permission": {
+        "edit": "deny",
+        "glob": "deny",
+        "task": "deny",
+        "todowrite": "deny",
+        "skill": "deny",
+        "bash": { "*": "deny" }
+      }
+    }
+  }
+}
