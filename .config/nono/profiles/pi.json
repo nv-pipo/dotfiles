@@ -5,6 +5,6 @@
   },
   "filesystem": {
     "write": ["./", "~/.pi"],
-    "read": ["/opt/homebrew/bin/", "~/homebrew", "~/miniforge3"]
+    "read": ["./", "~/.pi", "/opt/homebrew/bin/", "~/homebrew", "~/miniforge3"]
   }
 }
