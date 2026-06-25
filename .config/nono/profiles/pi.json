@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "name": "pi",
+    "version": "1.0.0"
+  },
+  "filesystem": {
+    "write": ["./", "~/.pi"],
+    "read": ["/opt/homebrew/bin/", "~/homebrew", "~/miniforge3"]
+  }
+}
