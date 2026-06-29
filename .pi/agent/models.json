@@ -1,0 +1,121 @@
+{
+    "providers": {
+        "lmstudio": {
+            "baseUrl": "http://localhost:1234/v1",
+            "api": "openai-completions",
+            "apiKey": "lm-studio",
+            "models": [
+                {
+                    "id": "google/gemma-4-26b-a4b"
+                }
+            ]
+        },
+        "wafer": {
+            "baseUrl": "https://pass.wafer.ai/v1",
+            "api": "openai-completions",
+            "apiKey": "none",
+            "compat": {
+                "supportsReasoningEffort": true
+            },
+            "headers": {
+                "Authorization": "$WAFER_AUTH_TOKEN",
+                "Wafer-ZDR": "required"
+            },
+            "models": [
+                {
+                    "id": "GLM-5.2",
+                    "cost": {
+                        "input": 1.20,
+                        "output": 4.10,
+                        "cacheRead": 0.2,
+                        "cacheWrite": 0.2
+                    },
+                    "thinkingLevelMap": {
+                        "minimal": null,
+                        "low": "low",
+                        "medium": "medium",
+                        "high": "high",
+                        "xhigh": "max"
+                    }
+                },
+                {
+                    "id": "deepseek-v4-flash",
+                    "cost": {
+                        "input": 0.09,
+                        "output": 0.18,
+                        "cacheRead": 0.02,
+                        "cacheWrite": 0.02
+                    },
+                    "thinkingLevelMap": {
+                        "minimal": null,
+                        "low": "low",
+                        "medium": "medium",
+                        "high": "high",
+                        "xhigh": "max"
+                    }
+                }
+            ]
+        },
+        "azure-foundry-me": {
+            "baseUrl": "https://af-cheap.openai.azure.com/openai/v1",
+            "api": "openai-completions",
+            "apiKey": "azure-foundry-me",
+            "compat": {
+                "supportsReasoningEffort": true
+            },
+            "models": [
+                {
+                    "id": "DeepSeek-V4-Flash",
+                    "reasoning": true,
+                    "cost": {
+                        "input": 0.19,
+                        "output": 0.51,
+                        "cacheRead": 0,
+                        "cacheWrite": 0
+                    },
+                    "thinkingLevelMap": {
+                        "minimal": null,
+                        "low": null,
+                        "medium": null,
+                        "high": "high",
+                        "xhigh": "max"
+                    }
+                }
+            ]
+        },
+        "azure-foundry-ilo": {
+            "baseUrl": "https://secops-ai-foundry.services.ai.azure.com/api/projects/secops-ai-foundry/openai/v1",
+            "api": "openai-completions",
+            "apiKey": "azure-foundry-ilo",
+            "compat": {
+                "supportsReasoningEffort": true
+            },
+            "models": [
+                {
+                    "id": "gpt-5.4",
+                    "reasoning": true
+                },
+                {
+                    "id": "Kimi-K2.6"
+                },
+                {
+                    "id": "DeepSeek-V4-Flash",
+                    "reasoning": true,
+                    "cost": {
+                        "input": 0.19,
+                        "output": 0.51,
+                        "cacheRead": 0,
+                        "cacheWrite": 0
+                    },
+                    "thinkingLevelMap": {
+                        "minimal": null,
+                        "low": null,
+                        "medium": null,
+                        "high": "high",
+                        "xhigh": "max"
+                    }
+                }
+            ]
+        }
+    }
+}

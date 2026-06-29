@@ -1,0 +1,24 @@
+{
+  "lastChangelogVersion": "0.80.2",
+  "defaultProvider": "openrouter",
+  "defaultModel": "deepseek/deepseek-v4-pro",
+  "defaultThinkingLevel": "high",
+  "tokenSpeed": {
+    "display": "full"
+  },
+  "theme": "dark",
+  "enabledModels": [
+    "azure-foundry-ilo/gpt-5.4",
+    "azure-foundry-ilo/Kimi-K2.6",
+    "azure-foundry-ilo/DeepSeek-V4-Flash",
+    "azure-foundry-me/DeepSeek-V4-Flash",
+    "openrouter/z-ai/glm-5.2",
+    "openrouter/deepseek/deepseek-v4-flash",
+    "openrouter/deepseek/deepseek-v4-pro",
+    "openrouter/anthropic/claude-opus-4.8",
+    "openrouter/openai/gpt-5.5"
+  ],
+  "packages": [
+    "npm:graphify-pi"
+  ]
+}
