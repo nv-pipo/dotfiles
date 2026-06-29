@@ -20,7 +20,9 @@
   "network": {
     "allow_domain": [
       "openrouter.ai",
-      "pi.dev"
+      "pi.dev",
+      "af-cheap.openai.azure.com",
+      "secops-ai-foundry.services.ai.azure.com"
     ]
   }
 }
