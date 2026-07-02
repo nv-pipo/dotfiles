@@ -22,6 +22,11 @@ if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
   export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
 fi
 
+# if in host berriesland, export XDG_RUNTIME_DIR and DOCKER_HOST for podman
+if [[ $(hostname) == "berriesland" ]]; then
+  export XDG_RUNTIME_DIR=/tmp/run/1000/ ; export DOCKER_HOST=unix:///tmp/run/1000/podman.sock
+fi
+
 # homebrew
 if [[ -f "${HOME}/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
