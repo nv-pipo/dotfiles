@@ -8,3 +8,6 @@ agent_panel_sort = "priority"
 
 [theme]
 name = "tokyo-night"
+
+[advanced]
+scrollback_limit_bytes = 10485760
