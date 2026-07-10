@@ -4,9 +4,14 @@
     "version": "1.0.0"
   },
   "filesystem": {
+    "unix_socket": [
+      "~/.config/herdr/herdr-client.sock",
+      "~/.config/herdr/herdr.sock"
+    ],
     "write": [
       "./",
-      "~/.pi"
+      "~/.pi",
+      "~/.config/herdr"
     ],
     "read": [
       "./",
@@ -15,7 +20,8 @@
       "/opt/homebrew/bin/",
       "~/homebrew",
       "~/miniforge3",
-      "~/.local/share/uv"
+      "~/.local/share/uv",
+      "~/.config/herdr"
     ]
   },
   "network": {
