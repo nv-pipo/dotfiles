@@ -53,6 +53,22 @@
                         "high": "high",
                         "xhigh": "max"
                     }
+                },
+                {
+                    "id": "deepseek-v4-pro",
+                    "cost": {
+                        "input": 1.74,
+                        "output": 3.48,
+                        "cacheRead": 0.145,
+                        "cacheWrite": 0.145
+                    },
+                    "thinkingLevelMap": {
+                        "minimal": null,
+                        "low": "low",
+                        "medium": "medium",
+                        "high": "high",
+                        "xhigh": "max"
+                    }
                 }
             ]
         },

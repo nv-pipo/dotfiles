@@ -11,9 +11,10 @@
     "openrouter/deepseek/deepseek-v4-flash",
     "openrouter/anthropic/claude-opus-4.8",
     "openrouter/openai/gpt-5.5",
+    "azure-foundry-ilo/DeepSeek-V4-Flash",
+    "azure-foundry-ilo/DeepSeek-V4-Pro",
     "azure-foundry-ilo/gpt-5.4",
-    "azure-foundry-ilo/Kimi-K2.6",
-    "azure-foundry-ilo/DeepSeek-V4-Flash"
+    "azure-foundry-ilo/Kimi-K2.6"
   ],
   "packages": [
     "npm:graphify-pi"
