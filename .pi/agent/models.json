@@ -56,33 +56,6 @@
                 }
             ]
         },
-        "azure-foundry-me": {
-            "baseUrl": "https://af-cheap.openai.azure.com/openai/v1",
-            "api": "openai-completions",
-            "apiKey": "azure-foundry-me",
-            "compat": {
-                "supportsReasoningEffort": true
-            },
-            "models": [
-                {
-                    "id": "DeepSeek-V4-Flash",
-                    "reasoning": true,
-                    "cost": {
-                        "input": 0.19,
-                        "output": 0.51,
-                        "cacheRead": 0,
-                        "cacheWrite": 0
-                    },
-                    "thinkingLevelMap": {
-                        "minimal": null,
-                        "low": null,
-                        "medium": null,
-                        "high": "high",
-                        "xhigh": "max"
-                    }
-                }
-            ]
-        },
         "azure-foundry-ilo": {
             "baseUrl": "https://secops-ai-foundry.services.ai.azure.com/api/projects/secops-ai-foundry/openai/v1",
             "api": "openai-completions",
