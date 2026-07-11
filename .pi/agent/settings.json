@@ -11,6 +11,7 @@
     "openrouter/deepseek/deepseek-v4-flash",
     "openrouter/anthropic/claude-opus-4.8",
     "openrouter/openai/gpt-5.5",
+    "lmstudio/google/gemma-4-26b-a4b",
     "azure-foundry-ilo/DeepSeek-V4-Flash",
     "azure-foundry-ilo/DeepSeek-V4-Pro",
     "azure-foundry-ilo/gpt-5.4",
