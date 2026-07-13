@@ -189,4 +189,5 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 # set the default editor
 export EDITOR=nvim
 
-
+# other environment variables
+export CODEGRAPH_TELEMETRY=0
