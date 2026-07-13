@@ -20,68 +20,6 @@
                 }
             ]
         },
-        "wafer": {
-            "baseUrl": "https://pass.wafer.ai/v1",
-            "api": "openai-completions",
-            "apiKey": "none",
-            "compat": {
-                "supportsReasoningEffort": true
-            },
-            "headers": {
-                "Authorization": "$WAFER_AUTH_TOKEN",
-                "Wafer-ZDR": "required"
-            },
-            "models": [
-                {
-                    "id": "GLM-5.2",
-                    "cost": {
-                        "input": 1.20,
-                        "output": 4.10,
-                        "cacheRead": 0.2,
-                        "cacheWrite": 0.2
-                    },
-                    "thinkingLevelMap": {
-                        "minimal": null,
-                        "low": "low",
-                        "medium": "medium",
-                        "high": "high",
-                        "xhigh": "max"
-                    }
-                },
-                {
-                    "id": "deepseek-v4-flash",
-                    "cost": {
-                        "input": 0.09,
-                        "output": 0.18,
-                        "cacheRead": 0.02,
-                        "cacheWrite": 0.02
-                    },
-                    "thinkingLevelMap": {
-                        "minimal": null,
-                        "low": "low",
-                        "medium": "medium",
-                        "high": "high",
-                        "xhigh": "max"
-                    }
-                },
-                {
-                    "id": "deepseek-v4-pro",
-                    "cost": {
-                        "input": 1.74,
-                        "output": 3.48,
-                        "cacheRead": 0.145,
-                        "cacheWrite": 0.145
-                    },
-                    "thinkingLevelMap": {
-                        "minimal": null,
-                        "low": "low",
-                        "medium": "medium",
-                        "high": "high",
-                        "xhigh": "max"
-                    }
-                }
-            ]
-        },
         "azure-foundry-ilo": {
             "baseUrl": "https://secops-ai-foundry.services.ai.azure.com/api/projects/secops-ai-foundry/openai/v1",
             "api": "openai-completions",
