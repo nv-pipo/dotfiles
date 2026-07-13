@@ -1,13 +1,13 @@
 ---
 name: codegraph
-description: "CodeGraph is a code-intelligence knowledge graph. Use this skill for ANY search, lookup, or mapping request regarding symbols, functions, classes, definitions, or code paths. It replaces recursive grep, rg, find, and cat commands entirely when exploring a codebase."
+description: "CodeGraph is a code-intelligence knowledge graph. Use this skill for ANY search, lookup, or mapping request regarding symbols, functions, classes, definitions, or code paths, AND for understanding project structure, file layout, and naming/conventions across the codebase. It replaces recursive grep, rg, find, tree, ls, and cat commands entirely when exploring a codebase."
 ---
 
 # CodeGraph Skill
 
 CodeGraph is a code-intelligence & knowledge graph for any codebase. It builds an index of symbols, definitions, and call relationships, then lets you query that graph directly — no recursive `grep`/`find`/`cat` needed.
 
-Use this skill when the user asks structural, architectural, or relational questions about the codebase: call chains, who calls whom, change impact / blast radius, finding declarations, affected tests, or exploring how components interact.
+Use this skill when the user asks structural, architectural, or relational questions about the codebase: call chains, who calls whom, change impact / blast radius, finding declarations, affected tests, exploring how components interact, or mapping the project's file structure and understanding its conventions (naming, layout, symbol organization).
 
 ## Usage Instructions
 
@@ -74,12 +74,45 @@ Find definitions, symbols, and files without reading whole modules. The command 
 codegraph query <search>
 ```
 
-### 7. Project File Structure
-Show the project's file structure as seen by the index:
+### 7. Project Structure & Conventions
+Understand how the project is laid out and the conventions it follows, straight from the index — no manual tree walking needed.
+
+#### 7a. View the file structure
+`files` renders the project layout as the index sees it. Use the format/filter options to switch between an overview and a focused cut:
 
 ```bash
-codegraph files
+codegraph files                          # tree view (default), with language & symbol counts
+codegraph files --format flat            # flat list of every indexed file
+codegraph files --format grouped         # group files by language/type — great for spotting conventions
+codegraph files --filter src/api         # only files under a given directory
+codegraph files --pattern "**/*.test.*"  # only files matching a glob (e.g. test layout)
+codegraph files --max-depth 2            # shallow tree for a quick orientation
+codegraph files --no-metadata            # just the structure, no per-file counts
+codegraph files -j                       # JSON output for downstream parsing
 ```
+
+Use `--format grouped` to infer conventions at a glance: where source lives, where tests live, how config is split, which languages coexist, and how files are named per type.
+
+#### 7b. Discover naming & symbol conventions
+`query` with a `--kind` filter reveals how the project names and organizes each symbol category — useful for matching existing patterns when adding code:
+
+```bash
+codegraph query --kind function --limit 30   # all functions, see naming/style conventions
+codegraph query --kind class     --limit 30  # class declaration patterns
+codegraph query --kind interface --limit 30  # interface/type conventions
+codegraph query "Controller"  --limit 30      # find a naming pattern across the codebase
+codegraph query "handle"     --limit 30      # see how handlers are named/wired
+```
+
+#### 7c. Structural statistics
+`status` reports what the index knows about the project — file counts by language, symbol counts, and index health — a fast way to size up conventions and coverage before diving in:
+
+```bash
+codegraph status        # human-readable summary
+codegraph status -j     # JSON for scripting
+```
+
+**When to use which:** reach for `files` to map the layout, `query --kind` to learn how symbols are named and grouped, and `status` to get the high-level profile of the codebase.
 
 ## Management Commands
 
@@ -98,5 +131,6 @@ codegraph help [command]      # Help for a specific command
 - NEVER default to recursive file reads (`cat`, `less`) or text searches (`grep`, `find`) for tracking code dependencies or symbol locations. Use CodeGraph queries instead.
 - Prefer `codegraph node` / `callers` / `callees` / `impact` for precise, one-shot relational context.
 - Use `codegraph explore` for open-ended "how does X work" questions.
+- Use `codegraph files`, `query --kind`, and `status` to understand project structure, naming, and conventions instead of `ls`/`tree`/`find`/`grep`.
 - Use `codegraph affected` when the user wants to know which tests to run after a change.
 - If queries return no results, check `codegraph status` and run `codegraph sync` (or `codegraph index`) to refresh the index.
