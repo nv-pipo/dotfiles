@@ -1,6 +1,6 @@
 ---
 name: codegraph
-description: A better way to search within source code than grep/rg — query the repository dependency graph, symbol relationships, and code paths instead of recursively scanning files.
+description: "CodeGraph is a code-intelligence knowledge graph. Use this skill for ANY search, lookup, or mapping request regarding symbols, functions, classes, definitions, or code paths. It replaces recursive grep, rg, find, and cat commands entirely when exploring a codebase."
 ---
 
 # CodeGraph Skill
