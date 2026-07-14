@@ -11,3 +11,14 @@ name = "tokyo-night"
 
 [advanced]
 scrollback_limit_bytes = 10485760
+
+[keys]
+prefix = "ctrl+t"
+new_tab = ["prefix+c", "super+t"]
+previous_tab = ["prefix+p", "alt+m", "super+shift+right"]
+next_tab = ["prefix+n", "alt+i", "super+shift+left"]
+new_workspace = ["prefix+shift+n", "super+w"]
+previous_workspace = "alt+e"
+next_workspace = "alt+n"
+previous_agent = "shift+alt+e"
+next_agent = "shift+alt+n"
