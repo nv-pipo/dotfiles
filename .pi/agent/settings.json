@@ -16,8 +16,5 @@
     "azure-foundry-ilo/DeepSeek-V4-Pro",
     "azure-foundry-ilo/gpt-5.4",
     "azure-foundry-ilo/Kimi-K2.6"
-  ],
-  "packages": [
-    "npm:graphify-pi"
   ]
 }
