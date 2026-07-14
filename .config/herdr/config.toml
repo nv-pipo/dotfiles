@@ -12,6 +12,9 @@ name = "tokyo-night"
 [advanced]
 scrollback_limit_bytes = 10485760
 
+[experimental]
+allow_nested = true
+
 [keys]
 prefix = "ctrl+t"
 new_tab = ["prefix+c", "super+t"]
