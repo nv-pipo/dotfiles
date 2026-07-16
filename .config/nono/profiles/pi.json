@@ -23,7 +23,8 @@
       "~/.local/share/uv",
       "~/.config/herdr",
       "~/.config/nono/profiles/pi.json",
-      "~/dotfiles/.config/nono/profiles/pi.json"
+      "~/dotfiles/.config/nono/profiles/pi.json",
+      "/Users/pichurri/.gitconfig"
     ]
   },
   "network": {
