@@ -15,16 +15,16 @@
     ],
     "read": [
       "./",
-      "~/.pi",
-      "~/dotfiles/.pi",
+      "/Users/pichurri/.gitconfig",
       "/opt/homebrew/bin/",
-      "~/homebrew",
-      "~/miniforge3",
-      "~/.local/share/uv",
       "~/.config/herdr",
       "~/.config/nono/profiles/pi.json",
+      "~/.local/share/uv",
+      "~/.pi",
       "~/dotfiles/.config/nono/profiles/pi.json",
-      "/Users/pichurri/.gitconfig"
+      "~/dotfiles/.pi",
+      "~/homebrew",
+      "~/miniforge3",
     ]
   },
   "network": {
