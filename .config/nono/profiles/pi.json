@@ -15,6 +15,7 @@
     ],
     "read": [
       "./",
+      "/Users/pichurri/.codegraph",
       "/Users/pichurri/.gitconfig",
       "/opt/homebrew/bin/",
       "~/.config/herdr",
