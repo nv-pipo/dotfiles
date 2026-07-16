@@ -20,6 +20,8 @@ This skill produces a high-quality **git commit message** for the files currentl
 
 Use `git` directly to inspect what is staged. Never inspect unstaged or untracked files unless the user asks — the message must reflect *staged* changes only.
 
+- **Do not change directories.** pi is already running at the root of the git repo. Run `git` commands as-is (e.g. `git diff --staged`), never prefixed with `cd <path> &&`.
+
 ```bash
 git status --short          # see staged (and other) paths
 git diff --staged --stat    # summary of staged hunks
@@ -50,12 +52,9 @@ Use codegraph when the diff is non-trivial: new/renamed symbols, changed functio
 
 Combine the diff (what) and the graph (why) into a single commit message following these rules:
 
-- **Conventional Commits** format unless the repo's `git log` clearly uses another convention. Match the repo's existing style when it's consistent.
-  ```
-  <type>(<optional scope>): <imperative summary>
-
-  <body explaining why, referencing affected symbols/tests when useful>
-  ```
+- **Conventional Commits** format unless the repo's `git log` clearly uses another convention. Match the repo's existing style when it's consistent:
+  - Summary: `<type>(<optional scope>): <imperative summary>`
+  - Body (only if requested): `<body explaining why, referencing affected symbols/tests when useful>`
 - Type is one of: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `build`, `ci`, `chore`, `style`, `revert`.
 - **Summary line:** imperative mood ("add", "fix", "refactor"), ≤ ~72 chars, no trailing period. Describe the change, not the diff.
 - **Body is omitted by default.** Only include a body when the user explicitly asks for one (e.g., "include a body", "explain why", "add detail"). When the user does ask for a body, wrap it at ~72 cols, explain the *why* and any non-obvious *what* — pull the rationale from codegraph impact/caller analysis — and reference affected tests from `codegraph affected` when relevant.
@@ -65,31 +64,27 @@ Combine the diff (what) and the graph (why) into a single commit message followi
 
 ### 4. Present the message
 
-Determine which of the three mutually-exclusive options below applies, then output **exactly that option and nothing else**. No preamble, no trailing commentary, no "looks like a single logical change" note, no questions — just the one option. Do not commit.
+Determine which of the three mutually-exclusive options below applies, then output **exactly that option and nothing else**. The ENTIRE response body must be only the option — no preamble, no reasoning, no explanation of the change, no "this is a cosmetic update" or similar introduction, no trailing commentary, no "looks like a single logical change" note, no questions, no code fences (```), no Markdown formatting, no surrounding backticks. If the option is a commit message (options 1 or 2), your full response is the commit message text and nothing else. Do not commit.
 
 **Option 1 — default (single logical change, no body requested):**
 
-Output only the summary line in a fenced code block.
+Output only the summary line as plain text, with no code fence and no surrounding backticks.
 
-```
 feat(auth): validate token expiry before refresh
-```
 
 **Option 2 — user explicitly asked for a body (single logical change):**
 
-Output the summary line, a blank line, then the body — all in one fenced code block.
+Output the summary line, a blank line, then the body — all as plain text, with no code fence and no surrounding backticks.
 
-```
 feat(auth): validate token expiry before refresh
 
 Token refresh previously fired regardless of expiry, causing redundant
 network calls. Guard `refreshToken` with an `isExpired` check and add a
 unit test covering the near-expiry path. Affects `AuthMiddleware` callers.
-```
 
 **Option 3 — staged files do not form a single logical change:**
 
-Do **not** produce a commit message. Output only the literal warning below (no code fence, no suggested groupings, no commit message):
+Do **not** produce a commit message. Output only the literal warning below (no code fence, no Markdown formatting, no suggested groupings, no commit message):
 
 *Staged set DOES NOT look like a single logical change. Please review*
 - potential logical change 1
@@ -119,7 +114,8 @@ git commit -F <(printf '%s\n' "$MESSAGE")
 - Generate the message; do not commit unless explicitly asked.
 - When asked to commit, use `git` directly with the generated message; no extra flags, no push.
 - Use `/codegraph` for semantic *why* context on non-trivial diffs; skip it for cosmetic changes.
-- Output **exactly one** of the three options defined in step 4 — never commentary, never a mix, never a trailing note. Single logical change + no body requested → option 1 only; body requested → option 2 only; not a single logical change → option 3 only (no message, no fallback to 1 or 2).
+- **The response must be ONLY the selected option.** Never output reasoning, preamble, explanations of the change (e.g. "this is a cosmetic update"), trailing notes, code fences (```), or surrounding Markdown/backtick formatting. For options 1 and 2 the entire response is the commit message text and nothing else.
+- Output **exactly one** of the three options defined in step 4. Single logical change + no body requested → option 1 only; body requested → option 2 only; not a single logical change → option 3 only (no message, no fallback to 1 or 2).
 - Match the repo's existing commit conventions when they are clear from `git log`.
 - Keep the summary ≤ ~72 chars, imperative mood, no trailing period.
 - Omit the body by default; include one only when the user explicitly asks for it.
