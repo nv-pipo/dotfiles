@@ -9,6 +9,8 @@
     "openrouter/z-ai/glm-5.2",
     "openrouter/deepseek/deepseek-v4-pro",
     "openrouter/deepseek/deepseek-v4-flash",
+    "openrouter/qwen/qwen3.6-35b-a3b",
+    "openrouter/google/gemma-4-26b-a4b-it",
     "openrouter/anthropic/claude-opus-4.8",
     "openrouter/openai/gpt-5.5",
     "lmstudio/google/gemma-4-26b-a4b",
