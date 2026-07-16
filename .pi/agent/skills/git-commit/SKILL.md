@@ -22,14 +22,14 @@ Use `git` directly to inspect what is staged. Never inspect unstaged or untracke
 
 ```bash
 git status --short          # see staged (and other) paths
-git diff --cached --stat    # summary of staged hunks
-git diff --cached           # full staged diff
+git diff --staged --stat    # summary of staged hunks
+git diff --staged           # full staged diff
 git log --oneline -10       # match the repo's existing commit style/conventions
 ```
 
 Notes:
-- `git diff --cached` shows **staged** changes. Use this, not `git diff`.
-- If nothing is staged (`git diff --cached --quiet` exits 0), tell the user there is nothing staged and stop. Do not invent a message.
+- `git diff --staged` shows **staged** changes. Use this, not `git diff`.
+- If nothing is staged (`git diff --staged --quiet` exits 0), tell the user there is nothing staged and stop. Do not invent a message.
 
 ### 2. Enrich with semantic context (codegraph)
 
@@ -114,7 +114,7 @@ git commit -F <(printf '%s\n' "$MESSAGE")
 
 ## Rules
 
-- Inspect **staged** changes only (`git diff --cached`), never unstaged/untracked unless asked.
+- Inspect **staged** changes only (`git diff --staged`), never unstaged/untracked unless asked.
 - If nothing is staged, say so and stop — do not fabricate a message.
 - Generate the message; do not commit unless explicitly asked.
 - When asked to commit, use `git` directly with the generated message; no extra flags, no push.
