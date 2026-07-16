@@ -59,21 +59,25 @@ Combine the diff (what) and the graph (why) into a single commit message followi
 - Type is one of: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `build`, `ci`, `chore`, `style`, `revert`.
 - **Summary line:** imperative mood ("add", "fix", "refactor"), ≤ ~72 chars, no trailing period. Describe the change, not the diff.
 - **Body is omitted by default.** Only include a body when the user explicitly asks for one (e.g., "include a body", "explain why", "add detail"). When the user does ask for a body, wrap it at ~72 cols, explain the *why* and any non-obvious *what* — pull the rationale from codegraph impact/caller analysis — and reference affected tests from `codegraph affected` when relevant.
-- **One logical change per commit.** If staged changes span multiple unrelated concerns, say so and suggest splitting the commit (list the suggested groupings), but still provide one message for the staged set as-is.
+- **One logical change per commit.** If staged changes span multiple unrelated concerns, treat it as **option 3** (see step 4) — do not produce a commit message for the set as-is. Do not invent groupings or suggest specific splits beyond flagging that it should be reviewed.
 - **No hallucination.** Only reference symbols, files, tests, and behaviors that actually appear in the diff or codegraph output.
 - Do not include Claude/AI attribution, Co-Authored-By, or Generated-with lines unless the user explicitly asks.
 
 ### 4. Present the message
 
-Output **only** the proposed commit message in a fenced code block, plus a one-line note on whether the staged set looks like a single logical change or should be split. Do not commit.
+Determine which of the three mutually-exclusive options below applies, then output **exactly that option and nothing else**. No preamble, no trailing commentary, no "looks like a single logical change" note, no questions — just the one option. Do not commit.
 
-By default, output **only the summary line** — no body:
+**Option 1 — default (single logical change, no body requested):**
+
+Output only the summary line in a fenced code block.
 
 ```
 feat(auth): validate token expiry before refresh
 ```
 
-If the user explicitly asked for a body, include it:
+**Option 2 — user explicitly asked for a body (single logical change):**
+
+Output the summary line, a blank line, then the body — all in one fenced code block.
 
 ```
 feat(auth): validate token expiry before refresh
@@ -83,7 +87,15 @@ network calls. Guard `refreshToken` with an `isExpired` check and add a
 unit test covering the near-expiry path. Affects `AuthMiddleware` callers.
 ```
 
-*Staged set looks like a single logical change.*
+**Option 3 — staged files do not form a single logical change:**
+
+Do **not** produce a commit message. Output only the literal warning below (no code fence, no suggested groupings, no commit message):
+
+*Staged set DOES NOT look like a single logical change. Please review*
+- potential logical change 1
+- potential logical change 2
+
+Replace `potential logical change N` with a short label for each distinct concern you can identify in the staged set. Do not invent commits or suggest specific file splits; just label the concerns at a high level. Do not fall back to option 1 or 2 for a multi-concern set.
 
 ### 5. Commit on request only
 
@@ -107,6 +119,7 @@ git commit -F <(printf '%s\n' "$MESSAGE")
 - Generate the message; do not commit unless explicitly asked.
 - When asked to commit, use `git` directly with the generated message; no extra flags, no push.
 - Use `/codegraph` for semantic *why* context on non-trivial diffs; skip it for cosmetic changes.
+- Output **exactly one** of the three options defined in step 4 — never commentary, never a mix, never a trailing note. Single logical change + no body requested → option 1 only; body requested → option 2 only; not a single logical change → option 3 only (no message, no fallback to 1 or 2).
 - Match the repo's existing commit conventions when they are clear from `git log`.
 - Keep the summary ≤ ~72 chars, imperative mood, no trailing period.
 - Omit the body by default; include one only when the user explicitly asks for it.
