@@ -1,7 +1,7 @@
 ---
 name: git-commit
 description: "Generate a git commit message for currently staged files using the /codegraph skill for semantic context and `git` for diff inspection. Use this skill when the user wants a commit message suggestion for staged changes. Only generate the message; commit only if explicitly asked, using `git`."
-model: deepseek/deepseek-v4-flash
+model: openrouter/qwen/qwen3.6-35b-a3b
 thinking: off
 ---
 
