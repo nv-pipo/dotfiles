@@ -136,7 +136,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Add aliases
 alias lg='lazygit'
-alias gg='pi -p --system-prompt "none" --append-system-prompt "none" --model openrouter/qwen/qwen3.6-35b-a3b:off "generate git-commit"'
+alias gg='pi -p --system-prompt "none" --append-system-prompt "none" --model openrouter/google/gemma-4-26b-a4b-it:off "generate git-commit"'
 alias ls='eza --color=always --long --icons=always --no-user --no-filesize --no-time --no-permissions'
 # alias ssh='env TERM=alacritty ssh'
 alias sshv="ssh -l velasquez"
