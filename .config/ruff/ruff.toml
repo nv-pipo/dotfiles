@@ -1,0 +1,23 @@
+# Mirror of vscode_profiles/python/settings.json -> ruff.configuration
+# Used by both the ruff VS Code extension (configurationPreference: filesystemFirst)
+# and the ruff CLI (auto-discovered).
+line-length = 100
+
+[lint]
+select = ["ALL"]
+ignore = [
+    "COM812",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D300",
+    "D400",
+    "D401",
+    "D415",
+    "TD003",
+]
