@@ -1,6 +1,6 @@
 ---
 name: codegraph
-description: "CodeGraph is a code-intelligence knowledge graph. Use this skill for ANY search, lookup, or mapping request regarding symbols, functions, classes, definitions, or code paths, AND for understanding project structure, file layout, and naming/conventions across the codebase. It replaces recursive grep, rg, find, tree, ls, and cat commands entirely when exploring a codebase."
+description: "CodeGraph is a code-intelligence knowledge graph. ALWAYS use this skill — and load it FIRST — whenever you need to search, look up, or locate ANYTHING in a codebase: a file, function, method, class, symbol, definition, reference, or code path. Also use it to understand project structure, file layout, and naming/conventions. It fully replaces grep, rg, find, tree, ls, and cat for codebase exploration — do NOT reach for those tools before trying CodeGraph."
 ---
 
 # CodeGraph Skill

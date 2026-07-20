@@ -39,3 +39,21 @@ do not attempt to circumvent the sandbox.
   was refused so the user can decide whether to extend the profile.
 - Never try to detect, fingerprint, or escape the sandbox. Assume it is
   present and correct; your job is to do useful work within its bounds.
+
+## Codebase search (use the `codegraph` skill)
+
+When you need to search, locate, or look up anything in a codebase — a file,
+function, method, class, symbol, definition, reference, or code path — use the
+**`codegraph`** skill instead of `grep`, `rg`, `find`, `tree`, `ls`, or `cat`.
+
+Load the skill's file with the `read` tool (its location is listed under
+`available_skills`) BEFORE running any codebase search, then invoke CodeGraph
+commands through the `bash` tool as the skill instructs. This applies to every
+form of codebase exploration: locating a symbol's definition, finding who calls
+a function, tracing call paths, mapping file layout, understanding naming
+conventions, and determining change impact.
+
+Only fall back to `grep`/`find`/`ls`/`cat` when CodeGraph returns no results,
+AND you have confirmed via `codegraph status` that the index is stale and
+cannot be refreshed. Recursive file reads and text searches must never be your
+first move for tracking code dependencies or symbol locations.
