@@ -360,6 +360,7 @@ export default function (pi: ExtensionAPI) {
 	function dispatchAgent(
 		agentName: string,
 		task: string,
+		signal: AbortSignal | undefined,
 		ctx: any,
 	): Promise<{ output: string; exitCode: number; elapsed: number }> {
 		const key = agentName.toLowerCase();
@@ -430,7 +431,31 @@ export default function (pi: ExtensionAPI) {
 			const proc = spawn("pi", args, {
 				stdio: ["ignore", "pipe", "pipe"],
 				env: { ...process.env },
+				detached: true,
 			});
+
+			let settled = false;
+			let aborted = false;
+
+			const killProc = (sig: NodeJS.Signals = "SIGTERM") => {
+				try {
+					if (proc.pid) process.kill(-proc.pid, sig);
+				} catch {
+					try { proc.kill(sig); } catch {}
+				}
+			};
+
+			const onAbort = () => {
+				if (settled) return;
+				aborted = true;
+				killProc("SIGTERM");
+				setTimeout(() => { if (!settled) killProc("SIGKILL"); }, 2000);
+			};
+
+			if (signal) {
+				if (signal.aborted) onAbort();
+				else signal.addEventListener("abort", onAbort, { once: true });
+			}
 
 			let buffer = "";
 
@@ -487,6 +512,10 @@ export default function (pi: ExtensionAPI) {
 			proc.stderr!.on("data", () => {});
 
 			proc.on("close", (code) => {
+				if (settled) return;
+				settled = true;
+				if (signal) signal.removeEventListener("abort", onAbort);
+
 				if (buffer.trim()) {
 					try {
 						const event = JSON.parse(buffer);
@@ -499,7 +528,7 @@ export default function (pi: ExtensionAPI) {
 
 				clearInterval(state.timer);
 				state.elapsed = Date.now() - startTime;
-				state.status = code === 0 ? "done" : "error";
+				state.status = aborted ? "stopped" : (code === 0 ? "done" : "error");
 
 				// Mark session file as available for resume
 				if (code === 0) {
@@ -512,7 +541,7 @@ export default function (pi: ExtensionAPI) {
 
 				ctx.ui.notify(
 					`${displayName(state.def.name)} ${state.status} in ${Math.round(state.elapsed / 1000)}s`,
-					state.status === "done" ? "success" : "error"
+					state.status === "done" ? "success" : state.status === "stopped" ? "warning" : "error"
 				);
 
 				resolve({
@@ -523,6 +552,10 @@ export default function (pi: ExtensionAPI) {
 			});
 
 			proc.on("error", (err) => {
+				if (settled) return;
+				settled = true;
+				if (signal) signal.removeEventListener("abort", onAbort);
+
 				clearInterval(state.timer);
 				state.status = "error";
 				state.lastWork = `Error: ${err.message}`;
@@ -547,7 +580,7 @@ export default function (pi: ExtensionAPI) {
 			task: Type.String({ description: "Task description for the agent to execute" }),
 		}),
 
-		async execute(_toolCallId, params, _signal, onUpdate, ctx) {
+		async execute(_toolCallId, params, signal, onUpdate, ctx) {
 			const { agent, task } = params as { agent: string; task: string };
 
 			try {
@@ -558,7 +591,7 @@ export default function (pi: ExtensionAPI) {
 					});
 				}
 
-				const result = await dispatchAgent(agent, task, ctx);
+				const result = await dispatchAgent(agent, task, signal, ctx);
 
 				const truncated = result.output.length > 8000
 					? result.output.slice(0, 8000) + "\n\n... [truncated]"
