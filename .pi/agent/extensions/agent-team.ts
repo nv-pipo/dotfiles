@@ -41,12 +41,15 @@ interface AgentDef {
 
 interface AgentState {
 	def: AgentDef;
-	status: "idle" | "running" | "done" | "error";
+	status: "idle" | "running" | "done" | "error" | "stopped";
 	task: string;
 	toolCount: number;
 	elapsed: number;
 	lastWork: string;
 	contextPct: number;
+	totalInputTokens: number;
+	totalOutputTokens: number;
+	totalCost: number;
 	sessionFile: string | null;
 	runCount: number;
 	timer?: ReturnType<typeof setInterval>;
@@ -56,6 +59,21 @@ interface AgentState {
 
 function displayName(name: string): string {
 	return name.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+}
+
+// Compact number formatting for token counts (e.g. 12500 → "12.5k", 1200000 → "1.2M")
+function formatTokens(n: number): string {
+	if (n < 1000) return String(n);
+	if (n < 1_000_000) return `${(n / 1000).toFixed(1)}k`;
+	return `${(n / 1_000_000).toFixed(1)}M`;
+}
+
+// Adaptive cost formatting (matches token-counter.ts conventions)
+function formatCost(n: number): string {
+	if (n < 0.0001) return "$0";
+	if (n < 0.01) return `$${n.toFixed(4)}`;
+	if (n < 1) return `$${n.toFixed(3)}`;
+	return `$${n.toFixed(2)}`;
 }
 
 // ── Teams YAML Parser ────────────────────────────
@@ -193,6 +211,9 @@ export default function (pi: ExtensionAPI) {
 				elapsed: 0,
 				lastWork: "",
 				contextPct: 0,
+				totalInputTokens: 0,
+				totalOutputTokens: 0,
+				totalCost: 0,
 				sessionFile: existsSync(sessionFile) ? sessionFile : null,
 				runCount: 0,
 			});
@@ -211,10 +232,12 @@ export default function (pi: ExtensionAPI) {
 
 		const statusColor = state.status === "idle" ? "dim"
 			: state.status === "running" ? "accent"
-			: state.status === "done" ? "success" : "error";
+			: state.status === "done" ? "success"
+			: state.status === "stopped" ? "warning" : "error";
 		const statusIcon = state.status === "idle" ? "○"
 			: state.status === "running" ? "●"
-			: state.status === "done" ? "✓" : "✗";
+			: state.status === "done" ? "✓"
+			: state.status === "stopped" ? "⊘" : "✗";
 
 		const name = displayName(state.def.name);
 		const nameStr = theme.fg("accent", theme.bold(truncate(name, w)));
@@ -260,6 +283,17 @@ export default function (pi: ExtensionAPI) {
 		const workLine = theme.fg("muted", workText);
 		const workVisible = workText.length;
 
+		// Token + cost line — only rendered when the agent has consumed tokens.
+		// The line slot is always reserved so cards keep a uniform height.
+		const hasUsage = state.totalInputTokens > 0 || state.totalOutputTokens > 0;
+		let usageLine = "";
+		let usageVisible = 0;
+		if (hasUsage) {
+			const usageStr = `in:${formatTokens(state.totalInputTokens)} out:${formatTokens(state.totalOutputTokens)} cost:${formatCost(state.totalCost)}`;
+			usageLine = truncateToWidth(theme.fg("dim", usageStr), w);
+			usageVisible = Math.min(usageStr.length, w);
+		}
+
 		const top = "┌" + "─".repeat(w) + "┐";
 		const bot = "└" + "─".repeat(w) + "┘";
 		const border = (content: string, visLen: number) =>
@@ -272,6 +306,7 @@ export default function (pi: ExtensionAPI) {
 			...(modelSegments.length > 0 ? [border(" " + modelLine, 1 + modelVisible)] : []),
 			border(" " + ctxLine, 1 + ctxVisible),
 			border(" " + workLine, 1 + workVisible),
+			border(hasUsage ? " " + usageLine : "", hasUsage ? 1 + usageVisible : 0),
 			theme.fg("dim", bot),
 		];
 	}
@@ -300,7 +335,7 @@ export default function (pi: ExtensionAPI) {
 						const cards = rowAgents.map(a => renderCard(a, colWidth, theme));
 
 						while (cards.length < cols) {
-							cards.push(Array(7).fill(" ".repeat(colWidth)));
+							cards.push(Array(8).fill(" ".repeat(colWidth)));
 						}
 
 						const cardHeight = cards[0].length;
@@ -422,15 +457,25 @@ export default function (pi: ExtensionAPI) {
 							updateWidget();
 						} else if (event.type === "message_end") {
 							const msg = event.message;
-							if (msg?.usage && contextWindow > 0) {
-								state.contextPct = ((msg.usage.input || 0) / contextWindow) * 100;
+							if (msg?.usage) {
+								if (contextWindow > 0) {
+									state.contextPct = ((msg.usage.input || 0) / contextWindow) * 100;
+								}
+								state.totalInputTokens += msg.usage.input || 0;
+								state.totalOutputTokens += msg.usage.output || 0;
+								state.totalCost += msg.usage.cost?.total || 0;
 								updateWidget();
 							}
 						} else if (event.type === "agent_end") {
 							const msgs = event.messages || [];
 							const last = [...msgs].reverse().find((m: any) => m.role === "assistant");
-							if (last?.usage && contextWindow > 0) {
-								state.contextPct = ((last.usage.input || 0) / contextWindow) * 100;
+							if (last?.usage) {
+								if (contextWindow > 0) {
+									state.contextPct = ((last.usage.input || 0) / contextWindow) * 100;
+								}
+								state.totalInputTokens += last.usage.input || 0;
+								state.totalOutputTokens += last.usage.output || 0;
+								state.totalCost += last.usage.cost?.total || 0;
 								updateWidget();
 							}
 						}
