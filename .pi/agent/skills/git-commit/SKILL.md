@@ -23,7 +23,6 @@ Use `git` directly to inspect what is staged. Never inspect unstaged or untracke
 - **Do not change directories.** pi is already running at the root of the git repo. Run `git` commands as-is (e.g. `git diff --staged`), never prefixed with `cd <path> &&`.
 
 ```bash
-git status --short          # see staged (and other) paths
 git diff --staged --stat    # summary of staged hunks
 git diff --staged           # full staged diff
 git log --oneline -10       # match the repo's existing commit style/conventions
