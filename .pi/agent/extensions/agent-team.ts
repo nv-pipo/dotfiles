@@ -232,6 +232,27 @@ export default function (pi: ExtensionAPI) {
 		const ctxLine = theme.fg("dim", ctxStr);
 		const ctxVisible = ctxStr.length;
 
+		// Model + thinking line (thinking always shown — falls back to orchestrator's level)
+		const modelSegments: { label: string; value: string }[] = [];
+		const effectiveModel = state.def.model
+			|| (widgetCtx?.model ? `${widgetCtx.model.provider}/${widgetCtx.model.id}` : undefined);
+		if (effectiveModel) {
+			modelSegments.push({ label: "model: ", value: effectiveModel });
+		}
+		modelSegments.push({ label: "thinking: ", value: state.def.thinking || pi.getThinkingLevel() });
+		let modelLine = "";
+		let modelVisible = 0;
+		if (modelSegments.length > 0) {
+			const plain = modelSegments
+				.map(s => s.label + s.value)
+				.join(" · ");
+			modelVisible = Math.min(plain.length, w);
+			const colored = modelSegments
+				.map(s => theme.fg("dim", s.label) + theme.fg("accent", s.value))
+				.join(theme.fg("muted", " · "));
+			modelLine = truncateToWidth(colored, w);
+		}
+
 		const workRaw = state.task
 			? (state.lastWork || state.task)
 			: state.def.description;
@@ -248,6 +269,7 @@ export default function (pi: ExtensionAPI) {
 			theme.fg("dim", top),
 			border(" " + nameStr, 1 + nameVisible),
 			border(" " + statusLine, 1 + statusVisible),
+			...(modelSegments.length > 0 ? [border(" " + modelLine, 1 + modelVisible)] : []),
 			border(" " + ctxLine, 1 + ctxVisible),
 			border(" " + workLine, 1 + workVisible),
 			theme.fg("dim", bot),
@@ -278,7 +300,7 @@ export default function (pi: ExtensionAPI) {
 						const cards = rowAgents.map(a => renderCard(a, colWidth, theme));
 
 						while (cards.length < cols) {
-							cards.push(Array(6).fill(" ".repeat(colWidth)));
+							cards.push(Array(7).fill(" ".repeat(colWidth)));
 						}
 
 						const cardHeight = cards[0].length;
@@ -339,7 +361,7 @@ export default function (pi: ExtensionAPI) {
 
 		const model = state.def.model
 			|| (ctx.model ? `${ctx.model.provider}/${ctx.model.id}` : undefined);
-		const thinking = state.def.thinking || "off";
+		const thinking = state.def.thinking || pi.getThinkingLevel();
 
 		// Session file for this agent
 		const agentKey = state.def.name.toLowerCase().replace(/\s+/g, "-");
@@ -602,7 +624,7 @@ export default function (pi: ExtensionAPI) {
 				.map(s => {
 					const session = s.sessionFile ? "resumed" : "new";
 					const model = s.def.model ? `, model: ${s.def.model}` : "";
-					const thinking = s.def.thinking ? `, thinking: ${s.def.thinking}` : "";
+					const thinking = `, thinking: ${s.def.thinking || pi.getThinkingLevel()}`;
 					return `${displayName(s.def.name)} (${s.status}, ${session}, runs: ${s.runCount}${model}${thinking}): ${s.def.description}`;
 				})
 				.join("\n");
@@ -641,7 +663,7 @@ export default function (pi: ExtensionAPI) {
 			.map(s => {
 				const extras = [
 					s.def.model ? `**Model:** ${s.def.model}` : null,
-					s.def.thinking ? `**Thinking:** ${s.def.thinking}` : null,
+					`**Thinking:** ${s.def.thinking || pi.getThinkingLevel()}`,
 				].filter(Boolean).join("\n");
 				return `### ${displayName(s.def.name)}\n**Dispatch as:** \`${s.def.name}\`\n${s.def.description}\n**Tools:** ${s.def.tools}${extras ? "\n" + extras : ""}`;
 			})
