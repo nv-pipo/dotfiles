@@ -6,6 +6,8 @@
  * maintains its own Pi session for cross-invocation memory.
  *
  * Loads agent definitions from ~/.pi/agent/agents/*.md.
+ * Agent MD frontmatter supports: name, description, tools, model (optional), thinking (optional).
+ * Valid thinking levels: off, minimal, low, medium, high, xhigh, max.
  * Teams are defined in ~/.pi/agent/agents/teams.yaml — on boot a select dialog lets
  * you pick which team to work with. Only team members are available for dispatch.
  *
@@ -31,6 +33,8 @@ interface AgentDef {
 	name: string;
 	description: string;
 	tools: string;
+	model?: string;
+	thinking?: string;
 	systemPrompt: string;
 	file: string;
 }
@@ -96,6 +100,8 @@ function parseAgentFile(filePath: string): AgentDef | null {
 			name: frontmatter.name,
 			description: frontmatter.description || "",
 			tools: frontmatter.tools || "read,grep,find,ls",
+			model: frontmatter.model || undefined,
+			thinking: frontmatter.thinking || undefined,
 			systemPrompt: match[2].trim(),
 			file: filePath,
 		};
@@ -331,9 +337,9 @@ export default function (pi: ExtensionAPI) {
 			updateWidget();
 		}, 1000);
 
-		const model = ctx.model
-			? `${ctx.model.provider}/${ctx.model.id}`
-			: "openrouter/google/gemini-3-flash-preview";
+		const model = state.def.model
+			|| (ctx.model ? `${ctx.model.provider}/${ctx.model.id}` : undefined);
+		const thinking = state.def.thinking || "off";
 
 		// Session file for this agent
 		const agentKey = state.def.name.toLowerCase().replace(/\s+/g, "-");
@@ -344,12 +350,15 @@ export default function (pi: ExtensionAPI) {
 			"--mode", "json",
 			"-p",
 			"--no-extensions",
-			"--model", model,
 			"--tools", state.def.tools,
-			"--thinking", "off",
+			"--thinking", thinking,
 			"--append-system-prompt", state.def.systemPrompt,
 			"--session", agentSessionFile,
 		];
+
+		if (model) {
+			args.push("--model", model);
+		}
 
 		// Continue existing session if we have one
 		if (state.sessionFile) {
@@ -592,7 +601,9 @@ export default function (pi: ExtensionAPI) {
 			const names = Array.from(agentStates.values())
 				.map(s => {
 					const session = s.sessionFile ? "resumed" : "new";
-					return `${displayName(s.def.name)} (${s.status}, ${session}, runs: ${s.runCount}): ${s.def.description}`;
+					const model = s.def.model ? `, model: ${s.def.model}` : "";
+					const thinking = s.def.thinking ? `, thinking: ${s.def.thinking}` : "";
+					return `${displayName(s.def.name)} (${s.status}, ${session}, runs: ${s.runCount}${model}${thinking}): ${s.def.description}`;
 				})
 				.join("\n");
 			_ctx.ui.notify(names || "No agents loaded", "info");
@@ -627,7 +638,13 @@ export default function (pi: ExtensionAPI) {
 	pi.on("before_agent_start", async (_event, _ctx) => {
 		// Build dynamic agent catalog from active team only
 		const agentCatalog = Array.from(agentStates.values())
-			.map(s => `### ${displayName(s.def.name)}\n**Dispatch as:** \`${s.def.name}\`\n${s.def.description}\n**Tools:** ${s.def.tools}`)
+			.map(s => {
+				const extras = [
+					s.def.model ? `**Model:** ${s.def.model}` : null,
+					s.def.thinking ? `**Thinking:** ${s.def.thinking}` : null,
+				].filter(Boolean).join("\n");
+				return `### ${displayName(s.def.name)}\n**Dispatch as:** \`${s.def.name}\`\n${s.def.description}\n**Tools:** ${s.def.tools}${extras ? "\n" + extras : ""}`;
+			})
 			.join("\n\n");
 
 		const teamMembers = Array.from(agentStates.values()).map(s => displayName(s.def.name)).join(", ");
