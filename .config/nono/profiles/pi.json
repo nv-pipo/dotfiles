@@ -10,8 +10,10 @@
     ],
     "write": [
       "./",
+      "~/.config/herdr",
+      "~/.local/share/nvim/",
+      "~/.local/state/nvim/",
       "~/.pi",
-      "~/.config/herdr"
     ],
     "read": [
       "./",
@@ -20,7 +22,10 @@
       "/opt/homebrew/bin/",
       "~/.config/herdr",
       "~/.config/nono/profiles/pi.json",
+      "~/.local/config/nvim/",
+      "~/.local/share/nvim",
       "~/.local/share/uv",
+      "~/.local/state/nvim/",
       "~/.pi",
       "~/dotfiles/.config/nono/profiles/pi.json",
       "~/dotfiles/.pi",
