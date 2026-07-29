@@ -10,15 +10,11 @@
     "openrouter/z-ai/glm-5.2",
     "openrouter/deepseek/deepseek-v4-pro",
     "openrouter/deepseek/deepseek-v4-flash",
+    "openrouter/poolside/laguna-s-2.1",
     "openrouter/qwen/qwen3.6-35b-a3b",
     "openrouter/google/gemma-4-26b-a4b-it",
-    "openrouter/anthropic/claude-opus-4.8",
-    "openrouter/openai/gpt-5.5",
+    "openrouter/poolside/laguna-xs-2.1",
     "lmstudio/google/gemma-4-26b-a4b",
-    "lmstudio/ornith-1.0-35b",
-    "azure-foundry-ilo/DeepSeek-V4-Flash",
-    "azure-foundry-ilo/DeepSeek-V4-Pro",
-    "azure-foundry-ilo/gpt-5.4",
-    "azure-foundry-ilo/Kimi-K2.6"
+    "lmstudio/ornith-1.0-35b"
   ]
 }
