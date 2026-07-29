@@ -7,6 +7,15 @@
             "models": [
                 {
                     "id": "google/gemma-4-26b-a4b",
+                    "reasoning": true,
+                    "thinkingLevelMap": {
+                        "off": "none",
+                        "minimal": "minimal",
+                        "low": "low",
+                        "medium": "medium",
+                        "high": "high",
+                        "xhigh": "max"
+                    },
                     "input": [
                         "text",
                         "image"
