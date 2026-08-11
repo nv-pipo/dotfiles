@@ -26,3 +26,7 @@ previous_workspace = "alt+e"
 next_workspace = "alt+n"
 previous_agent = "ctrl+alt+e"
 next_agent = "ctrl+alt+n"
+focus_pane_left = ["prefix+h", "ctrl+m"]
+focus_pane_down = ["prefix+j", "ctrl+n"]
+focus_pane_up = ["prefix+k", "ctrl+e"]
+focus_pane_right = ["prefix+l", "ctrl+i"]
