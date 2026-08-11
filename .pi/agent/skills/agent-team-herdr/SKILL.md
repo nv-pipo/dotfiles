@@ -38,6 +38,7 @@ For each role in the chosen workflow:
      `["--append-system-prompt", "<persona text>", "--tools", "read,bash,edit,write", "--model", "<model>", "--thinking", "<level>"]`
      (include only the flags the frontmatter specifies; always include `--append-system-prompt` since every role file defines it).
 3. Keep each agent's pane **alive between cycles** — reuse the same pane for follow-ups instead of respawning.
+   When reusing an agent, keep track of what its current chat history contains. If the new task is unrelated to that context, first send `/new` (a bare `herdr_send_prompt` with text `/new`) to reset the session, then send the new task — otherwise stale context will bias the sub-agent's work.
 
 Keep `herdr_delegate` for quick one-shot side questions only; team members are long-lived panes you drive step by step.
 
@@ -71,4 +72,5 @@ Drive the workflow in order, feeding each agent the previous agent's output:
 - Spawn team members with `herdr_start_agent` — it splits the current pane; never pass `tabId`/`workspaceId` and never relocate with `herdr_move_pane`.
 - Ensure the agent is named after the role right after launch so subsequent calls can target it by name.
 - Always wait for `idle` before reading an agent's output.
+- Before handing a reused agent an unrelated task, reset its session with `/new`; related follow-ups should reuse the existing context.
 - Sub-agents inherit the project cwd — never let two builder-style agents edit the same files concurrently.
