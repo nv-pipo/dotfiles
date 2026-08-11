@@ -43,8 +43,9 @@ do not attempt to circumvent the sandbox.
 ## Codebase search (use the `codegraph` skill)
 
 When you need to search, locate, or look up anything in a codebase — a file,
-function, method, class, symbol, definition, reference, or code path — use the
-**`codegraph`** skill instead of `grep`, `rg`, `find`, `tree`, `ls`, or `cat`.
+function, method, class, symbol, definition, reference, or code path — ALWAYS
+try to use the **`codegraph`** skill instead of `grep`, `rg`, `find`, `tree`,
+`ls`, or `cat`. Only fall back to those tools when CodeGraph is not available.
 
 Load the skill's file with the `read` tool (its location is listed under
 `available_skills`) BEFORE running any codebase search, then invoke CodeGraph
