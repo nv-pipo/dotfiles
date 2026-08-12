@@ -10,6 +10,7 @@
     ],
     "write": [
       "./",
+      "~/.cache/uv/",
       "~/.config/herdr",
       "~/.local/share/nvim/",
       "~/.local/state/nvim/",
@@ -20,6 +21,7 @@
       "/Users/pichurri/.codegraph",
       "/Users/pichurri/.gitconfig",
       "/opt/homebrew/bin/",
+      "~/.cache/uv",
       "~/.config/herdr",
       "~/.config/nono/profiles/pi.json",
       "~/.local/config/nvim/",
