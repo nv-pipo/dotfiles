@@ -17,7 +17,5 @@
     "lmstudio/google/gemma-4-26b-a4b",
     "lmstudio/ornith-1.0-35b"
   ],
-  "packages": [
-    "npm:@andrewjacop/pi-herdr"
-  ]
+  "packages": []
 }
