@@ -1,10 +1,6 @@
 ---
 name: git-commit
 description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and `git` for diff inspection. Use this skill when the user wants commit message suggestions for staged changes. Only generate the messages; commit only if explicitly asked, using `git`."
-model: openrouter/qwen/qwen3.6-35b-a3b
-thinking: off
-model: openrouter/qwen/qwen3.6-35b-a3b
-thinking: off
 ---
 
 # Git Commit Skill
@@ -23,11 +19,12 @@ This skill produces the **best 3 git commit message suggestions** for the files 
 Use `git` directly to inspect what is staged. Never inspect unstaged or untracked files unless the user asks — the message must reflect *staged* changes only.
 
 - **Do not change directories.** pi is already running at the root of the git repo. Run `git` commands as-is (e.g. `git diff --staged`), never prefixed with `cd <path> &&`.
+- **Run each of the three commands below in a separate shell invocation, all in parallel** — issue three distinct `bash` tool calls in a single parallel batch (do not run them sequentially or chain them with `&&`). Combine the results from all three to generate the commit message: the stat summary for scope, the full diff for the actual changes, and the log for style.
 
 ```bash
-git diff --staged --stat    # summary of staged hunks
-git diff --staged           # full staged diff
-git log --oneline -10       # match the repo's existing commit style/conventions
+git diff --staged --stat    # summary of staged hunks — separate shell #1
+git diff --staged           # full staged diff — separate shell #2
+git log --oneline -10       # match the repo's existing commit style/conventions — separate shell #3
 ```
 
 Notes:
