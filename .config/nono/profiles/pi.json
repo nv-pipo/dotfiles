@@ -4,9 +4,8 @@
     "version": "1.0.0"
   },
   "filesystem": {
-    "unix_socket": [
-      "~/.config/herdr/herdr-client.sock",
-      "~/.config/herdr/herdr.sock"
+    "unix_socket_dir": [
+      "~/.config/herdr/"
     ],
     "write": [
       "./",
