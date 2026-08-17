@@ -11,11 +11,9 @@
     "openrouter/deepseek/deepseek-v4-pro",
     "openrouter/deepseek/deepseek-v4-flash",
     "openrouter/poolside/laguna-s-2.1",
-    "openrouter/qwen/qwen3.6-35b-a3b",
-    "openrouter/google/gemma-4-26b-a4b-it",
-    "openrouter/poolside/laguna-xs-2.1",
     "lmstudio/google/gemma-4-26b-a4b",
-    "lmstudio/ornith-1.0-35b"
-  ],
-  "packages": []
+    "lmstudio/ornith-1.0-35b",
+    "lmstudio/qwen/qwen3.8-27b",
+    "lmstudio/nvidia-nemotron-3.5-lightning-30b-a3b"
+  ]
 }
