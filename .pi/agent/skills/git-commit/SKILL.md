@@ -3,6 +3,8 @@ name: git-commit
 description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and `git` for diff inspection. Use this skill when the user wants commit message suggestions for staged changes. Only generate the messages; commit only if explicitly asked, using `git`."
 model: openrouter/qwen/qwen3.6-35b-a3b
 thinking: off
+model: openrouter/qwen/qwen3.6-35b-a3b
+thinking: off
 ---
 
 # Git Commit Skill
