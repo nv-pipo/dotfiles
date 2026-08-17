@@ -19,17 +19,14 @@ This skill produces the **best 3 git commit message suggestions** for the files 
 Use `git` directly to inspect what is staged. Never inspect unstaged or untracked files unless the user asks — the message must reflect *staged* changes only.
 
 - **Do not change directories.** pi is already running at the root of the git repo. Run `git` commands as-is (e.g. `git diff --staged`), never prefixed with `cd <path> &&`.
-- **Run each of the three commands below in a separate shell invocation, all in parallel** — issue three distinct `bash` tool calls in a single parallel batch (do not run them sequentially or chain them with `&&`). Combine the results from all three to generate the commit message: the stat summary for scope, the full diff for the actual changes, and the log for style.
+- **Run the helper script `git-commit-context.sh` exactly once, in a single `bash` invocation.** It lives next to this SKILL.md and runs all required `git` commands sequentially in one shot. Do NOT run the individual `git` commands yourself, and do NOT run the script more than once.
+- **Do not run any other commands to extract the changes.** The helper script is the only allowed way to inspect the changes (apart from the codegraph command suggestions in step 2).
 
 ```bash
-git diff --staged --stat    # summary of staged hunks — separate shell #1
-git diff --staged           # full staged diff — separate shell #2
-git log --oneline -10       # match the repo's existing commit style/conventions — separate shell #3
+bash <skill_dir>/bin/git-commit-context.sh   # run ONCE — collects all git context
 ```
 
-Notes:
-- `git diff --staged` shows **staged** changes. Use this, not `git diff`.
-- If nothing is staged (`git diff --staged --quiet` exits 0), tell the user there is nothing staged and stop. Do not invent a message.
+The script runs `git status`, `git diff --staged --stat`, `git diff --staged`, and `git log --oneline -10` sequentially via `set -x` (each command echoed as a `+ <command>` line before its output) — combine all sections (state, scope, changes, style) to generate the commit message.
 
 ### 2. Enrich with semantic context (codegraph)
 
