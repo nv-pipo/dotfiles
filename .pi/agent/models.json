@@ -28,7 +28,7 @@
                     },
                 },
                 {
-                    "id": "ornith-1.0-35b",
+                    "id": "qwen/qwen3.8-27b",
                     "reasoning": true,
                     "thinkingLevelMap": {
                         "off": "none",
@@ -39,8 +39,45 @@
                         "xhigh": "max"
                     },
                     "input": [
-                        "text"
+                        "text",
+                        "image"
                     ],
+                    "cost": {
+                        "input": 0,
+                        "output": 0,
+                        "cacheRead": 0,
+                        "cacheWrite": 0
+                    },
+                },
+                {
+                    "id": "nvidia-nemotron-3.5-lightning-30b-a3b",
+                    "reasoning": true,
+                    "thinkingLevelMap": {
+                        "off": "none",
+                        "minimal": "minimal",
+                        "low": "low",
+                        "medium": "medium",
+                        "high": "high",
+                        "xhigh": "max"
+                    },
+                    "cost": {
+                        "input": 0,
+                        "output": 0,
+                        "cacheRead": 0,
+                        "cacheWrite": 0
+                    },
+                },
+                {
+                    "id": "ornith-1.0-35b",
+                    "reasoning": true,
+                    "thinkingLevelMap": {
+                        "off": "none",
+                        "minimal": "minimal",
+                        "low": "low",
+                        "medium": "medium",
+                        "high": "high",
+                        "xhigh": "max"
+                    },
                     "cost": {
                         "input": 0,
                         "output": 0,
