@@ -1,26 +1,31 @@
 ---
 name: git-commit
-description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and `git` for diff inspection. Use this skill when the user wants commit message suggestions for staged changes. Only generate the messages; commit only if explicitly asked, using `git`."
+description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and the bin/git-commit-context.sh helper script for diff inspection. Use this skill when the user wants commit message suggestions for staged changes. Only generate and print the messages; NEVER run any git command directly."
 ---
 
 # Git Commit Skill
 
-This skill produces the **best 3 git commit message suggestions** for the files currently staged in git. It combines raw diff inspection (`git`) with semantic code-graph context (`/codegraph`) to understand *what* changed and *why*, then writes three conventional, focused candidate commit messages ranked from best to worst.
+This skill produces the **best 3 git commit message suggestions** for the files currently staged in git. It combines raw diff inspection (via the `bin/git-commit-context.sh` helper script) with semantic code-graph context (`/codegraph`) to understand *what* changed and *why*, then prints three conventional, focused candidate commit messages ranked from best to worst.
 
-## Scope
+## Sole purpose — read this first
 
-- **Do only what is asked.** The default task is to *generate a commit message* — nothing else. Do not stage files, do not amend history, do not push, do not run formatters, and do not modify code.
-- **Commit only when explicitly requested.** If the user later says to commit (e.g., "commit it", "go ahead and commit", "apply that message"), execute the commit with `git` using the generated message. Otherwise, stop after presenting the message.
+- **The ONLY job of this skill is to PRINT commit message suggestions.** Nothing more.
+- The only two permitted sources of information are:
+  1. `bash <skill_dir>/bin/git-commit-context.sh` — run exactly once (step 1).
+  2. `codegraph` commands — for semantic context (step 2).
+- **NEVER run any `git` command directly.** Not `git status`, not `git diff`, not `git log`, not `git add`, not `git commit`, not `git stash` — nothing. The helper script already runs every read-only git command needed.
+- **Under NO circumstances run mutating or destructive git commands**, especially `git checkout`, `git restore`, `git reset`, `git clean`, `git rm`, `git switch`, `git rebase`, or `git commit`. These are strictly forbidden in every situation, even if the user seems to ask for them mid-flow — if the user wants to commit or modify the working tree, tell them to do it themselves.
+- Do not stage files, do not amend history, do not push, do not run formatters, do not modify code, do not touch the working tree in any way.
 
 ## Workflow
 
-### 1. Gather the staged changes (git)
+### 1. Gather the staged changes (helper script)
 
-Use `git` directly to inspect what is staged. Never inspect unstaged or untracked files unless the user asks — the message must reflect *staged* changes only.
+The message must reflect *staged* changes only. Never inspect unstaged or untracked files unless the user asks.
 
-- **Do not change directories.** pi is already running at the root of the git repo. Run `git` commands as-is (e.g. `git diff --staged`), never prefixed with `cd <path> &&`.
-- **Run the helper script `git-commit-context.sh` exactly once, in a single `bash` invocation.** It lives next to this SKILL.md and runs all required `git` commands sequentially in one shot. Do NOT run the individual `git` commands yourself, and do NOT run the script more than once.
-- **Do not run any other commands to extract the changes.** The helper script is the only allowed way to inspect the changes (apart from the codegraph command suggestions in step 2).
+- **Do not change directories.** pi is already running at the root of the git repo.
+- **Run the helper script `git-commit-context.sh` exactly once, in a single `bash` invocation.** It lives next to this SKILL.md and runs all required `git` commands sequentially in one shot. Do NOT run any `git` command yourself, and do NOT run the script more than once.
+- **The helper script is the ONLY allowed way to inspect the changes** (apart from the codegraph command suggestions in step 2). Do not run any other command to extract the changes.
 
 ```bash
 bash <skill_dir>/bin/git-commit-context.sh   # run ONCE — collects all git context
@@ -47,7 +52,7 @@ Use codegraph when the diff is non-trivial: new/renamed symbols, changed functio
 
 Combine the diff (what) and the graph (why) into **three** candidate commit messages following these rules:
 
-- **Conventional Commits** format unless the repo's `git log` clearly uses another convention. Match the repo's existing style when it's consistent:
+- **Conventional Commits** format unless the repo's `git log` output (from the helper script) clearly uses another convention. Match the repo's existing style when it's consistent:
   - Summary: `<type>(<optional scope>): <imperative summary>`
   - Body (only if requested): `<body explaining why, referencing affected symbols/tests when useful>`
 - Type is one of: `feat`, `fix`, `refactor`, `perf`, `docs`, `test`, `build`, `ci`, `chore`, `style`, `revert`.
@@ -59,7 +64,7 @@ Combine the diff (what) and the graph (why) into **three** candidate commit mess
 
 ### 4. Present the suggestions
 
-Determine which of the three mutually-exclusive options below applies, then output **exactly that option and nothing else**. The ENTIRE response body must be only the option — no preamble, no reasoning, no explanation of the change, no "this is a cosmetic update" or similar introduction, no trailing commentary, no "looks like a single logical change" note, no questions, no code fences (```), no Markdown formatting, no surrounding backticks. If the option is a set of commit messages (options 1 or 2), your full response is the ranked list of three suggestions and nothing else. Do not commit.
+Determine which of the three mutually-exclusive options below applies, then output **exactly that option and nothing else**. The ENTIRE response body must be only the option — no preamble, no reasoning, no explanation of the change, no "this is a cosmetic update" or similar introduction, no trailing commentary, no "looks like a single logical change" note, no questions, no code fences (```), no Markdown formatting, no surrounding backticks. If the option is a set of commit messages (options 1 or 2), your full response is the ranked list of three suggestions and nothing else. Do not commit — committing is the user's job, never yours.
 
 **Option 1 — default (single logical change, no body requested):**
 
@@ -99,33 +104,19 @@ Do **not** produce commit messages. Output only the literal warning below (no co
 
 Replace `potential logical change N` with a short label for each distinct concern you can identify in the staged set. Do not invent commits or suggest specific file splits; just label the concerns at a high level. Do not fall back to option 1 or 2 for a multi-concern set.
 
-### 5. Commit on request only
-
-If and only if the user asks to commit (after seeing the suggestions), ask which of the three suggestions to use (or let the user supply an edited version), then run:
-
-```bash
-git commit -m "<summary>"                  # summary only by default
-git commit -m "<summary>" -m "<body>"        # only when a body was requested
-# or, if the body has structure that -m mangles, use a file:
-git commit -F <(printf '%s\n' "$MESSAGE")
-```
-
-- Use the **exact** message the user picks from the suggestions in step 3 (or the user's edited version if they tweak it).
-- Do **not** add `--amend`, `--no-verify`, flags to push, or any flags the user did not ask for.
-- After committing, report the new commit hash and its one-line subject (`git log -1 --oneline`), then stop. Do not push.
-
 ## Rules
 
-- Inspect **staged** changes only (`git diff --staged`), never unstaged/untracked unless asked.
+- **NEVER run any `git` command directly.** All git context comes exclusively from one single run of `bin/git-commit-context.sh`. Running `git checkout`, `git restore`, `git reset`, `git clean`, `git add`, `git commit`, `git stash`, `git push`, or any other `git` subcommand yourself is strictly forbidden — no exceptions.
+- The skill's output ends at printed message suggestions. It does not commit, stage, unstage, or otherwise modify the repository or working tree — ever.
+- Inspect **staged** changes only (the helper script uses `git diff --staged`), never unstaged/untracked unless asked.
 - If nothing is staged, say so and stop — do not fabricate messages.
-- Generate three ranked suggestions; do not commit unless explicitly asked.
-- When asked to commit, ask the user which suggestion to use (or accept an edited version), then use `git` directly with that message; no extra flags, no push.
+- Generate three ranked suggestions and stop. If the user asks you to commit, decline and remind them to run `git commit` themselves with the chosen message.
 - Use `/codegraph` for semantic *why* context on non-trivial diffs; skip it for cosmetic changes.
 - **The response must be ONLY the selected option.** Never output reasoning, preamble, explanations of the change (e.g. "this is a cosmetic update"), trailing notes, code fences (```), or surrounding Markdown/backtick formatting. For options 1 and 2 the entire response is the ranked list of three commit message suggestions and nothing else.
 - Output **exactly one** of the three options defined in step 4. Single logical change + no body requested → option 1 only; body requested → option 2 only; not a single logical change → option 3 only (no messages, no fallback to 1 or 2).
 - The three suggestions must be meaningfully distinct from each other (different type, scope, or framing) — not three trivial rephrasings of the same wording.
 - Rank suggestions from best (1) to worst (3) by accuracy and clarity of the change description.
-- Match the repo's existing commit conventions when they are clear from `git log`.
+- Match the repo's existing commit conventions when they are clear from the `git log` section of the helper script output.
 - Keep each summary ≤ ~72 chars, imperative mood, no trailing period.
 - Omit the body by default; include one only when the user explicitly asks for it.
 - Never invent symbols, tests, or behaviors not present in the diff or codegraph output.
