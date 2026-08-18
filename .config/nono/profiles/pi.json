@@ -36,7 +36,8 @@
   },
   "network": {
     "allow_port": [
-      1234
+      1234,
+      11434
     ],
     "allow_domain": [
       "openrouter.ai",
