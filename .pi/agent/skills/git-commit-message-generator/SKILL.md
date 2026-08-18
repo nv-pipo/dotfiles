@@ -1,5 +1,5 @@
 ---
-name: git-commit
+name: git-commit-message-generator
 description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and the bin/git-commit-context.sh helper script for diff inspection. Use this skill when the user wants commit message suggestions for staged changes. Only generate and print the messages; NEVER run any git command directly."
 ---
 
