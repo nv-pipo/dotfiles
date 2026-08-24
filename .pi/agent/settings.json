@@ -8,7 +8,8 @@
   "enabledModels": [
     "openrouter/moonshotai/kimi-k3",
     "openrouter/deepseek/deepseek-v4-flash",
+    "ollama/gemma4:26b-mlx",
     "ollama/qwen3.8:27b-mlx",
-    "ollama/gemma4:26b-mlx"
+    "ollama/ornith-1.5:35b"
   ]
 }
