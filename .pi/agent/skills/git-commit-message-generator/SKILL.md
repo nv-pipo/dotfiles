@@ -1,6 +1,6 @@
 ---
 name: git-commit-message-generator
-description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and the bin/git-commit-context.sh helper script for diff inspection, then present them to the user, ask the user to decide, and perform the actual git commit with the chosen message. Use this skill when the user wants to commit staged changes."
+description: "Generate the best 3 git commit message suggestions for currently staged files using the /codegraph skill for semantic context and the bin/git-commit-context.sh helper script for diff inspection, then present them to the user, ask the user to decide, and perform the actual git commit with the chosen message. When nothing useful is staged, it can analyze the working tree, propose which files/hunks to stage for a meaningful commit, and stage them after user approval. Use this skill when the user wants to commit staged changes."
 ---
 
 # Git Commit Skill
@@ -12,12 +12,19 @@ This skill produces the **best 3 git commit message suggestions** for the files 
 - The skill **generates and presents** three ranked commit message suggestions for the staged changes.
 - It then **asks the user to make a decision** about the commit (which message to use, or to abort).
 - After the user decides, the skill **executes the actual `git commit`** with the chosen message.
+- When little or nothing is staged (or the staged set is incoherent), the skill may **analyze the working tree and propose a staging plan** — which files, hunks, or line ranges should be staged to form a single meaningful commit — and, after the user's explicit approval, run the staging commands (`git add`, `git apply --cached`) before continuing the normal flow.
 - The only permitted sources of information are:
   1. `bash <skill_dir>/bin/git-commit-context.sh` — run exactly once (step 1).
   2. `codegraph` commands — for semantic context (step 2).
-- **NEVER run any `git` command directly for inspection.** Not `git status`, not `git diff`, not `git log` — nothing. The helper script already runs every read-only git command needed.
-- The only `git` command you are allowed to run directly is `git commit` in step 6, and only after the user has explicitly chosen the message. Never run other mutating or destructive commands (`git checkout`, `git restore`, `git reset`, `git clean`, `git rm`, `git switch`, `git rebase`, `git stash`, `git push`).
-- Do not stage files, do not amend history, do not push, do not run formatters, do not modify code — the only change made to the repository is the single `git commit` in step 6.
+  3. `git diff` (unstaged/working-tree inspection) — only when needed to build a staging plan (step 1b) or when the user explicitly asks for it.
+- **NEVER run any `git` command directly for inspection** — not `git status`, not `git log`, nothing. The helper script already runs every read-only git command needed.
+  - **Exception 1:** `git diff` (e.g. `git diff --staged`, `git diff <path>`) is permitted **only when the user explicitly asks for it** (e.g. "show me the diff", "run git diff"). Otherwise use the helper script's diff output.
+  - **Exception 2:** when building a staging plan (step 1b), you may run read-only `git diff` against the working tree (`git diff`, `git diff --stat`, `git diff -- <path>`) to identify candidate files/hunks. This is the only other inspection command allowed outside the helper script.
+- The only `git` commands you are allowed to run directly are:
+  - approved **staging commands** in step 1b (`git add -- <path>`, or `git apply --cached` with a patch for hunk/line-level staging), and only after the user has explicitly approved the staging plan;
+  - `git commit` in step 6, and only after the user has explicitly chosen the message.
+  Never run other mutating or destructive commands (`git checkout`, `git restore`, `git reset`, `git clean`, `git rm`, `git switch`, `git rebase`, `git stash`, `git push`).
+- Do not amend history, do not push, do not run formatters, do not modify code — the only changes made to the repository are the user-approved staging commands in step 1b and the single `git commit` in step 6.
 
 ## Workflow
 
@@ -27,12 +34,30 @@ The message must reflect *staged* changes only. Never inspect unstaged or untrac
 
 - **Do not change directories.** The helper script must be run from the root of the git repo.
 - **Run the helper script `git-commit-context.sh` exactly once, in a single `bash` invocation.** It lives next to this SKILL.md and runs all required read-only `git` commands sequentially in one shot. Do NOT run any `git` command yourself for inspection and do NOT run the script more than once.
+  - **Exception:** you may run `git diff` directly **only when the user explicitly asks for it** (e.g. "show me the diff"). This is the sole permitted inspection command outside the helper script.
 
 ```bash
 bash <skill_dir>/bin/git-commit-context.sh   # run ONCE — collects all git context
 ```
 
 The script runs `git status`, `git log --oneline -10`, `git diff --staged --stat`, and `git diff --staged` sequentially via `set -x` (each command echoed as a `+ <command>` line before its output) — combine all sections (state, scope, changes, style) to generate the commit message.
+
+### 1b. Propose a staging plan (only when needed)
+
+Skip this step entirely when the staged set already forms a single logical change. Enter it only when:
+
+- **nothing is staged** but the working tree has changes (the user asked to commit and the index is empty), or
+- the **staged set is partial or incoherent** and completing/splitting it requires staging more of the working tree.
+
+When this step applies:
+
+1. **Inspect the working tree read-only.** You may run `git diff`, `git diff --stat`, and `git diff -- <path>` (unstaged) to see what could be staged. Do not run any other inspection command — `git status` output from the helper script (step 1) already lists modified/untracked files.
+2. **Decide what belongs together.** Group the unstaged/untracked changes into candidate logical changes using the diff content and codegraph context (step 2 may be pulled forward for this analysis). For each candidate, identify exactly what to stage:
+   - whole files (`git add -- <path>`), or
+   - specific hunks / line ranges within a file (stage via a patch: produce the diff for just those hunks and apply it with `git apply --cached`). Never use interactive `git add -p` — it blocks on stdin.
+3. **Present the staging plan and ask for approval.** Show the user, per candidate commit: the files/hunks you intend to stage and a one-line rationale. Ask which candidate to stage (or whether to abort). Do not stage anything yet.
+4. **Stage only after explicit approval.** Once the user picks a candidate, run exactly the approved staging commands (`git add -- <path>`, or `git apply --cached < patch`). Then re-run the helper script once to refresh the staged context (this re-run is allowed only in this flow) and continue with step 2.
+5. If the user rejects the plan, stop — do not stage, do not commit.
 
 ### 2. Enrich with semantic context (codegraph)
 
@@ -131,9 +156,9 @@ If option 3 (not a single logical change) fired, do not present commit options; 
 
 ## Rules
 
-- **Never run mutating git commands except the single `git commit` in step 6**, and that commit only after the user has explicitly chosen its message.
-- Inspect **staged** changes only (the helper script uses `git diff --staged`), never unstaged/untracked unless asked.
-- If nothing is staged, say so and stop — do not fabricate messages and do not commit.
+- **Never run mutating git commands except** the user-approved staging commands in step 1b and **the single `git commit` in step 6**, and that commit only after the user has explicitly chosen its message.
+- Inspect **staged** changes only (the helper script uses `git diff --staged`); inspect unstaged/untracked changes only when building a staging plan (step 1b) or when the user asks.
+- If nothing is staged, check the working tree: if there are changes, offer a staging plan per step 1b; if the tree is clean, say so and stop — do not fabricate messages and do not commit.
 - The user's decision is required before any commit. Never commit without an explicit, in-flow user choice.
 - When you are about to commit, use the exact chosen message. Do not silently substitute a different one.
 - Do not add AI attribution or Co-Authored-By lines unless requested.
