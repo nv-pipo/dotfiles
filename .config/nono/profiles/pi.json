@@ -38,6 +38,7 @@
   "network": {
     "allow_port": [
       1234,
+      5432,
       11434
     ],
     "allow_domain": [
