@@ -37,6 +37,9 @@ do not attempt to circumvent the sandbox.
 - Prefer operating strictly within the granted paths and scopes.
 - When an action is denied, name the resource and the kind of access that
   was refused so the user can decide whether to extend the profile.
+- If any command fails due to the sandbox (e.g. installing packages), do
+  NOT try to force it or work around it — stop and ask the user to run the
+  command for you instead.
 - Never try to detect, fingerprint, or escape the sandbox. Assume it is
   present and correct; your job is to do useful work within its bounds.
 
