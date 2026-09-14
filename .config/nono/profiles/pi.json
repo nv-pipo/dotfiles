@@ -22,6 +22,7 @@
       "~/.codegraph",
       "~/.config/herdr",
       "~/.config/nono/profiles/pi.json",
+      "~/.config/ruff/ruff.toml",
       "~/.gitconfig",
       "~/.local/config/nvim/",
       "~/.local/share/nvim",
