@@ -7,13 +7,14 @@
   "enabledModels": [
     "openrouter/z-ai/glm-5.3",
     "openrouter/moonshotai/kimi-k3",
-    "openrouter/deepseek/deepseek-v4-flash-0731",
+    "openrouter/deepseek/deepseek-v4.1-flash",
     "ollama/gemma4:26b-mlx",
     "ollama/qwen3.8:27b-mlx",
     "ollama/ornith-1.5:35b"
   ],
   "modelThinkingLevels": {
     "openrouter/moonshotai/kimi-k3": "low",
-    "openrouter/z-ai/glm-5.3": "low"
+    "openrouter/z-ai/glm-5.3": "low",
+    "openrouter/deepseek/deepseek-v4.1-flash": "high"
   }
 }
