@@ -30,8 +30,7 @@
       "~/.local/state/nvim/",
       "~/.pi",
       "~/Library/Metadata/CoreSpotlight/PasteboardHistory/",
-      "~/dotfiles/.config/nono/profiles/pi.json",
-      "~/dotfiles/.pi",
+      "~/dotfiles/",
       "~/homebrew",
       "~/miniforge3",
     ]
