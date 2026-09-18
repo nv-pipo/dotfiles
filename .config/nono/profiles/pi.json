@@ -36,7 +36,7 @@
     ]
   },
   "network": {
-    "allow_port": [
+    "open_port": [
       1234,
       5432,
       11434
