@@ -16,7 +16,7 @@
                     "compat": {
                         "supportsDeveloperRole": false,
                         "supportsReasoningEffort": true,
-                        "thinkingFormat": "chat_template_kwargs"
+                        "thinkingFormat": "openai"
                     },
                     "thinkingLevelMap": {
                         "off": "none",
@@ -44,7 +44,7 @@
                     "compat": {
                         "supportsDeveloperRole": false,
                         "supportsReasoningEffort": true,
-                        "thinkingFormat": "chat_template_kwargs"
+                        "thinkingFormat": "qwen"
                     },
                     "thinkingLevelMap": {
                         "off": "none",
@@ -72,7 +72,7 @@
                     "compat": {
                         "supportsDeveloperRole": false,
                         "supportsReasoningEffort": true,
-                        "thinkingFormat": "chat_template_kwargs"
+                        "thinkingFormat": "openai"
                     },
                     "thinkingLevelMap": {
                         "off": "none",
