@@ -39,6 +39,8 @@ keybind = cmd+8=unbind
 keybind = cmd+9=unbind
 keybind = cmd+alt+right=unbind
 keybind = cmd+alt+left=unbind
+keybind = cmd+alt+up=unbind
+keybind = cmd+alt+down=unbind
 keybind = cmd+alt+shift+right=unbind
 keybind = cmd+alt+shift+left=unbind
 # used by nvim
