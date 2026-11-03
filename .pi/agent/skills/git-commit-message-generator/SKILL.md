@@ -14,12 +14,15 @@ This skill produces the **best 3 git commit message suggestions** for the files 
 - After the user decides, the skill **executes the actual `git commit`** with the chosen message.
 - When little or nothing is staged (or the staged set is incoherent), the skill may **analyze the working tree and propose a staging plan** — which files, hunks, or line ranges should be staged to form a single meaningful commit — and, after the user's explicit approval, run the staging commands (`git add`, `git apply --cached`) before continuing the normal flow.
 - The only permitted sources of information are:
-  1. `bash <skill_dir>/bin/git-commit-context.sh` — run exactly once (step 1).
-  2. `codegraph` commands — for semantic context (step 2).
-  3. `git diff` (unstaged/working-tree inspection) — only when needed to build a staging plan (step 1b) or when the user explicitly asks for it.
+  1. **The agent's own session context** — when the agent already knows what changed (e.g. it made the edits itself earlier in this session), it may skip the helper script and codegraph entirely (fast path, step 1-fast). It must still confirm the staged file list before relying on this path.
+  2. `bash <skill_dir>/bin/git-commit-context.sh` — run exactly once (step 1), **only when the agent has no context of the changes** (fresh session, changes made outside this session, or the staged set doesn't match what the agent knows).
+  3. `codegraph` commands — for semantic context (step 2), only on the slow path.
+  4. `git diff --staged --stat` — a single read-only command, permitted **only on the fast path** to confirm which files are currently staged (step 1-fast).
+  5. `git diff` (unstaged/working-tree inspection) — only when needed to build a staging plan (step 1b) or when the user explicitly asks for it.
 - **NEVER run any `git` command directly for inspection** — not `git status`, not `git log`, nothing. The helper script already runs every read-only git command needed.
   - **Exception 1:** `git diff` (e.g. `git diff --staged`, `git diff <path>`) is permitted **only when the user explicitly asks for it** (e.g. "show me the diff", "run git diff"). Otherwise use the helper script's diff output.
   - **Exception 2:** when building a staging plan (step 1b), you may run read-only `git diff` against the working tree (`git diff`, `git diff --stat`, `git diff -- <path>`) to identify candidate files/hunks. This is the only other inspection command allowed outside the helper script.
+  - **Exception 3:** on the fast path (step 1-fast), the single command `git diff --staged --stat` is allowed to confirm the staged file list. No other git inspection command is permitted on the fast path.
 - The only `git` commands you are allowed to run directly are:
   - approved **staging commands** in step 1b (`git add -- <path>`, or `git apply --cached` with a patch for hunk/line-level staging), and only after the user has explicitly approved the staging plan;
   - `git commit` in step 6, and only after the user has explicitly chosen the message.
@@ -28,7 +31,28 @@ This skill produces the **best 3 git commit message suggestions** for the files 
 
 ## Workflow
 
-### 1. Gather the staged changes (helper script)
+### 1-fast. Fast path — the agent already has context of the changes
+
+Skip this fast path and go to step 1 (the helper script) unless **all** of the following hold:
+
+- the agent already has reliable context of the changes in the current session (e.g. it authored the edits itself and knows *what* changed and *why*), **and**
+- no unrelated changes are suspected in the staged set.
+
+When the fast path applies:
+
+1. **Confirm the staged files.** Run exactly one read-only command to list what is currently staged:
+
+```bash
+git diff --staged --stat   # the ONLY git command allowed on the fast path
+```
+
+2. **Cross-check against the agent's own context.** The staged files must match the changes the agent already knows about. If anything is staged that the agent did not make or cannot explain — or expected changes are missing — **do not use the fast path**: fall back to step 1 and run the helper script for full context.
+3. **Summarize the known changes into the message.** Skip the helper script (step 1), the staging plan (step 1b), and codegraph (step 2) entirely. Distill the changes the agent already has context on into the three suggestions directly (step 3): the diff-level *what* comes from the agent's own knowledge of the edits, the *why* from its intent when making them. Do not hallucinate details beyond what the agent actually did — if a detail is uncertain, fall back to step 1 instead of guessing.
+4. Continue at **step 3** (synthesize suggestions).
+
+### 1. Gather the staged changes (helper script — only when there is no context)
+
+Run this step only when the fast path (step 1-fast) did **not** apply — i.e. the agent has no context of the changes (fresh session, changes made outside this session, or the staged set didn't match the fast-path cross-check).
 
 The message must reflect *staged* changes only. Never inspect unstaged or untracked files unless the user asks.
 
@@ -43,6 +67,8 @@ bash <skill_dir>/bin/git-commit-context.sh   # run ONCE — collects all git con
 The script runs `git status`, `git log --oneline -10`, `git diff --staged --stat`, and `git diff --staged` sequentially via `set -x` (each command echoed as a `+ <command>` line before its output) — combine all sections (state, scope, changes, style) to generate the commit message.
 
 ### 1b. Propose a staging plan (only when needed)
+
+(Only reachable from the slow path, step 1.)
 
 Skip this step entirely when the staged set already forms a single logical change. Enter it only when:
 
@@ -157,7 +183,8 @@ If option 3 (not a single logical change) fired, do not present commit options; 
 ## Rules
 
 - **Never run mutating git commands except** the user-approved staging commands in step 1b and **the single `git commit` in step 6**, and that commit only after the user has explicitly chosen its message.
-- Inspect **staged** changes only (the helper script uses `git diff --staged`); inspect unstaged/untracked changes only when building a staging plan (step 1b) or when the user asks.
+- Inspect **staged** changes only. On the slow path this means the helper script (`git diff --staged`); on the fast path this means the agent's own session context, confirmed via `git diff --staged --stat`. Inspect unstaged/untracked changes only when building a staging plan (step 1b) or when the user asks.
+- The fast path (step 1-fast) requires a positive cross-check: if the staged file list doesn't match the agent's known changes, fall back to the helper script (step 1) — never generate a message from context that hasn't been confirmed against the staged set.
 - If nothing is staged, check the working tree: if there are changes, offer a staging plan per step 1b; if the tree is clean, say so and stop — do not fabricate messages and do not commit.
 - The user's decision is required before any commit. Never commit without an explicit, in-flow user choice.
 - When you are about to commit, use the exact chosen message. Do not silently substitute a different one.
