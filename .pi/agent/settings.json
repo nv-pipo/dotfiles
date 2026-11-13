@@ -6,8 +6,8 @@
   "theme": "dark",
   "enabledModels": [
     "openrouter/z-ai/glm-5.3-flash",
+    "openrouter/moonshotai/kimi-k3.1-pro",
     "openrouter/z-ai/glm-5.3",
-    "openrouter/moonshotai/kimi-k3",
     "openrouter/deepseek/deepseek-v4.1-flash",
     "ollama/gemma4:26b-mlx",
     "ollama/qwen3.8:27b-mlx",
